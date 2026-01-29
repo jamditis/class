@@ -22,6 +22,7 @@ All assignments are submitted through Canvas. Due dates are Thursdays at 11:59 P
 | Assignment | Points | Due |
 |------------|--------|-----|
 | Read the Cluetrain Manifesto | 25 | Jan 29 |
+| Cluetrain Manifesto media analysis | 25 | Feb 3 |
 | Media markets & information needs | 20 | Feb 12 |
 | Enshittification & file organization | 25 | Feb 26 |
 | Design a slide deck that doesn't suck | 50 | Mar 5 |
@@ -41,6 +42,39 @@ All assignments are submitted through Canvas. Due dates are Thursdays at 11:59 P
 **Due:** Thursday, January 29
 
 Read the "95 Theses of the Cluetrain Manifesto" and come prepared to discuss its relevance to modern media and strategic communications.
+
+---
+
+### Cluetrain Manifesto media analysis (25 pts)
+**Due:** Tuesday, February 3 at 10:00 AM (before class)
+
+Find a piece of media that is relevant to the Cluetrain Manifesto and analyze how it connects to the document's core ideas.
+
+**Instructions:**
+
+1. **Find a piece of media** — This could be an article, advertisement, social media post, video, podcast episode, company announcement, or any other piece of content that relates to the themes in the Cluetrain Manifesto.
+
+2. **Identify the relevant thesis/theses** — Reference the specific item(s) from the 95 theses that your media example connects to. You can cite by number (e.g., "Thesis #7" or "Theses #12-14").
+
+3. **Analyze the connection** — In 1-2 paragraphs, explain:
+   - How does this media example relate to the thesis/theses you identified?
+   - Does this example illustrate that the principle still holds true 27 years after the manifesto was published (1999), or does it suggest the claim no longer resonates?
+   - Why do you think this is the case?
+
+**Submission:**
+- Submit via **Canvas text entry** (not a file upload)
+- Include a link to your media example
+- 1-2 paragraphs (approximately 150-300 words)
+
+**Grading criteria:**
+- Clear connection to specific thesis/theses (10 pts)
+- Thoughtful analysis of relevance in 2026 (10 pts)
+- Writing clarity and mechanics (5 pts)
+
+**Tips:**
+- The manifesto was written in 1999, at the dawn of the commercial internet
+- Consider how markets, companies, and conversations have changed (or haven't)
+- Strong submissions will go beyond surface-level observations to analyze *why* the principle does or doesn't hold up
 
 ---
 

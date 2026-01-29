@@ -21,6 +21,7 @@ title: Schedule
 |----------|------------|--------|
 | Thu, Jan 29 | Academic engagement verification | — |
 | Thu, Jan 29 | Read the Cluetrain Manifesto | 25 |
+| Tue, Feb 3 | Cluetrain Manifesto media analysis | 25 |
 | Thu, Feb 12 | Media markets & information needs | 20 |
 | Thu, Feb 26 | Enshittification & file organization | 25 |
 | Thu, Mar 5 | Design a slide deck that doesn't suck | 50 |
@@ -32,7 +33,7 @@ title: Schedule
 | Thu, Apr 30 | Campaign strategy | 75 |
 | Mon, May 4 | Final project: Multimedia asset package | ~40% |
 
-**Total points before final:** 545 pts
+**Total points before final:** 570 pts
 
 ---
 
@@ -58,6 +59,7 @@ Digital fundamentals for strategic communicators.
 Understanding where your audience lives and what they actually need.
 - **Topic:** Analyzing media ecosystems and identifying coverage gaps
 - **Activity:** Market analysis workshop
+- **Due Tue, Feb 3 (before class):** Cluetrain Manifesto media analysis (25 pts)
 
 ---
 

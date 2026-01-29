@@ -129,6 +129,7 @@ Crunch time.
 |----------|------------|--------|
 | Thu, Jan 29 | Academic engagement verification | — |
 | Thu, Jan 29 | Read the Cluetrain Manifesto | 25 |
+| Tue, Feb 3 | Cluetrain Manifesto media analysis | 25 |
 | Thu, Feb 12 | Media markets & information needs | 20 |
 | Thu, Feb 26 | Enshittification & file organization | 25 |
 | Thu, Mar 5 | Design a slide deck that doesn't suck | 50 |
@@ -140,7 +141,7 @@ Crunch time.
 | Thu, Apr 30 | Campaign strategy | 75 |
 | Mon, May 4 | Final project: Multimedia asset package | ~40% of grade |
 
-**Total points before final project:** 545 pts
+**Total points before final project:** 570 pts
 
 ---
 
