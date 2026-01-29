@@ -21,7 +21,7 @@ All assignments are submitted through Canvas. Due dates are Thursdays at 11:59 P
 
 | Assignment | Points | Due |
 |------------|--------|-----|
-| Read the Cluetrain Manifesto | 35 | Jan 29 |
+| Read the Cluetrain Manifesto | 25 | Jan 29 |
 | Cluetrain Manifesto media analysis | 25 | Feb 3 |
 | Design a slide deck that doesn't suck | 50 | Feb 5 |
 | Alien planet travel poster | 50 | Feb 19 |
@@ -43,7 +43,7 @@ Read the "95 Theses of the Cluetrain Manifesto" and come prepared to discuss its
 
 ---
 
-### Cluetrain Manifesto media analysis (35 pts)
+### Cluetrain Manifesto media analysis (25 pts)
 **Due:** Tuesday, February 3 at 10:00 AM (before class)
 
 Find a piece of media that is relevant to the Cluetrain Manifesto and analyze how it connects to the document's core ideas.
@@ -86,14 +86,14 @@ Create a 5-7 slide presentation on a topic of your choice that demonstrates stro
 - Minimal text (no paragraphs)
 - Consistent visual style
 - High-quality images or graphics
-- Present to class during Week 7
+- Present to class during Week 4
 
 ---
 
 ### Alien planet travel poster (50 pts)
 **Due:** Thursday, February 19
 
-Using the design principles covered in Week 6, create a travel poster for a fictional alien planet.
+Using the design principles covered in Week 3, create a travel poster for a fictional alien planet.
 
 **Requirements:**
 - Print-ready at 11x17 inches, 300 DPI
@@ -169,7 +169,7 @@ Write a 2-3 page strategic document outlining how your organization would deploy
 
 **Include:**
 - **Campaign goal:** What are you trying to achieve?
-- **Target audience:** Who are you reaching (reference your persona)?
+- **Target audience:** Who are you reaching? Describe your intended audience based on your research dossier findings.
 - **Platform strategy:** Where will these assets live and why?
 - **Content calendar:** A two-week sample showing when and where each asset type would be posted
 - **Success metrics:** How will you measure whether this worked?
