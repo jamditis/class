@@ -23,7 +23,7 @@ title: Resources
 ### Week 2-4
 - [The Cluetrain Manifesto: 95 Theses](https://cluetrain.com/book/95-theses.html)
 
-### Week 11
+### Week 9
 - Selections from *On Writing Well* by William Zinsser (provided in Canvas)
 
 ---

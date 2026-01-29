@@ -45,45 +45,42 @@ Slides are shared after each class when applicable.
 
 ### Week 1-2: Foundations
 - The "mountain of principle" — just make stuff
+- Enshittification and platform decay
 - Digital literacy and keyboard shortcuts
 - File organization best practices
-- Essential browser extensions
-
-### Week 3-4: Media landscape
 - Media markets and information needs
-- The Cluetrain Manifesto
-- Authenticity vs. algorithms
-- The "shiny new thing" trap
+- The Cluetrain Manifesto and authentic communication
 
-### Week 5-6: Design principles
-- The attention economy
+### Week 3-4: Design principles
 - Contrast, hierarchy, alignment, balance
 - Why bad design hurts credibility
 - Color theory basics
+- Slide deck presentations and peer critique
 
-### Week 7-9: Research & strategy
+### Week 5-7: Research & strategy
+- Introduction to the final project
 - Building a research dossier
 - Competitive analysis
-- Using AI tools (NotebookLM) for synthesis
-- Finding and organizing inspiration
-
-### Week 10-11: Audience & copy
+- Campaign objectives and platform strategy
 - Creating customer/user personas
 - Beyond demographics: psychographics
+
+### Week 9-10: Copywriting
 - The "solutions lens" for copywriting
 - Writing with clarity and voice
+- Adapting tone for different platforms
+- Peer review and workshop
 
-### Week 12-14: Visual production
+### Week 11-13: Visual production
 - Featured images for web
 - Social media graphic design
 - Accessibility and alt text
 - Brand consistency and style guides
 
-### Week 15-16: Integration
-- Campaign strategy development
-- Content calendars
-- Portfolio presentation skills
+### Week 14-16: Integration
 - Final project workshop
+- Portfolio presentation skills
+- Final refinements and polish
 
 ---
 
