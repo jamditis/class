@@ -5,14 +5,6 @@ title: Assignments
 
 # Assignments
 
-<nav class="site-nav">
-  <a href="{{ site.baseurl }}/">Home</a> |
-  <a href="{{ site.baseurl }}/schedule">Schedule</a> |
-  <a href="{{ site.baseurl }}/assignments">Assignments</a> |
-  <a href="{{ site.baseurl }}/lectures">Lectures</a> |
-  <a href="{{ site.baseurl }}/resources">Resources</a>
-</nav>
-
 ---
 
 ## Assignment overview
@@ -37,6 +29,7 @@ All assignments are submitted through Canvas. Due dates are Thursdays at 11:59 P
 ## Assignment descriptions
 
 ### Read the Cluetrain Manifesto (25 pts)
+
 **Due:** Thursday, January 29
 
 Read the "95 Theses of the Cluetrain Manifesto" and come prepared to discuss its relevance to modern media and strategic communications.
@@ -44,6 +37,7 @@ Read the "95 Theses of the Cluetrain Manifesto" and come prepared to discuss its
 ---
 
 ### Cluetrain Manifesto media analysis (25 pts)
+
 **Due:** Tuesday, February 3 at 10:00 AM (before class)
 
 Find a piece of media that is relevant to the Cluetrain Manifesto and analyze how it connects to the document's core ideas.
@@ -60,16 +54,19 @@ Find a piece of media that is relevant to the Cluetrain Manifesto and analyze ho
    - Why do you think this is the case?
 
 **Submission:**
+
 - Submit via **Canvas text entry** (not a file upload)
 - Include a link to your media example
 - 1-2 paragraphs (approximately 150-300 words)
 
 **Grading criteria:**
+
 - Clear connection to specific thesis/theses (10 pts)
 - Thoughtful analysis of relevance in 2026 (10 pts)
 - Writing clarity and mechanics (5 pts)
 
 **Tips:**
+
 - The manifesto was written in 1999, at the dawn of the commercial internet
 - Consider how markets, companies, and conversations have changed (or haven't)
 - Strong submissions will go beyond surface-level observations to analyze *why* the principle does or doesn't hold up
@@ -77,11 +74,13 @@ Find a piece of media that is relevant to the Cluetrain Manifesto and analyze ho
 ---
 
 ### Design a slide deck that doesn't suck (50 pts)
+
 **Due:** Thursday, February 5
 
 Create a 5-7 slide presentation on a topic of your choice that demonstrates strong design principles: visual hierarchy, contrast, alignment, and restraint.
 
 **Requirements:**
+
 - 5-7 slides maximum
 - Minimal text (no paragraphs)
 - Consistent visual style
@@ -91,11 +90,13 @@ Create a 5-7 slide presentation on a topic of your choice that demonstrates stro
 ---
 
 ### Alien planet travel poster (50 pts)
+
 **Due:** Thursday, February 19
 
 Using the design principles covered in Week 3, create a travel poster for a fictional alien planet.
 
 **Requirements:**
+
 - Print-ready at 11x17 inches, 300 DPI
 - Compelling headline and tagline
 - At least one visual element
@@ -107,11 +108,13 @@ This is introduced as an in-class activity during Week 4 and due the following w
 ---
 
 ### Research dossier (50 pts)
+
 **Due:** Thursday, February 26
 
 Create a comprehensive research dossier for your final project organization. This should include competitor analysis, audience research, and content inspiration.
 
 **Requirements:**
+
 - 3-5 competitor examples with analysis
 - Audience demographics and psychographics
 - Content examples that inspire your approach
@@ -119,12 +122,30 @@ Create a comprehensive research dossier for your final project organization. Thi
 
 ---
 
+### Campaign strategy (75 pts)
+
+**Due:** Thursday, March 5
+
+Write a 2-3 page strategic document outlining how your organization would deploy the assets you've created.
+
+**Include:**
+
+- **Campaign goal:** What are you trying to achieve?
+- **Target audience:** Who are you reaching? Describe your intended audience based on your research dossier findings.
+- **Platform strategy:** Where will these assets live and why?
+- **Content calendar:** A two-week sample showing when and where each asset type would be posted
+- **Success metrics:** How will you measure whether this worked?
+
+---
+
 ### User/customer persona (75 pts)
+
 **Due:** Thursday, March 19
 
 Develop a detailed customer/user persona for your final project organization.
 
 **Requirements:**
+
 - Demographic information
 - Psychographic profile (values, interests, pain points)
 - Media consumption habits
@@ -134,11 +155,13 @@ Develop a detailed customer/user persona for your final project organization.
 ---
 
 ### Critical copywriting (100 pts)
+
 **Due:** Thursday, March 26
 
 Write 3 pieces of copy using a "solutions lens" — critiquing industry problems while offering constructive alternatives.
 
 **Requirements:**
+
 - 3 distinct pieces (social post, email, blog intro)
 - Each addresses a real problem in your field
 - Maintains professional, constructive tone
@@ -147,41 +170,32 @@ Write 3 pieces of copy using a "solutions lens" — critiquing industry problems
 ---
 
 ### Featured images + social graphics (75 pts)
+
 **Due:** Thursday, April 9
 
 Create a cohesive set of visual assets for your final project organization.
 
 **Deliverables:**
+
 - **3 featured images** for blog posts/articles (1200x630 pixels)
 - **3 social media graphics** (1080x1080 pixels)
 
 **Requirements:**
+
 - Consistent branding (colors, fonts, visual style)
 - Proper alt text descriptions for all images
 - Export-ready for web (PNG or JPEG, optimized file size)
 
 ---
 
-### Campaign strategy (75 pts)
-**Due:** Thursday, March 5
-
-Write a 2-3 page strategic document outlining how your organization would deploy the assets you've created.
-
-**Include:**
-- **Campaign goal:** What are you trying to achieve?
-- **Target audience:** Who are you reaching? Describe your intended audience based on your research dossier findings.
-- **Platform strategy:** Where will these assets live and why?
-- **Content calendar:** A two-week sample showing when and where each asset type would be posted
-- **Success metrics:** How will you measure whether this worked?
-
----
-
 ## Final project: Multimedia asset package (~40%)
+
 **Due:** Monday, May 4
 
 Create a complete multimedia asset package for an organization of your choice. This brings together everything you've learned throughout the semester.
 
 **Required components:**
+
 1. Research dossier
 2. User/customer persona
 3. Brand style guide

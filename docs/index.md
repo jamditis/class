@@ -3,7 +3,7 @@ layout: default
 title: Home
 ---
 
-# STCM140: Multimedia production for strategic communications
+# Multimedia production for strategic communications
 
 **Spring 2026 | Montclair State University**
 
@@ -14,21 +14,12 @@ title: Home
 
 ---
 
-<nav class="site-nav">
-  <a href="{{ site.baseurl }}/">Home</a> |
-  <a href="{{ site.baseurl }}/schedule">Schedule</a> |
-  <a href="{{ site.baseurl }}/assignments">Assignments</a> |
-  <a href="{{ site.baseurl }}/lectures">Lectures</a> |
-  <a href="{{ site.baseurl }}/resources">Resources</a>
-</nav>
-
----
-
 ## Course description
 
 This course teaches the fundamentals of multimedia production for strategic communications. You'll learn to create compelling content across multiple platforms while developing a critical eye for design, messaging, and audience engagement.
 
 By the end of this course, you will be able to:
+
 - Apply design principles to create professional visual content
 - Write compelling copy for different audiences and platforms
 - Develop research-backed content strategies
@@ -49,9 +40,9 @@ By the end of this course, you will be able to:
 
 ## Grading
 
-| Component | Points |
+| Component | Weight |
 |-----------|--------|
-| Weekly assignments | 545 pts |
+| Weekly assignments | 525 pts |
 | Final project | ~40% of grade |
 | Participation | Required |
 
@@ -69,15 +60,19 @@ By the end of this course, you will be able to:
 ## Course policies
 
 ### Attendance
+
 Attendance is expected at all class sessions. If you must miss class, notify me in advance when possible.
 
 ### Late work
+
 Late assignments lose 10% per day. Extensions are available if requested before the due date.
 
 ### Academic integrity
+
 All work must be your own. Collaboration is encouraged for brainstorming, but final submissions must be individual work unless otherwise specified.
 
 ### AI use
+
 AI tools are permitted for brainstorming and editing, but you must disclose their use and the final work must represent your own thinking and voice.
 
 ---

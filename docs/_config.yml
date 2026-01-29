@@ -1,21 +1,7 @@
-# STCM140 Course Website
-title: STCM140 Multimedia Production
-description: Course materials for Multimedia Production for Strategic Communications at Montclair State University
+title: STCM140
+description: Multimedia production for strategic communications
 baseurl: "/class"
 url: "https://jamditis.github.io"
-
-# Theme
-remote_theme: pages-themes/cayman@v0.2.0
-plugins:
-  - jekyll-remote-theme
-
-# Navigation
-header_pages:
-  - index.md
-  - schedule.md
-  - assignments.md
-  - lectures.md
-  - resources.md
 
 # Build settings
 markdown: kramdown
@@ -23,13 +9,7 @@ kramdown:
   input: GFM
   hard_wrap: false
 
-# Exclude from build
+# Exclude from processing
 exclude:
-  - fathom_*.py
-  - fathom_*.json
-  - fathom_stcm140/
-  - "*.bat"
-  - requirements.txt
-  - FATHOM-NOTEBOOKLM-SETUP.md
-  - materials/ADMIN/
-  - nul
+  - README.md
+  - LICENSE

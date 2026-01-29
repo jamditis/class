@@ -5,14 +5,6 @@ title: Lectures
 
 # Lectures & class recordings
 
-<nav class="site-nav">
-  <a href="{{ site.baseurl }}/">Home</a> |
-  <a href="{{ site.baseurl }}/schedule">Schedule</a> |
-  <a href="{{ site.baseurl }}/assignments">Assignments</a> |
-  <a href="{{ site.baseurl }}/lectures">Lectures</a> |
-  <a href="{{ site.baseurl }}/resources">Resources</a>
-</nav>
-
 ---
 
 ## Spring 2026 recordings
@@ -44,6 +36,7 @@ Slides are shared after each class when applicable.
 ## Key concepts by week
 
 ### Week 1-2: Foundations
+
 - The "mountain of principle" — just make stuff
 - Enshittification and platform decay
 - Digital literacy and keyboard shortcuts
@@ -52,12 +45,14 @@ Slides are shared after each class when applicable.
 - The Cluetrain Manifesto and authentic communication
 
 ### Week 3-4: Design principles
+
 - Contrast, hierarchy, alignment, balance
 - Why bad design hurts credibility
 - Color theory basics
 - Slide deck presentations and peer critique
 
 ### Week 5-7: Research & strategy
+
 - Introduction to the final project
 - Building a research dossier
 - Competitive analysis
@@ -66,18 +61,21 @@ Slides are shared after each class when applicable.
 - Beyond demographics: psychographics
 
 ### Week 9-10: Copywriting
+
 - The "solutions lens" for copywriting
 - Writing with clarity and voice
 - Adapting tone for different platforms
 - Peer review and workshop
 
 ### Week 11-13: Visual production
+
 - Featured images for web
 - Social media graphic design
 - Accessibility and alt text
 - Brand consistency and style guides
 
 ### Week 14-16: Integration
+
 - Final project workshop
 - Portfolio presentation skills
 - Final refinements and polish

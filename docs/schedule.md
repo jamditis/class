@@ -5,14 +5,6 @@ title: Schedule
 
 # Course schedule — Spring 2026
 
-<nav class="site-nav">
-  <a href="{{ site.baseurl }}/">Home</a> |
-  <a href="{{ site.baseurl }}/schedule">Schedule</a> |
-  <a href="{{ site.baseurl }}/assignments">Assignments</a> |
-  <a href="{{ site.baseurl }}/lectures">Lectures</a> |
-  <a href="{{ site.baseurl }}/resources">Resources</a>
-</nav>
-
 ---
 
 ## Assignment due dates at a glance
@@ -38,14 +30,18 @@ title: Schedule
 ## Week-by-week schedule
 
 ### Week 1: January 20-22 — Introduction & the state of media
+
 We establish the ground rules and discuss the reality of the media business.
+
 - **Topic:** Syllabus review, course expectations, and the "enshittification" of platforms
 - **Reading:** "Your Media Business Will Not Be Saved" by Joshua Topolsky
 
 ---
 
 ### Week 2: January 27-29 — Digital fundamentals & the Cluetrain Manifesto
+
 Digital literacy, media markets, and why human voices matter.
+
 - **Topic:** Keyboard shortcuts, file organization, information needs, and the 95 theses
 - **Discussion:** Enshittification, the "shiny new thing," and authentic communication
 - **Due Thu, Jan 29:** Academic engagement verification
@@ -54,7 +50,9 @@ Digital literacy, media markets, and why human voices matter.
 ---
 
 ### Week 3: February 3-5 — Principles of design
+
 The fundamentals of visual communication.
+
 - **Topic:** Contrast, hierarchy, alignment, balance, and why bad design hurts credibility
 - **Activity:** Introduction to design thinking and slide deck planning
 - **Due Tue, Feb 3 (before class):** Cluetrain Manifesto media analysis (25 pts)
@@ -63,7 +61,9 @@ The fundamentals of visual communication.
 ---
 
 ### Week 4: February 10-12 — Slide deck presentations & design critique
+
 Putting design theory into practice.
+
 - **Activity:** "Slide deck that doesn't suck" student presentations
 - **Topic:** Peer feedback and design critique principles
 - **In-class activity:** Alien planet travel poster — applying design principles to absurd constraints
@@ -71,7 +71,9 @@ Putting design theory into practice.
 ---
 
 ### Week 5: February 17-19 — Final project intro & research
+
 Unveiling the final project and gathering intelligence.
+
 - **Topic:** Introduction to the final project: Multimedia asset package
 - **Focus:** Building a research dossier — competitor analysis, inspiration gathering
 - **Tools:** Using NotebookLM for synthesis
@@ -80,7 +82,9 @@ Unveiling the final project and gathering intelligence.
 ---
 
 ### Week 6: February 24-26 — Campaign strategy & audience
+
 Planning before production.
+
 - **Topic:** Campaign objectives, platform strategy, and content calendars
 - **Focus:** Understanding your audience — moving beyond demographics to motivation
 - **Due Thu, Feb 26:** Research dossier (50 pts)
@@ -88,7 +92,9 @@ Planning before production.
 ---
 
 ### Week 7: March 3-5 — Personas & strategic planning
+
 Defining who you're creating for.
+
 - **Topic:** Creating detailed customer/user personas
 - **Activity:** Mapping user pain points to strategic solutions
 - **Due Thu, Mar 5:** Campaign strategy (75 pts)
@@ -96,12 +102,15 @@ Defining who you're creating for.
 ---
 
 ### Week 8: March 7-15 — SPRING BREAK
+
 **NO CLASS**
 
 ---
 
 ### Week 9: March 17-19 — Copywriting foundations
+
 Writing with clarity and authority.
+
 - **Topic:** The "solutions lens" — critiquing industry problems without being toxic
 - **Reading:** Selections from *On Writing Well* by William Zinsser
 - **Due Thu, Mar 19:** User/customer persona (75 pts)
@@ -109,7 +118,9 @@ Writing with clarity and authority.
 ---
 
 ### Week 10: March 24-26 — Copywriting workshop
+
 Practicing persuasive and clear writing.
+
 - **Topic:** Voice, tone, and adapting to different platforms
 - **Workshop:** Drafting and peer review of copywriting assignments
 - **Due Thu, Mar 26:** Critical copywriting (100 pts)
@@ -117,14 +128,18 @@ Practicing persuasive and clear writing.
 ---
 
 ### Week 11: March 31 - April 2 — Visuals for the web
+
 Designing for the feed and the article.
+
 - **Topic:** Blog posts, featured images, and aspect ratios
 - **Workshop:** Canva best practices for high-resolution assets
 
 ---
 
 ### Week 12: April 7-9 — Social graphics & accessibility
+
 Creating standalone assets that convert.
+
 - **Topic:** Social cards, call-to-actions (CTAs), and the necessity of alt text
 - **Focus:** Designing for accessibility and mobile screens
 - **Due Thu, Apr 9:** Featured images + social graphics (75 pts)
@@ -132,27 +147,34 @@ Creating standalone assets that convert.
 ---
 
 ### Week 13: April 14-16 — Branding & consistency
+
 Ensuring your organization looks the same everywhere.
+
 - **Topic:** Style guides, branding kits, and defining visual rules
 - **Activity:** Building the "instruction manual" for your brand
 
 ---
 
 ### Week 14: April 21-23 — Final project workshop
+
 Bringing it all together.
+
 - **Topic:** Integrating all your assets into a cohesive package
 - **Workshop:** Peer review and troubleshooting
 
 ---
 
 ### Week 15: April 28-30 — Final project polish
+
 Crunch time.
+
 - **Topic:** Final refinements and presentation prep
 - **Focus:** Ensuring all links work and assets are polished
 
 ---
 
 ### Week 16: Finals period — Final presentations
+
 - **Activity:** Final project presentations and course wrap-up
 - **Due Mon, May 4:** Final project: Multimedia asset package (~40% of grade)
 
