@@ -23,15 +23,13 @@ All assignments are submitted through Canvas. Due dates are Thursdays at 11:59 P
 |------------|--------|-----|
 | Read the Cluetrain Manifesto | 25 | Jan 29 |
 | Cluetrain Manifesto media analysis | 25 | Feb 3 |
-| Media markets & information needs | 20 | Feb 12 |
-| Enshittification & file organization | 25 | Feb 26 |
-| Design a slide deck that doesn't suck | 50 | Mar 5 |
-| Alien planet travel poster | 50 | Mar 5 |
-| Research dossier | 50 | Mar 26 |
-| User/customer persona | 75 | Apr 2 |
-| Critical copywriting | 100 | Apr 9 |
-| Featured images + social graphics | 75 | Apr 23 |
-| Campaign strategy | 75 | Apr 30 |
+| Design a slide deck that doesn't suck | 50 | Feb 5 |
+| Alien planet travel poster | 50 | Feb 19 |
+| Research dossier | 50 | Mar 5 |
+| User/customer persona | 75 | Mar 26 |
+| Critical copywriting | 100 | Apr 2 |
+| Featured images + social graphics | 75 | Apr 16 |
+| Campaign strategy | 75 | Apr 23 |
 | **Final project** | ~40% | May 4 |
 
 ---
@@ -78,22 +76,8 @@ Find a piece of media that is relevant to the Cluetrain Manifesto and analyze ho
 
 ---
 
-### Media markets & information needs (20 pts)
-**Due:** Thursday, February 12
-
-Analyze the media ecosystem for a specific community. Identify what information needs are being met and what gaps exist.
-
----
-
-### Enshittification & file organization (25 pts)
-**Due:** Thursday, February 26
-
-Reflect on the concept of "enshittification" and demonstrate proper file organization practices for your coursework.
-
----
-
 ### Design a slide deck that doesn't suck (50 pts)
-**Due:** Thursday, March 5
+**Due:** Thursday, February 5
 
 Create a 5-7 slide presentation on a topic of your choice that demonstrates strong design principles: visual hierarchy, contrast, alignment, and restraint.
 
@@ -107,7 +91,7 @@ Create a 5-7 slide presentation on a topic of your choice that demonstrates stro
 ---
 
 ### Alien planet travel poster (50 pts)
-**Due:** Thursday, March 5
+**Due:** Thursday, February 19
 
 Using the design principles covered in Week 6, create a travel poster for a fictional alien planet.
 
@@ -118,12 +102,12 @@ Using the design principles covered in Week 6, create a travel poster for a fict
 - Clear visual hierarchy and intentional color use
 - Should feel like something you'd actually see in a travel agency (on another planet)
 
-This is completed as an in-class activity during Week 6 and due by the start of class the following Thursday.
+This is introduced as an in-class activity during Week 4 and due the following week.
 
 ---
 
 ### Research dossier (50 pts)
-**Due:** Thursday, March 26
+**Due:** Thursday, March 5
 
 Create a comprehensive research dossier for your final project organization. This should include competitor analysis, audience research, and content inspiration.
 
@@ -136,7 +120,7 @@ Create a comprehensive research dossier for your final project organization. Thi
 ---
 
 ### User/customer persona (75 pts)
-**Due:** Thursday, April 2
+**Due:** Thursday, March 26
 
 Develop a detailed customer/user persona for your final project organization.
 
@@ -150,7 +134,7 @@ Develop a detailed customer/user persona for your final project organization.
 ---
 
 ### Critical copywriting (100 pts)
-**Due:** Thursday, April 9
+**Due:** Thursday, April 2
 
 Write 3 pieces of copy using a "solutions lens" — critiquing industry problems while offering constructive alternatives.
 
@@ -163,7 +147,7 @@ Write 3 pieces of copy using a "solutions lens" — critiquing industry problems
 ---
 
 ### Featured images + social graphics (75 pts)
-**Due:** Thursday, April 23
+**Due:** Thursday, April 16
 
 Create a cohesive set of visual assets for your final project organization.
 
@@ -179,7 +163,7 @@ Create a cohesive set of visual assets for your final project organization.
 ---
 
 ### Campaign strategy (75 pts)
-**Due:** Thursday, April 30
+**Due:** Thursday, April 23
 
 Write a 2-3 page strategic document outlining how your organization would deploy the assets you've created.
 

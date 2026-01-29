@@ -22,18 +22,16 @@ title: Schedule
 | Thu, Jan 29 | Academic engagement verification | — |
 | Thu, Jan 29 | Read the Cluetrain Manifesto | 25 |
 | Tue, Feb 3 | Cluetrain Manifesto media analysis | 25 |
-| Thu, Feb 12 | Media markets & information needs | 20 |
-| Thu, Feb 26 | Enshittification & file organization | 25 |
-| Thu, Mar 5 | Design a slide deck that doesn't suck | 50 |
-| Thu, Mar 5 | Alien planet travel poster | 50 |
-| Thu, Mar 26 | Research dossier | 50 |
-| Thu, Apr 2 | User/customer persona | 75 |
-| Thu, Apr 9 | Critical copywriting | 100 |
-| Thu, Apr 23 | Featured images + social graphics | 75 |
-| Thu, Apr 30 | Campaign strategy | 75 |
+| Thu, Feb 5 | Design a slide deck that doesn't suck | 50 |
+| Thu, Feb 19 | Alien planet travel poster | 50 |
+| Thu, Mar 5 | Research dossier | 50 |
+| Thu, Mar 26 | User/customer persona | 75 |
+| Thu, Apr 2 | Critical copywriting | 100 |
+| Thu, Apr 16 | Featured images + social graphics | 75 |
+| Thu, Apr 23 | Campaign strategy | 75 |
 | Mon, May 4 | Final project: Multimedia asset package | ~40% |
 
-**Total points before final:** 570 pts
+**Total points before final:** 525 pts
 
 ---
 
@@ -46,52 +44,51 @@ We establish the ground rules and discuss the reality of the media business.
 
 ---
 
-### Week 2: January 27-29 — How to use your computer
-Digital fundamentals for strategic communicators.
-- **Topic:** Keyboard shortcuts, file organization, and professional workflows
-- **Activity:** Keyboard shortcut speed challenge and folder structure setup
+### Week 2: January 27-29 — Digital fundamentals & the Cluetrain Manifesto
+Digital literacy, media markets, and why human voices matter.
+- **Topic:** Keyboard shortcuts, file organization, information needs, and the 95 theses
+- **Discussion:** Enshittification, the "shiny new thing," and authentic communication
 - **Due Thu, Jan 29:** Academic engagement verification
 - **Due Thu, Jan 29:** Read the Cluetrain Manifesto (25 pts)
 
 ---
 
-### Week 3: February 3-5 — Media markets & information needs
-Understanding where your audience lives and what they actually need.
-- **Topic:** Analyzing media ecosystems and identifying coverage gaps
-- **Activity:** Market analysis workshop
+### Week 3: February 3-5 — Principles of design
+The fundamentals of visual communication.
+- **Topic:** Contrast, hierarchy, alignment, balance, and why bad design hurts credibility
+- **Activity:** Introduction to design thinking and slide deck planning
 - **Due Tue, Feb 3 (before class):** Cluetrain Manifesto media analysis (25 pts)
+- **Due Thu, Feb 5:** Design a slide deck that doesn't suck (50 pts)
 
 ---
 
-### Week 4: February 10-12 — Authenticity & the Cluetrain Manifesto
-Why human voices matter more than algorithms.
-- **Topic:** The 95 theses of the Cluetrain Manifesto and the allure of the "New Thing"
-- **Discussion:** AI ethics and the value of genuine perspective
-- **Due Thu, Feb 12:** Media markets & information needs (20 pts)
+### Week 4: February 10-12 — Slide deck presentations & design critique
+Putting design theory into practice.
+- **Activity:** "Slide deck that doesn't suck" student presentations
+- **Topic:** Peer feedback and design critique principles
+- **In-class activity:** Alien planet travel poster — applying design principles to absurd constraints
 
 ---
 
 ### Week 5: February 17-19 — The attention economy
 How platforms harvest attention and what it means for creators.
 - **Topic:** Algorithms, privacy, and screen time metrics
-- **Guest lecture:** The mechanics of the attention economy (subject to availability)
+- **Due Thu, Feb 19:** Alien planet travel poster (50 pts)
 
 ---
 
-### Week 6: February 24-26 — Principles of design
-The fundamentals of visual communication.
-- **Topic:** Contrast, hierarchy, alignment, balance, and why bad design hurts credibility
-- **In-class activity:** Alien planet travel poster — applying design principles to absurd constraints
-- **Due Thu, Feb 26:** Enshittification & file organization (25 pts)
+### Week 6: February 24-26 — Research & synthesis
+Gathering intelligence before creating content.
+- **Topic:** Building a research dossier and using tools like NotebookLM for synthesis
+- **Focus:** Competitor analysis and finding inspiration
 
 ---
 
-### Week 7: March 3-5 — Presentations & final project kickoff
-Putting design theory into practice.
-- **Activity:** "Slide deck that doesn't suck" student presentations
-- **Topic:** Introduction to the final project: Multimedia asset package
-- **Due Thu, Mar 5:** Design a slide deck that doesn't suck (50 pts)
-- **Due Thu, Mar 5:** Alien planet travel poster (50 pts)
+### Week 7: March 3-5 — Audience strategy & final project kickoff
+Moving beyond demographics to understand motivation.
+- **Topic:** Creating detailed customer/user personas
+- **Activity:** Introduction to the final project: Multimedia asset package
+- **Due Thu, Mar 5:** Research dossier (50 pts)
 
 ---
 
@@ -100,49 +97,49 @@ Putting design theory into practice.
 
 ---
 
-### Week 9: March 17-19 — Research & synthesis
-Gathering intelligence before creating content.
-- **Topic:** Building a research dossier and using tools like NotebookLM for synthesis
-- **Focus:** Competitor analysis and finding inspiration
-
----
-
-### Week 10: March 24-26 — Audience strategy & personas
+### Week 9: March 17-19 — Personas & copywriting foundations
 Moving beyond demographics to understand motivation.
 - **Topic:** Creating detailed customer/user personas
 - **Activity:** Mapping user pain points to strategic solutions
-- **Due Thu, Mar 26:** Research dossier (50 pts)
 
 ---
 
-### Week 11: March 31 - April 2 — Copywriting & voice
+### Week 10: March 24-26 — Copywriting & voice
 Writing with clarity and authority.
 - **Topic:** The "solutions lens" — critiquing industry problems without being toxic
 - **Reading:** Selections from *On Writing Well* by William Zinsser
-- **Due Thu, Apr 2:** User/customer persona (75 pts)
+- **Due Thu, Mar 26:** User/customer persona (75 pts)
 
 ---
 
-### Week 12: April 7-9 — Visuals for the web
+### Week 11: March 31 - April 2 — Visuals for the web
 Designing for the feed and the article.
 - **Topic:** Blog posts, featured images, and aspect ratios
 - **Workshop:** Canva best practices for high-resolution assets
-- **Due Thu, Apr 9:** Critical copywriting (100 pts)
+- **Due Thu, Apr 2:** Critical copywriting (100 pts)
 
 ---
 
-### Week 13: April 14-16 — Social graphics & accessibility
+### Week 12: April 7-9 — Social graphics & accessibility
 Creating standalone assets that convert.
 - **Topic:** Social cards, call-to-actions (CTAs), and the necessity of alt text
 - **Focus:** Designing for accessibility and mobile screens
 
 ---
 
-### Week 14: April 21-23 — Branding & consistency
+### Week 13: April 14-16 — Branding & consistency
 Ensuring your organization looks the same everywhere.
 - **Topic:** Style guides, branding kits, and defining visual rules
 - **Activity:** Building the "instruction manual" for your brand
-- **Due Thu, Apr 23:** Featured images + social graphics (75 pts)
+- **Due Thu, Apr 16:** Featured images + social graphics (75 pts)
+
+---
+
+### Week 14: April 21-23 — Campaign strategy
+Tying it all together with strategic thinking.
+- **Topic:** Content calendars, platform strategy, and success metrics
+- **Workshop:** Drafting your campaign strategy document
+- **Due Thu, Apr 23:** Campaign strategy (75 pts)
 
 ---
 
@@ -150,7 +147,6 @@ Ensuring your organization looks the same everywhere.
 Crunch time.
 - **Topic:** Peer review, troubleshooting, and polishing deliverables
 - **Focus:** Refining the asset package and ensuring all links work
-- **Due Thu, Apr 30:** Campaign strategy (75 pts)
 
 ---
 
