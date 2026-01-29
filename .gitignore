@@ -1,0 +1,29 @@
+# Fathom API data (contains transcripts, may be large)
+fathom_meetings_*.json
+fathom_stcm140/
+
+# API keys and secrets
+.env
+*.env
+
+# Windows
+nul
+Thumbs.db
+Desktop.ini
+
+# Mac
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+
+# Jekyll build
+_site/
+.jekyll-cache/
+.jekyll-metadata
+
+# Admin materials (not for students)
+materials/ADMIN/
