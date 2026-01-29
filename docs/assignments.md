@@ -25,11 +25,11 @@ All assignments are submitted through Canvas. Due dates are Thursdays at 11:59 P
 | Cluetrain Manifesto media analysis | 25 | Feb 3 |
 | Design a slide deck that doesn't suck | 50 | Feb 5 |
 | Alien planet travel poster | 50 | Feb 19 |
-| Research dossier | 50 | Mar 5 |
-| User/customer persona | 75 | Mar 26 |
-| Critical copywriting | 100 | Apr 2 |
-| Featured images + social graphics | 75 | Apr 16 |
-| Campaign strategy | 75 | Apr 23 |
+| Research dossier | 50 | Feb 26 |
+| Campaign strategy | 75 | Mar 5 |
+| User/customer persona | 75 | Mar 19 |
+| Critical copywriting | 100 | Mar 26 |
+| Featured images + social graphics | 75 | Apr 9 |
 | **Final project** | ~40% | May 4 |
 
 ---
@@ -107,7 +107,7 @@ This is introduced as an in-class activity during Week 4 and due the following w
 ---
 
 ### Research dossier (50 pts)
-**Due:** Thursday, March 5
+**Due:** Thursday, February 26
 
 Create a comprehensive research dossier for your final project organization. This should include competitor analysis, audience research, and content inspiration.
 
@@ -120,7 +120,7 @@ Create a comprehensive research dossier for your final project organization. Thi
 ---
 
 ### User/customer persona (75 pts)
-**Due:** Thursday, March 26
+**Due:** Thursday, March 19
 
 Develop a detailed customer/user persona for your final project organization.
 
@@ -134,7 +134,7 @@ Develop a detailed customer/user persona for your final project organization.
 ---
 
 ### Critical copywriting (100 pts)
-**Due:** Thursday, April 2
+**Due:** Thursday, March 26
 
 Write 3 pieces of copy using a "solutions lens" — critiquing industry problems while offering constructive alternatives.
 
@@ -147,7 +147,7 @@ Write 3 pieces of copy using a "solutions lens" — critiquing industry problems
 ---
 
 ### Featured images + social graphics (75 pts)
-**Due:** Thursday, April 16
+**Due:** Thursday, April 9
 
 Create a cohesive set of visual assets for your final project organization.
 
@@ -163,7 +163,7 @@ Create a cohesive set of visual assets for your final project organization.
 ---
 
 ### Campaign strategy (75 pts)
-**Due:** Thursday, April 23
+**Due:** Thursday, March 5
 
 Write a 2-3 page strategic document outlining how your organization would deploy the assets you've created.
 

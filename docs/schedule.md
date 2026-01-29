@@ -24,11 +24,11 @@ title: Schedule
 | Tue, Feb 3 | Cluetrain Manifesto media analysis | 25 |
 | Thu, Feb 5 | Design a slide deck that doesn't suck | 50 |
 | Thu, Feb 19 | Alien planet travel poster | 50 |
-| Thu, Mar 5 | Research dossier | 50 |
-| Thu, Mar 26 | User/customer persona | 75 |
-| Thu, Apr 2 | Critical copywriting | 100 |
-| Thu, Apr 16 | Featured images + social graphics | 75 |
-| Thu, Apr 23 | Campaign strategy | 75 |
+| Thu, Feb 26 | Research dossier | 50 |
+| Thu, Mar 5 | Campaign strategy | 75 |
+| Thu, Mar 19 | User/customer persona | 75 |
+| Thu, Mar 26 | Critical copywriting | 100 |
+| Thu, Apr 9 | Featured images + social graphics | 75 |
 | Mon, May 4 | Final project: Multimedia asset package | ~40% |
 
 **Total points before final:** 525 pts
@@ -70,25 +70,28 @@ Putting design theory into practice.
 
 ---
 
-### Week 5: February 17-19 — The attention economy
-How platforms harvest attention and what it means for creators.
-- **Topic:** Algorithms, privacy, and screen time metrics
+### Week 5: February 17-19 — Final project intro & research
+Unveiling the final project and gathering intelligence.
+- **Topic:** Introduction to the final project: Multimedia asset package
+- **Focus:** Building a research dossier — competitor analysis, inspiration gathering
+- **Tools:** Using NotebookLM for synthesis
 - **Due Thu, Feb 19:** Alien planet travel poster (50 pts)
 
 ---
 
-### Week 6: February 24-26 — Research & synthesis
-Gathering intelligence before creating content.
-- **Topic:** Building a research dossier and using tools like NotebookLM for synthesis
-- **Focus:** Competitor analysis and finding inspiration
+### Week 6: February 24-26 — Campaign strategy & audience
+Planning before production.
+- **Topic:** Campaign objectives, platform strategy, and content calendars
+- **Focus:** Understanding your audience — moving beyond demographics to motivation
+- **Due Thu, Feb 26:** Research dossier (50 pts)
 
 ---
 
-### Week 7: March 3-5 — Audience strategy & final project kickoff
-Moving beyond demographics to understand motivation.
+### Week 7: March 3-5 — Personas & strategic planning
+Defining who you're creating for.
 - **Topic:** Creating detailed customer/user personas
-- **Activity:** Introduction to the final project: Multimedia asset package
-- **Due Thu, Mar 5:** Research dossier (50 pts)
+- **Activity:** Mapping user pain points to strategic solutions
+- **Due Thu, Mar 5:** Campaign strategy (75 pts)
 
 ---
 
@@ -97,18 +100,19 @@ Moving beyond demographics to understand motivation.
 
 ---
 
-### Week 9: March 17-19 — Personas & copywriting foundations
-Moving beyond demographics to understand motivation.
-- **Topic:** Creating detailed customer/user personas
-- **Activity:** Mapping user pain points to strategic solutions
-
----
-
-### Week 10: March 24-26 — Copywriting & voice
+### Week 9: March 17-19 — Copywriting foundations
 Writing with clarity and authority.
 - **Topic:** The "solutions lens" — critiquing industry problems without being toxic
 - **Reading:** Selections from *On Writing Well* by William Zinsser
-- **Due Thu, Mar 26:** User/customer persona (75 pts)
+- **Due Thu, Mar 19:** User/customer persona (75 pts)
+
+---
+
+### Week 10: March 24-26 — Copywriting workshop
+Practicing persuasive and clear writing.
+- **Topic:** Voice, tone, and adapting to different platforms
+- **Workshop:** Drafting and peer review of copywriting assignments
+- **Due Thu, Mar 26:** Critical copywriting (100 pts)
 
 ---
 
@@ -116,7 +120,6 @@ Writing with clarity and authority.
 Designing for the feed and the article.
 - **Topic:** Blog posts, featured images, and aspect ratios
 - **Workshop:** Canva best practices for high-resolution assets
-- **Due Thu, Apr 2:** Critical copywriting (100 pts)
 
 ---
 
@@ -124,6 +127,7 @@ Designing for the feed and the article.
 Creating standalone assets that convert.
 - **Topic:** Social cards, call-to-actions (CTAs), and the necessity of alt text
 - **Focus:** Designing for accessibility and mobile screens
+- **Due Thu, Apr 9:** Featured images + social graphics (75 pts)
 
 ---
 
@@ -131,22 +135,20 @@ Creating standalone assets that convert.
 Ensuring your organization looks the same everywhere.
 - **Topic:** Style guides, branding kits, and defining visual rules
 - **Activity:** Building the "instruction manual" for your brand
-- **Due Thu, Apr 16:** Featured images + social graphics (75 pts)
 
 ---
 
-### Week 14: April 21-23 — Campaign strategy
-Tying it all together with strategic thinking.
-- **Topic:** Content calendars, platform strategy, and success metrics
-- **Workshop:** Drafting your campaign strategy document
-- **Due Thu, Apr 23:** Campaign strategy (75 pts)
+### Week 14: April 21-23 — Final project workshop
+Bringing it all together.
+- **Topic:** Integrating all your assets into a cohesive package
+- **Workshop:** Peer review and troubleshooting
 
 ---
 
-### Week 15: April 28-30 — Final project workshop
+### Week 15: April 28-30 — Final project polish
 Crunch time.
-- **Topic:** Peer review, troubleshooting, and polishing deliverables
-- **Focus:** Refining the asset package and ensuring all links work
+- **Topic:** Final refinements and presentation prep
+- **Focus:** Ensuring all links work and assets are polished
 
 ---
 
