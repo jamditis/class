@@ -2,11 +2,12 @@
 Fetch STCM140 class recordings from Fathom API.
 """
 
+import os
 import requests
 import json
 from datetime import datetime
 
-API_KEY = "5i3d1qz__Rep7LCiEb3EvQ.I-74TR6Elo4VijR59-5XefVhsXNYPlnCz-Mb_qqy6xU"
+API_KEY = os.environ.get("FATHOM_API_KEY", "")
 BASE_URL = "https://api.fathom.ai/external/v1"
 
 def fetch_meetings(include_transcript=False):

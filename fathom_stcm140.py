@@ -9,7 +9,7 @@ import os
 import time
 from datetime import datetime
 
-API_KEY = "5i3d1qz__Rep7LCiEb3EvQ.I-74TR6Elo4VijR59-5XefVhsXNYPlnCz-Mb_qqy6xU"
+API_KEY = os.environ.get("FATHOM_API_KEY", "")
 BASE_URL = "https://api.fathom.ai/external/v1"
 
 # Filter: Only meetings after this date

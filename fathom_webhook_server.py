@@ -27,8 +27,8 @@ from googleapiclient.http import MediaFileUpload
 import tempfile
 
 # Configuration
-WEBHOOK_SECRET = "whsec_mXGGbOdhoP6Rdxj1HPDIHNxjnza1774s"
-FATHOM_API_KEY = "5i3d1qz__Rep7LCiEb3EvQ.I-74TR6Elo4VijR59-5XefVhsXNYPlnCz-Mb_qqy6xU"
+WEBHOOK_SECRET = os.environ.get("FATHOM_WEBHOOK_SECRET", "")
+FATHOM_API_KEY = os.environ.get("FATHOM_API_KEY", "")
 
 # Google Drive folder ID for NotebookLM sources
 # Create a folder in your Drive and paste its ID here

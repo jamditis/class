@@ -156,16 +156,19 @@ Transcripts are only available after Fathom processes the recording. This usuall
 
 ---
 
-## API credentials reference
+## API credentials setup
 
-**Fathom API key:**
-```
-FATHOM_STCM140_KEY=5i3d1qz__Rep7LCiEb3EvQ.I-74TR6Elo4VijR59-5XefVhsXNYPlnCz-Mb_qqy6xU
+Set these environment variables (get values from your Fathom account):
+
+```bash
+set FATHOM_API_KEY=your_api_key_here
+set FATHOM_WEBHOOK_SECRET=your_webhook_secret_here
 ```
 
-**Fathom webhook secret:**
+Or create a `.env` file (already in .gitignore):
 ```
-FATHOM_STCM140_WEBHOOK_SECRET=whsec_mXGGbOdhoP6Rdxj1HPDIHNxjnza1774s
+FATHOM_API_KEY=your_api_key_here
+FATHOM_WEBHOOK_SECRET=your_webhook_secret_here
 ```
 
 ---
