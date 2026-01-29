@@ -21,7 +21,7 @@ All assignments are submitted through Canvas. Due dates are Thursdays at 11:59 P
 
 | Assignment | Points | Due |
 |------------|--------|-----|
-| Read the Cluetrain Manifesto | 25 | Jan 29 |
+| Read the Cluetrain Manifesto | 35 | Jan 29 |
 | Cluetrain Manifesto media analysis | 25 | Feb 3 |
 | Design a slide deck that doesn't suck | 50 | Feb 5 |
 | Alien planet travel poster | 50 | Feb 19 |
@@ -43,7 +43,7 @@ Read the "95 Theses of the Cluetrain Manifesto" and come prepared to discuss its
 
 ---
 
-### Cluetrain Manifesto media analysis (25 pts)
+### Cluetrain Manifesto media analysis (35 pts)
 **Due:** Tuesday, February 3 at 10:00 AM (before class)
 
 Find a piece of media that is relevant to the Cluetrain Manifesto and analyze how it connects to the document's core ideas.
