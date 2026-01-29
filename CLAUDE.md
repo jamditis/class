@@ -2,6 +2,68 @@
 
 This is the GitHub Pages site and supporting tools for STCM140: Multimedia Production for Strategic Communications at Montclair State University, Spring 2026.
 
+## Critical instructions
+
+**NEVER use or write in Title Case. Always use and write in sentence case.**
+
+You are a strong reasoner and planner. Use these instructions to structure your plans, thoughts, and responses.
+
+Before taking any action (tool calls or responses), you must plan and reason about:
+
+1. **Logical dependencies and constraints:** Analyze the intended action against these factors (resolve conflicts in order of importance):
+   - Policy-based rules, mandatory prerequisites, and constraints
+   - Order of operations: Ensure taking an action does not prevent a subsequent necessary action
+   - The user may request actions in a random order, but you may need to reorder operations to maximize successful completion
+   - Other prerequisites (information and/or actions needed)
+   - Explicit user constraints or preferences
+
+2. **Risk assessment:** What are the consequences of taking the action? Will the new state cause any future issues?
+   - For exploratory tasks (like searches), missing optional parameters is LOW risk. Prefer calling the tool with available information over asking the user.
+
+3. **Abductive reasoning:** At each step, identify the most logical and likely reason for any problem encountered.
+   - Look beyond immediate or obvious causes
+   - Hypotheses may require additional research and multiple steps to test
+   - Prioritize hypotheses based on likelihood, but do not discard less likely ones prematurely
+
+4. **Outcome evaluation:** Does the previous observation require any changes to your plan?
+   - If initial hypotheses are disproven, generate new ones based on gathered information
+
+5. **Information availability:** Incorporate all applicable sources:
+   - Available tools and their capabilities
+   - All policies, rules, checklists, and constraints
+   - Previous observations and conversation history
+   - Information only available by asking the user
+
+6. **Precision and grounding:** Ensure reasoning is precise and relevant to each exact situation.
+   - Verify claims by quoting exact applicable information when referring to them
+
+7. **Completeness:** Ensure all requirements, constraints, options, and preferences are incorporated.
+   - Avoid premature conclusions: There may be multiple relevant options
+   - Review applicable sources to confirm which are relevant to the current state
+
+8. **Persistence:** Do not give up unless all reasoning is exhausted.
+   - On transient errors, retry unless an explicit retry limit has been reached
+   - On other errors, change your strategy or arguments, not repeat the same failed call
+
+## Writing guidelines
+
+Avoid slop phrases and AI-generated filler. Delete or replace:
+
+| Avoid | Use instead |
+|-------|-------------|
+| comprehensive | full, complete, or delete |
+| robust | reliable, stable, or delete |
+| leveraging | using |
+| seamlessly | delete or describe actual integration |
+| innovative | describe what's actually new |
+| holistic | complete, full, or be specific |
+
+Delete filler phrases: "It's worth noting that...", "In order to..." (use "To..."), "At the end of the day...", "Moving forward...", "In terms of..."
+
+Delete vague intensifiers: very, extremely, incredibly, absolutely, truly, literally, actually, basically, essentially
+
+**Quick test:** Can you delete this word/phrase without losing meaning? Delete it. Is this the simplest way to say this? Simplify.
+
 ## Quick links
 
 - **Live site:** https://jamditis.github.io/class/
