@@ -21,6 +21,10 @@ __pycache__/
 *.pyo
 venv/
 
+# Student tracker database
+student_tracker.db
+*.db
+
 # Jekyll build
 _site/
 .jekyll-cache/

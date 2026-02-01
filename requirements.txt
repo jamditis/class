@@ -2,3 +2,8 @@ flask>=2.0.0
 requests>=2.25.0
 google-auth>=2.0.0
 google-api-python-client>=2.0.0
+
+# Student tracker dependencies
+sqlalchemy>=2.0.0
+anthropic>=0.18.0
+jinja2>=3.0.0
