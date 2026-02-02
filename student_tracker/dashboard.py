@@ -29,6 +29,12 @@ from .manual_input import (
     add_student, add_manual_evaluation, add_student_note,
     confirm_haiku_evaluation
 )
+from .feedback_queue import (
+    get_pending_feedback, get_feedback_by_id, get_feedback_stats,
+    update_feedback_content, approve_feedback, reject_feedback,
+    publish_feedback, publish_all_approved, queue_submission_feedback,
+    generate_submission_feedback_for_queue
+)
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("FLASK_SECRET_KEY", "student-tracker-dev-key")
@@ -148,6 +154,7 @@ BASE_TEMPLATE = """
                 <a href="/students" class="nav-link relative">Students</a>
                 <a href="/assignments" class="nav-link relative">Assignments</a>
                 <a href="/evaluate" class="nav-link relative">Evaluate</a>
+                <a href="/feedback" class="nav-link relative">Feedback</a>
                 <a href="/insights" class="nav-link relative">Insights</a>
                 <a href="/settings" class="nav-link relative">Settings</a>
             </div>
@@ -1186,6 +1193,184 @@ SETTINGS_TEMPLATE = """
 {% endblock %}
 """
 
+FEEDBACK_QUEUE_TEMPLATE = """
+{% extends "base.html" %}
+{% block title %}Feedback queue{% endblock %}
+{% block content %}
+<div class="flex justify-between items-center mb-10">
+    <div>
+        <h1 class="text-4xl mb-2">Feedback queue</h1>
+        <p class="text-mist text-sm">Review and publish AI-generated feedback to Canvas</p>
+    </div>
+    <div class="flex gap-3">
+        <button onclick="location.reload()" class="px-4 py-2 border border-ink/10 rounded-lg hover:bg-white/50 transition text-sm">
+            Refresh
+        </button>
+        {% if stats.approved > 0 or stats.edited > 0 %}
+        <form action="/api/feedback/publish-all" method="POST" class="inline">
+            <button type="submit" class="px-4 py-2 bg-crimson text-canvas rounded-lg hover:bg-crimson/90 transition text-sm font-medium">
+                Publish all approved ({{ stats.approved + stats.edited }})
+            </button>
+        </form>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Stats -->
+<div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
+    <div class="stat-card rounded-lg p-4 text-center">
+        <div class="text-2xl font-display font-black text-crimson">{{ stats.pending }}</div>
+        <h3 class="mt-1">Pending</h3>
+    </div>
+    <div class="stat-card rounded-lg p-4 text-center">
+        <div class="text-2xl font-display font-black text-accent">{{ stats.approved }}</div>
+        <h3 class="mt-1">Approved</h3>
+    </div>
+    <div class="stat-card rounded-lg p-4 text-center">
+        <div class="text-2xl font-display font-black text-yellow-700">{{ stats.edited }}</div>
+        <h3 class="mt-1">Edited</h3>
+    </div>
+    <div class="stat-card rounded-lg p-4 text-center">
+        <div class="text-2xl font-display font-black text-ink">{{ stats.published }}</div>
+        <h3 class="mt-1">Published</h3>
+    </div>
+    <div class="stat-card rounded-lg p-4 text-center">
+        <div class="text-2xl font-display font-black text-mist">{{ stats.rejected }}</div>
+        <h3 class="mt-1">Rejected</h3>
+    </div>
+</div>
+
+<!-- Pending Feedback Items -->
+{% if pending %}
+<div class="space-y-6">
+    {% for item in pending %}
+    <div class="deckle-card rounded-lg p-6" id="feedback-{{ item.id }}">
+        <div class="flex justify-between items-start mb-4">
+            <div>
+                {% if item.student_name %}
+                <span class="badge badge-neutral">{{ item.type|replace('_', ' ')|title }}</span>
+                <h2 class="text-lg mt-2">{{ item.student_name }}</h2>
+                {% if item.assignment_name %}
+                <p class="text-mist text-sm">{{ item.assignment_name }}</p>
+                {% endif %}
+                {% else %}
+                <span class="badge badge-neutral">{{ item.type|replace('_', ' ')|title }}</span>
+                {% if item.title %}
+                <h2 class="text-lg mt-2">{{ item.title }}</h2>
+                {% endif %}
+                {% endif %}
+            </div>
+            <div class="text-xs text-mist">
+                {{ item.created_at[:10] if item.created_at else '' }}
+                <span class="ml-2 badge badge-neutral">{{ item.generated_by }}</span>
+            </div>
+        </div>
+
+        <div class="mb-5">
+            <textarea id="content-{{ item.id }}" rows="6"
+                class="w-full px-4 py-3 bg-white/50 border border-ink/10 rounded-lg focus:outline-none focus:border-accent text-sm leading-relaxed font-mono">{{ item.content }}</textarea>
+        </div>
+
+        <div class="flex justify-end gap-3">
+            <button onclick="rejectFeedback({{ item.id }})"
+                class="px-4 py-2 text-crimson border border-crimson/30 rounded-lg hover:bg-crimson/10 transition text-sm">
+                Reject
+            </button>
+            <button onclick="saveFeedback({{ item.id }})"
+                class="px-4 py-2 border border-ink/10 rounded-lg hover:bg-white/50 transition text-sm">
+                Save edits
+            </button>
+            <button onclick="approveFeedback({{ item.id }})"
+                class="px-4 py-2 bg-accent text-canvas rounded-lg hover:bg-accent/90 transition text-sm font-medium">
+                Approve
+            </button>
+            <button onclick="approveAndPublish({{ item.id }})"
+                class="px-4 py-2 bg-crimson text-canvas rounded-lg hover:bg-crimson/90 transition text-sm font-medium">
+                Approve & publish
+            </button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="deckle-card rounded-lg p-10 text-center">
+    <p class="text-mist">No pending feedback to review.</p>
+    <p class="text-sm text-mist mt-2">Generate feedback from evaluated submissions using the Evaluate page.</p>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+function saveFeedback(id) {
+    const content = document.getElementById('content-' + id).value;
+    fetch('/api/feedback/' + id + '/update', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({content: content})
+    }).then(r => r.json()).then(data => {
+        if (data.success) {
+            showToast('Saved');
+        } else {
+            showToast('Error: ' + (data.error || 'Unknown'), true);
+        }
+    });
+}
+
+function approveFeedback(id) {
+    fetch('/api/feedback/' + id + '/approve', {method: 'POST'})
+        .then(r => r.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById('feedback-' + id).style.opacity = '0.5';
+                showToast('Approved');
+                setTimeout(() => location.reload(), 1000);
+            }
+        });
+}
+
+function rejectFeedback(id) {
+    if (!confirm('Reject this feedback?')) return;
+    fetch('/api/feedback/' + id + '/reject', {method: 'POST'})
+        .then(r => r.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById('feedback-' + id).remove();
+                showToast('Rejected');
+            }
+        });
+}
+
+function approveAndPublish(id) {
+    const content = document.getElementById('content-' + id).value;
+    fetch('/api/feedback/' + id + '/update', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({content: content})
+    }).then(() => {
+        return fetch('/api/feedback/' + id + '/approve', {method: 'POST'});
+    }).then(() => {
+        return fetch('/api/feedback/' + id + '/publish', {method: 'POST'});
+    }).then(r => r.json()).then(data => {
+        if (data.error) {
+            showToast('Error: ' + data.error, true);
+        } else {
+            document.getElementById('feedback-' + id).remove();
+            showToast('Published to Canvas');
+        }
+    });
+}
+
+function showToast(msg, isError) {
+    const toast = document.createElement('div');
+    toast.className = 'fixed bottom-6 right-6 px-4 py-3 rounded-lg shadow-lg text-sm font-medium z-50 ' +
+        (isError ? 'bg-crimson text-canvas' : 'bg-accent text-canvas');
+    toast.textContent = msg;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+}
+{% endblock %}
+"""
+
 
 # ============================================================================
 # Template rendering helper
@@ -1197,6 +1382,7 @@ def render(template_name: str, **kwargs):
         "base.html": BASE_TEMPLATE,
         "dashboard.html": DASHBOARD_TEMPLATE,
         "students.html": STUDENTS_TEMPLATE,
+        "feedback_queue.html": FEEDBACK_QUEUE_TEMPLATE,
         "student_detail.html": STUDENT_DETAIL_TEMPLATE,
         "assignments.html": ASSIGNMENTS_TEMPLATE,
         "evaluate.html": EVALUATE_TEMPLATE,
@@ -1396,6 +1582,14 @@ def settings_page():
                   anthropic_configured=bool(os.environ.get("ANTHROPIC_API_KEY")))
 
 
+@app.route("/feedback")
+def feedback_queue_page():
+    """Feedback review queue page."""
+    pending = get_pending_feedback(limit=50)
+    stats = get_feedback_stats()
+    return render("feedback_queue.html", pending=pending, stats=stats)
+
+
 # ============================================================================
 # API Routes
 # ============================================================================
@@ -1524,6 +1718,96 @@ def api_export_grades():
         mimetype="text/csv",
         headers={"Content-Disposition": "attachment;filename=grades.csv"}
     )
+
+
+# ============================================================================
+# Feedback Queue API Routes
+# ============================================================================
+
+@app.route("/api/feedback/<int:feedback_id>/update", methods=["POST"])
+def api_feedback_update(feedback_id: int):
+    """Update feedback content (instructor edit)."""
+    data = request.get_json() or {}
+    content = data.get("content")
+    title = data.get("title")
+
+    if not content:
+        return jsonify({"error": "Content is required"}), 400
+
+    success = update_feedback_content(feedback_id, content, title)
+    return jsonify({"success": success})
+
+
+@app.route("/api/feedback/<int:feedback_id>/approve", methods=["POST"])
+def api_feedback_approve(feedback_id: int):
+    """Approve feedback for publishing."""
+    success = approve_feedback(feedback_id)
+    return jsonify({"success": success})
+
+
+@app.route("/api/feedback/<int:feedback_id>/reject", methods=["POST"])
+def api_feedback_reject(feedback_id: int):
+    """Reject feedback."""
+    success = reject_feedback(feedback_id)
+    return jsonify({"success": success})
+
+
+@app.route("/api/feedback/<int:feedback_id>/publish", methods=["POST"])
+def api_feedback_publish(feedback_id: int):
+    """Publish a single feedback item to Canvas."""
+    result = publish_feedback(feedback_id)
+    return jsonify(result)
+
+
+@app.route("/api/feedback/publish-all", methods=["POST"])
+def api_feedback_publish_all():
+    """Publish all approved feedback to Canvas."""
+    result = publish_all_approved()
+    return redirect(url_for("feedback_queue_page"))
+
+
+@app.route("/api/feedback/generate/<int:submission_id>", methods=["POST"])
+def api_generate_feedback(submission_id: int):
+    """Generate feedback for a submission and add to queue."""
+    result = generate_submission_feedback_for_queue(submission_id)
+    if result:
+        return jsonify({"success": True, "feedback_id": result.id})
+    return jsonify({"error": "Could not generate feedback"}), 400
+
+
+@app.route("/api/feedback/generate-batch", methods=["POST"])
+def api_generate_feedback_batch():
+    """Generate feedback for all evaluated submissions without queued feedback."""
+    session = get_session()
+
+    # Find submissions with final evaluations but no pending feedback
+    from .models import FeedbackQueue, FeedbackQueueStatus
+
+    submissions_with_evals = session.query(Submission).join(Evaluation).filter(
+        Evaluation.is_final == True
+    ).all()
+
+    generated = 0
+    for sub in submissions_with_evals:
+        # Check if feedback already queued
+        existing = session.query(FeedbackQueue).filter(
+            FeedbackQueue.submission_id == sub.id,
+            FeedbackQueue.status.in_([
+                FeedbackQueueStatus.PENDING.value,
+                FeedbackQueueStatus.APPROVED.value,
+                FeedbackQueueStatus.EDITED.value
+            ])
+        ).first()
+
+        if not existing:
+            session.close()
+            result = generate_submission_feedback_for_queue(sub.id)
+            if result:
+                generated += 1
+            session = get_session()
+
+    session.close()
+    return redirect(url_for("feedback_queue_page"))
 
 
 def run_dashboard(host: str = "0.0.0.0", port: int = 5000, debug: bool = False):

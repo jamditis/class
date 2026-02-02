@@ -254,6 +254,73 @@ class SystemConfig(Base):
         return f"<SystemConfig(key='{self.key}')>"
 
 
+class FeedbackQueueStatus(enum.Enum):
+    """Status of a feedback item in the review queue."""
+    PENDING = "pending"        # Awaiting instructor review
+    APPROVED = "approved"      # Approved, ready to publish
+    PUBLISHED = "published"    # Successfully published to Canvas
+    REJECTED = "rejected"      # Rejected by instructor
+    EDITED = "edited"          # Edited by instructor, ready to publish
+
+
+class FeedbackType(enum.Enum):
+    """Type of feedback to publish."""
+    SUBMISSION_COMMENT = "submission_comment"  # Comment on a student submission
+    DISCUSSION_POST = "discussion_post"        # New discussion topic
+    DISCUSSION_ENTRY = "discussion_entry"      # Reply to existing discussion
+    ANNOUNCEMENT = "announcement"              # Course announcement
+
+
+class FeedbackQueue(Base):
+    """
+    Queue for AI-generated feedback awaiting instructor approval.
+
+    This implements the human-in-the-loop workflow:
+    1. AI generates feedback/insight
+    2. Feedback is added to queue with status=PENDING
+    3. Instructor reviews, edits if needed, approves/rejects
+    4. Approved feedback is published to Canvas
+    """
+    __tablename__ = "feedback_queue"
+
+    id = Column(Integer, primary_key=True)
+
+    # Type of feedback
+    feedback_type = Column(String(30), default=FeedbackType.SUBMISSION_COMMENT.value)
+
+    # Target (depends on feedback_type)
+    student_id = Column(Integer, ForeignKey("students.id"), nullable=True)  # For individual feedback
+    submission_id = Column(Integer, ForeignKey("submissions.id"), nullable=True)  # For submission comments
+    discussion_topic_id = Column(String(50), nullable=True)  # Canvas topic ID for replies
+
+    # Content
+    title = Column(String(300), nullable=True)  # For discussions/announcements
+    content = Column(Text, nullable=False)  # The feedback text
+    original_content = Column(Text, nullable=True)  # Original AI content (preserved if edited)
+
+    # Review workflow
+    status = Column(String(20), default=FeedbackQueueStatus.PENDING.value)
+    reviewed_at = Column(DateTime, nullable=True)
+    published_at = Column(DateTime, nullable=True)
+
+    # Canvas reference after publishing
+    canvas_response_id = Column(String(50), nullable=True)  # ID from Canvas after publish
+
+    # Metadata
+    generated_by = Column(String(50), default="haiku")  # haiku, manual, system
+    generation_context = Column(JSON, nullable=True)  # Context that prompted this feedback
+
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    # Relationships
+    student = relationship("Student", foreign_keys=[student_id])
+    submission = relationship("Submission", foreign_keys=[submission_id])
+
+    def __repr__(self):
+        return f"<FeedbackQueue(id={self.id}, type='{self.feedback_type}', status='{self.status}')>"
+
+
 def init_db():
     """Initialize the database, creating all tables."""
     Base.metadata.create_all(engine)

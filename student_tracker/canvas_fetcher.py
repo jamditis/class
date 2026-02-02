@@ -360,5 +360,134 @@ def full_sync() -> dict:
     return results
 
 
+# ============================================================================
+# Canvas Write Operations (with human-in-the-loop approval)
+# ============================================================================
+
+def api_post(endpoint: str, data: dict = None) -> dict:
+    """Make a POST request to Canvas API."""
+    url = f"{CANVAS_BASE_URL}/api/v1{endpoint}"
+    response = requests.post(url, headers=get_headers(), json=data)
+    response.raise_for_status()
+    return response.json()
+
+
+def api_put(endpoint: str, data: dict = None) -> dict:
+    """Make a PUT request to Canvas API."""
+    url = f"{CANVAS_BASE_URL}/api/v1{endpoint}"
+    response = requests.put(url, headers=get_headers(), json=data)
+    response.raise_for_status()
+    return response.json()
+
+
+def post_submission_comment(
+    assignment_canvas_id: str,
+    student_canvas_id: str,
+    comment_text: str
+) -> dict:
+    """
+    Post a comment on a student's submission.
+
+    This is used to provide feedback on individual assignments.
+    The comment will appear in the Canvas SpeedGrader and student's submission view.
+    """
+    if not check_configuration():
+        return {"error": "Canvas not configured"}
+
+    endpoint = f"/courses/{CANVAS_COURSE_ID}/assignments/{assignment_canvas_id}/submissions/{student_canvas_id}"
+    data = {
+        "comment": {
+            "text_comment": comment_text
+        }
+    }
+
+    result = api_put(endpoint, data)
+    print(f"Posted comment to submission (assignment={assignment_canvas_id}, student={student_canvas_id})")
+    return result
+
+
+def create_discussion_topic(
+    title: str,
+    message: str,
+    published: bool = True
+) -> dict:
+    """
+    Create a new discussion topic in the course.
+
+    Use this for class-wide announcements and insights.
+    """
+    if not check_configuration():
+        return {"error": "Canvas not configured"}
+
+    endpoint = f"/courses/{CANVAS_COURSE_ID}/discussion_topics"
+    data = {
+        "title": title,
+        "message": message,
+        "published": published,
+        "discussion_type": "threaded"
+    }
+
+    result = api_post(endpoint, data)
+    print(f"Created discussion topic: {title}")
+    return result
+
+
+def post_discussion_entry(
+    topic_id: str,
+    message: str
+) -> dict:
+    """
+    Post an entry to an existing discussion topic.
+    """
+    if not check_configuration():
+        return {"error": "Canvas not configured"}
+
+    endpoint = f"/courses/{CANVAS_COURSE_ID}/discussion_topics/{topic_id}/entries"
+    data = {
+        "message": message
+    }
+
+    result = api_post(endpoint, data)
+    print(f"Posted entry to discussion topic {topic_id}")
+    return result
+
+
+def fetch_discussion_topics() -> list[dict]:
+    """Fetch all discussion topics in the course."""
+    if not check_configuration():
+        return []
+
+    topics = api_get(
+        f"/courses/{CANVAS_COURSE_ID}/discussion_topics",
+        params={"per_page": 100}
+    )
+    return topics
+
+
+def create_announcement(
+    title: str,
+    message: str
+) -> dict:
+    """
+    Create an announcement in the course.
+
+    Announcements appear prominently to all students.
+    """
+    if not check_configuration():
+        return {"error": "Canvas not configured"}
+
+    endpoint = f"/courses/{CANVAS_COURSE_ID}/discussion_topics"
+    data = {
+        "title": title,
+        "message": message,
+        "published": True,
+        "is_announcement": True
+    }
+
+    result = api_post(endpoint, data)
+    print(f"Created announcement: {title}")
+    return result
+
+
 if __name__ == "__main__":
     full_sync()
