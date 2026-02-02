@@ -1,0 +1,21 @@
+[Unit]
+Description=Student Tracker Dashboard
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/class
+Environment="PATH=/home/pi/class/venv/bin"
+EnvironmentFile=/home/pi/class/.env
+ExecStart=/home/pi/class/venv/bin/python -m student_tracker.cli dashboard --port 5001
+Restart=always
+RestartSec=10
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=student-tracker
+
+[Install]
+WantedBy=multi-user.target

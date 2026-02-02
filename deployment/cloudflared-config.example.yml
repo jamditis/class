@@ -1,0 +1,22 @@
+# Cloudflare Tunnel Configuration
+# Copy this to ~/.cloudflared/config.yml and update with your values
+
+# Your tunnel ID (from: cloudflared tunnel create student-tracker)
+tunnel: YOUR-TUNNEL-ID-HERE
+
+# Path to credentials file (created when you run tunnel create)
+credentials-file: /home/pi/.cloudflared/YOUR-TUNNEL-ID-HERE.json
+
+# Route traffic to local services
+ingress:
+  # Student Tracker dashboard
+  - hostname: tracker.yourdomain.com
+    service: http://localhost:5001
+    originRequest:
+      noTLSVerify: true
+
+  # Catch-all for unmatched requests
+  - service: http_status:404
+
+# Optional: Enable metrics
+# metrics: localhost:3000
