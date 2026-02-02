@@ -771,6 +771,182 @@ ASSIGNMENTS_TEMPLATE = """
 {% endblock %}
 """
 
+ASSIGNMENT_DETAIL_TEMPLATE = """
+{% extends "base.html" %}
+{% block title %}{{ assignment.name }}{% endblock %}
+{% block content %}
+<div class="mb-8">
+    <a href="/assignments" class="text-sm text-mist hover:text-crimson mb-3 inline-block">← Back to assignments</a>
+    <h1 class="text-4xl">{{ assignment.name }}</h1>
+    <p class="text-mist mt-1">{{ assignment.assignment_type|capitalize if assignment.assignment_type else 'General' }} · {{ assignment.points_possible }} points{% if assignment.due_date %} · Due {{ assignment.due_date }}{% endif %}</p>
+</div>
+
+<!-- Stats -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+    <div class="stat-card rounded-lg p-5">
+        <h3 class="mb-2">Submissions</h3>
+        <div class="text-3xl font-display font-black text-ink">{{ stats.total_submissions }}</div>
+    </div>
+    <div class="stat-card rounded-lg p-5">
+        <h3 class="mb-2">Evaluated</h3>
+        <div class="text-3xl font-display font-black text-accent">{{ stats.evaluated }}</div>
+    </div>
+    <div class="stat-card rounded-lg p-5">
+        <h3 class="mb-2">Average</h3>
+        <div class="text-3xl font-display font-black text-ink">{{ "%.1f"|format(stats.average_pct) }}%</div>
+    </div>
+    <div class="stat-card rounded-lg p-5">
+        <h3 class="mb-2">Range</h3>
+        <div class="text-xl font-display font-black text-mist">{{ "%.0f"|format(stats.lowest) }}-{{ "%.0f"|format(stats.highest) }}</div>
+    </div>
+</div>
+
+{% if assignment.description %}
+<div class="deckle-card rounded-lg p-6 mb-10">
+    <h2 class="text-lg mb-4">Description</h2>
+    <p class="text-sm text-mist leading-relaxed">{{ assignment.description }}</p>
+</div>
+{% endif %}
+
+<!-- Submissions Table -->
+<div class="deckle-card rounded-lg overflow-hidden">
+    <div class="p-5 border-b border-ink/5 flex justify-between items-center">
+        <h2 class="text-lg">Submissions</h2>
+        <a href="/assignment/{{ assignment.id }}/evaluate-all" class="px-4 py-2 bg-crimson text-canvas rounded-lg hover:bg-crimson/90 transition text-sm font-medium">
+            Evaluate all pending
+        </a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Student</th>
+                <th>Status</th>
+                <th>Score</th>
+                <th>Submitted</th>
+                <th class="text-right">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sub in submissions %}
+            <tr>
+                <td>
+                    <a href="/student/{{ sub.student_id }}" class="font-medium hover:text-crimson">{{ sub.student_name }}</a>
+                </td>
+                <td>
+                    <span class="badge {% if sub.status == 'submitted' %}badge-good{% elif sub.status == 'late' %}badge-warn{% elif sub.status == 'missing' %}badge-risk{% else %}badge-neutral{% endif %}">
+                        {{ sub.status|capitalize }}
+                    </span>
+                </td>
+                <td>
+                    {% if sub.score is not none %}
+                    <span class="font-semibold {% if sub.percentage >= 80 %}text-accent{% elif sub.percentage >= 60 %}text-yellow-700{% else %}text-crimson{% endif %}">
+                        {{ "%.1f"|format(sub.score) }}/{{ assignment.points_possible }} ({{ "%.0f"|format(sub.percentage) }}%)
+                    </span>
+                    {% else %}
+                    <span class="text-mist">Not evaluated</span>
+                    {% endif %}
+                </td>
+                <td class="text-mist">{{ sub.submitted_at or '—' }}</td>
+                <td class="text-right">
+                    <a href="/submission/{{ sub.id }}" class="text-sm hover:text-crimson">View →</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+"""
+
+SUBMISSION_DETAIL_TEMPLATE = """
+{% extends "base.html" %}
+{% block title %}{{ submission.student_name }} - {{ submission.assignment_name }}{% endblock %}
+{% block content %}
+<div class="mb-8">
+    <a href="/assignment/{{ submission.assignment_id }}" class="text-sm text-mist hover:text-crimson mb-3 inline-block">← Back to {{ submission.assignment_name }}</a>
+    <h1 class="text-4xl">{{ submission.student_name }}</h1>
+    <p class="text-mist mt-1">{{ submission.assignment_name }} · {{ submission.points_possible }} points</p>
+</div>
+
+<!-- Score Card -->
+{% if evaluation %}
+<div class="deckle-card rounded-lg p-6 mb-10 border-l-4 {% if evaluation.percentage >= 80 %}border-accent{% elif evaluation.percentage >= 60 %}border-yellow-600{% else %}border-crimson{% endif %}">
+    <div class="flex justify-between items-start">
+        <div>
+            <h3 class="text-mist mb-2">Score</h3>
+            <div class="text-4xl font-display font-black {% if evaluation.percentage >= 80 %}text-accent{% elif evaluation.percentage >= 60 %}text-yellow-700{% else %}text-crimson{% endif %}">
+                {{ "%.1f"|format(evaluation.score) }}<span class="text-lg font-normal text-mist">/{{ submission.points_possible }}</span>
+            </div>
+            <div class="text-sm text-mist mt-1">{{ "%.0f"|format(evaluation.percentage) }}%</div>
+        </div>
+        <div class="text-right text-sm text-mist">
+            <div>Evaluated by {{ evaluation.evaluator_type|capitalize }}</div>
+            <div>{{ evaluation.evaluated_at or '' }}</div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="deckle-card rounded-lg p-6 mb-10 border-l-4 border-mist">
+    <p class="text-mist">Not yet evaluated</p>
+    <a href="/submission/{{ submission.id }}/evaluate" class="inline-block mt-3 px-4 py-2 bg-crimson text-canvas rounded-lg hover:bg-crimson/90 transition text-sm font-medium">
+        Evaluate now
+    </a>
+</div>
+{% endif %}
+
+<!-- Feedback -->
+{% if evaluation and evaluation.feedback %}
+<div class="deckle-card rounded-lg p-6 mb-10">
+    <h2 class="text-lg mb-4">Feedback</h2>
+    <p class="text-sm leading-relaxed">{{ evaluation.feedback }}</p>
+</div>
+{% endif %}
+
+<!-- Strengths & Areas for Improvement -->
+{% if evaluation %}
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+    <div class="deckle-card rounded-lg p-6">
+        <h2 class="text-lg mb-4 text-accent">Strengths</h2>
+        {% if evaluation.strengths %}
+        <ul class="space-y-2">
+            {% for s in evaluation.strengths %}
+            <li class="text-sm pl-4 border-l-2 border-accent/30">{{ s }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="text-sm text-mist">No strengths recorded</p>
+        {% endif %}
+    </div>
+    <div class="deckle-card rounded-lg p-6">
+        <h2 class="text-lg mb-4 text-yellow-700">Areas for improvement</h2>
+        {% if evaluation.areas_for_improvement %}
+        <ul class="space-y-2">
+            {% for i in evaluation.areas_for_improvement %}
+            <li class="text-sm pl-4 border-l-2 border-yellow-400/50">{{ i }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="text-sm text-mist">No areas recorded</p>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+
+<!-- Submission Content -->
+<div class="deckle-card rounded-lg p-6">
+    <div class="flex justify-between items-center mb-4">
+        <h2 class="text-lg">Submission content</h2>
+        <span class="badge {% if submission.status == 'submitted' %}badge-good{% elif submission.status == 'late' %}badge-warn{% else %}badge-neutral{% endif %}">
+            {{ submission.status|capitalize }}{% if submission.submitted_at %} · {{ submission.submitted_at }}{% endif %}
+        </span>
+    </div>
+    <div class="prose prose-sm max-w-none bg-white/30 rounded-lg p-4">
+        {{ submission.content|safe if submission.content else '<p class="text-mist">No content</p>' }}
+    </div>
+</div>
+{% endblock %}
+"""
+
 EVALUATE_TEMPLATE = """
 {% extends "base.html" %}
 {% block title %}Evaluate{% endblock %}
@@ -1385,6 +1561,8 @@ def render(template_name: str, **kwargs):
         "feedback_queue.html": FEEDBACK_QUEUE_TEMPLATE,
         "student_detail.html": STUDENT_DETAIL_TEMPLATE,
         "assignments.html": ASSIGNMENTS_TEMPLATE,
+        "assignment_detail.html": ASSIGNMENT_DETAIL_TEMPLATE,
+        "submission_detail.html": SUBMISSION_DETAIL_TEMPLATE,
         "evaluate.html": EVALUATE_TEMPLATE,
         "insights.html": INSIGHTS_TEMPLATE,
         "settings.html": SETTINGS_TEMPLATE,
@@ -1526,6 +1704,124 @@ def assignments_list():
 
     session.close()
     return render("assignments.html", assignments=assignments)
+
+
+@app.route("/assignment/<int:assignment_id>")
+def assignment_detail(assignment_id: int):
+    session = get_session()
+    assignment = session.query(Assignment).get(assignment_id)
+
+    if not assignment:
+        session.close()
+        return "Assignment not found", 404
+
+    # Get all submissions with evaluations
+    submissions = []
+    for sub in assignment.submissions:
+        final_eval = None
+        for e in sub.evaluations:
+            if e.is_final:
+                final_eval = e
+                break
+
+        submissions.append({
+            "id": sub.id,
+            "student_name": sub.student.name,
+            "student_id": sub.student.id,
+            "status": sub.status,
+            "score": final_eval.score if final_eval else None,
+            "percentage": (final_eval.score / assignment.points_possible * 100) if final_eval and assignment.points_possible > 0 else None,
+            "submitted_at": sub.submitted_at.strftime("%Y-%m-%d %H:%M") if sub.submitted_at else None,
+            "has_evaluation": final_eval is not None
+        })
+
+    # Calculate stats
+    scores = [s["score"] for s in submissions if s["score"] is not None]
+    stats = {
+        "total_submissions": len(submissions),
+        "evaluated": len(scores),
+        "average": sum(scores) / len(scores) if scores else 0,
+        "average_pct": (sum(scores) / len(scores) / assignment.points_possible * 100) if scores and assignment.points_possible > 0 else 0,
+        "highest": max(scores) if scores else 0,
+        "lowest": min(scores) if scores else 0
+    }
+
+    assignment_dict = {
+        "id": assignment.id,
+        "name": assignment.name,
+        "description": assignment.description,
+        "assignment_type": assignment.assignment_type,
+        "points_possible": assignment.points_possible,
+        "due_date": assignment.due_date.strftime("%Y-%m-%d") if assignment.due_date else None
+    }
+
+    session.close()
+    return render("assignment_detail.html", assignment=assignment_dict, submissions=submissions, stats=stats)
+
+
+@app.route("/submission/<int:submission_id>")
+def submission_detail(submission_id: int):
+    session = get_session()
+    submission = session.query(Submission).get(submission_id)
+
+    if not submission:
+        session.close()
+        return "Submission not found", 404
+
+    # Get the final evaluation
+    final_eval = None
+    for e in submission.evaluations:
+        if e.is_final:
+            final_eval = e
+            break
+
+    import json
+    evaluation = None
+    if final_eval:
+        # Handle strengths - might be JSON string or already a list
+        strengths = final_eval.strengths
+        if isinstance(strengths, str):
+            try:
+                strengths = json.loads(strengths)
+            except:
+                strengths = [strengths] if strengths else []
+        elif not strengths:
+            strengths = []
+
+        # Handle areas_for_improvement - might be JSON string or already a list
+        improvements = final_eval.areas_for_improvement
+        if isinstance(improvements, str):
+            try:
+                improvements = json.loads(improvements)
+            except:
+                improvements = [improvements] if improvements else []
+        elif not improvements:
+            improvements = []
+
+        evaluation = {
+            "score": final_eval.score,
+            "percentage": (final_eval.score / submission.assignment.points_possible * 100) if submission.assignment.points_possible > 0 else 0,
+            "feedback": final_eval.feedback,
+            "strengths": strengths,
+            "areas_for_improvement": improvements,
+            "evaluated_at": final_eval.created_at.strftime("%Y-%m-%d %H:%M") if final_eval.created_at else None,
+            "evaluator_type": final_eval.source
+        }
+
+    submission_dict = {
+        "id": submission.id,
+        "student_name": submission.student.name,
+        "student_id": submission.student.id,
+        "assignment_name": submission.assignment.name,
+        "assignment_id": submission.assignment.id,
+        "points_possible": submission.assignment.points_possible,
+        "status": submission.status,
+        "content": submission.content,
+        "submitted_at": submission.submitted_at.strftime("%Y-%m-%d %H:%M") if submission.submitted_at else None
+    }
+
+    session.close()
+    return render("submission_detail.html", submission=submission_dict, evaluation=evaluation)
 
 
 @app.route("/evaluate")
