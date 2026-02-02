@@ -5,12 +5,14 @@ title: Home
 
 # Multimedia production for strategic communications
 
-**Spring 2026 | Montclair State University**
+*Spring 2026 | Montclair State University*
 
-**Instructor:** Joe Amditis
-**Schedule:** Tu/Th, 10:00-11:25 AM
-**Location:** MRHD-143
-**Office hours:** By appointment
+| | |
+|---|---|
+| **Instructor** | Joe Amditis |
+| **Schedule** | Tu/Th, 10:00-11:25 AM |
+| **Location** | MRHD-143 |
+| **Office hours** | [By appointment](https://calendar.app.google/eDYRXSLTzUvrPhyc7) |
 
 ---
 
@@ -79,7 +81,10 @@ AI tools are permitted for brainstorming and editing, but you must disclose thei
 
 ## Contact
 
-**Email:** amditisj@montclair.edu
-**Office hours:** By appointment — [Schedule a meeting](https://calendly.com/jamditis)
+| | |
+|---|---|
+| **Email** | amditisj@montclair.edu |
+| **Office hours** | [Schedule a meeting](https://calendar.app.google/eDYRXSLTzUvrPhyc7) |
+| **NotebookLM** | [Class study guide](https://notebooklm.google.com/notebook/ea55c9b0-0600-4010-a642-cc4d74833871) |
 
 For assignment questions, check Canvas Announcements first, then email if needed.

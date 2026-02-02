@@ -1,14 +1,14 @@
 [Unit]
-Description=Student Tracker Dashboard
+Description=STCM140 Student Tracker Dashboard
 After=network.target
 
 [Service]
 Type=simple
-User=pi
-WorkingDirectory=/home/pi/class
-Environment="PATH=/home/pi/class/venv/bin"
-EnvironmentFile=/home/pi/class/.env
-ExecStart=/home/pi/class/venv/bin/python -m student_tracker.cli dashboard --port 5001
+User=jamditis
+WorkingDirectory=/home/jamditis/projects/class
+Environment="PATH=/home/jamditis/projects/class/venv/bin"
+EnvironmentFile=/home/jamditis/.claude/.env
+ExecStart=/home/jamditis/projects/class/venv/bin/python -m student_tracker.cli dashboard --port 5002
 Restart=always
 RestartSec=10
 

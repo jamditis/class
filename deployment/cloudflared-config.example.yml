@@ -1,22 +1,39 @@
-# Cloudflare Tunnel Configuration
-# Copy this to ~/.cloudflared/config.yml and update with your values
+# Cloudflare Tunnel Configuration - Add to existing houseofjawn tunnel
+#
+# This is an INGRESS SNIPPET to add to your existing /etc/cloudflared/config.yml
+# Don't create a new tunnel - add this to the existing houseofjawn tunnel
+#
+# Add this entry to the ingress section BEFORE the catch-all rule:
 
-# Your tunnel ID (from: cloudflared tunnel create student-tracker)
-tunnel: YOUR-TUNNEL-ID-HERE
+# Student Tracker Dashboard (STCM140)
+# Add to /etc/cloudflared/config.yml ingress section:
+#
+#   - hostname: class.amditis.tech
+#     service: http://127.0.0.1:5002
+#
+# Then add DNS routing:
+#   cloudflared tunnel route dns houseofjawn class.amditis.tech
+#
+# Full example of updated config.yml:
+# ─────────────────────────────────────────────────────────────
 
-# Path to credentials file (created when you run tunnel create)
-credentials-file: /home/pi/.cloudflared/YOUR-TUNNEL-ID-HERE.json
+tunnel: YOUR-TUNNEL-ID
+credentials-file: /etc/cloudflared/YOUR-TUNNEL-ID.json
 
-# Route traffic to local services
 ingress:
-  # Student Tracker dashboard
-  - hostname: tracker.yourdomain.com
-    service: http://localhost:5001
+  # Existing services
+  - hostname: shell.amditis.tech
+    service: http://127.0.0.1:7681
+  - hostname: dashboard.amditis.tech
+    service: https://127.0.0.1:9090
     originRequest:
       noTLSVerify: true
+  - hostname: scrapefruit.amditis.tech
+    service: http://127.0.0.1:5150
 
-  # Catch-all for unmatched requests
+  # NEW: Student Tracker Dashboard
+  - hostname: class.amditis.tech
+    service: http://127.0.0.1:5002
+
+  # Catch-all (must be last)
   - service: http_status:404
-
-# Optional: Enable metrics
-# metrics: localhost:3000
