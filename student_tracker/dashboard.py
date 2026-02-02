@@ -39,36 +39,144 @@ app.secret_key = os.environ.get("FLASK_SECRET_KEY", "student-tracker-dev-key")
 
 BASE_TEMPLATE = """
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Student Tracker{% endblock %}</title>
+    <title>{% block title %}Student Tracker{% endblock %} | STCM140</title>
+
+    <!-- Fonts (matching GitHub Pages) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,300;1,9..144,900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['Fraunces', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        canvas: '#ede6d4',
+                        ink: '#121212',
+                        clay: '#d6cdb7',
+                        mist: '#6b6b6b',
+                        accent: '#3d4b40',
+                        crimson: '#CA3553',
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .gradient-bg { background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%); }
+        body {
+            background-color: #ede6d4;
+            color: #121212;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        .paper-overlay {
+            position: fixed;
+            inset: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #121212;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+        .nav-link.active::after { width: 100%; background: #CA3553; }
+        .deckle-card {
+            background-color: rgba(255, 255, 255, 0.35);
+            border: 1px solid rgba(18, 18, 18, 0.06);
+            box-shadow: 0 8px 30px -8px rgba(18, 18, 18, 0.08);
+        }
+        .stat-card {
+            background-color: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(18, 18, 18, 0.05);
+        }
+        h1, h2 { font-family: 'Fraunces', serif; }
+        h1 { font-weight: 300; font-style: italic; }
+        h2 { font-weight: 400; border-bottom: 1px solid rgba(18, 18, 18, 0.1); padding-bottom: 0.5rem; }
+        h3 { font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.75rem; color: #6b6b6b; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        th { text-align: left; font-weight: 600; padding: 0.75rem 1rem; background: rgba(18, 18, 18, 0.03);
+             border-bottom: 2px solid rgba(18, 18, 18, 0.1); font-size: 0.65rem; text-transform: uppercase;
+             letter-spacing: 0.1em; color: #6b6b6b; }
+        td { padding: 0.75rem 1rem; border-bottom: 1px solid rgba(18, 18, 18, 0.05); }
+        tr:hover td { background: rgba(255, 255, 255, 0.4); }
+        a { color: #3d4b40; transition: color 0.2s; }
+        a:hover { color: #CA3553; }
+        .badge { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+                 padding: 0.25rem 0.5rem; border-radius: 9999px; }
+        .badge-risk { background: rgba(202, 53, 83, 0.15); color: #CA3553; }
+        .badge-warn { background: rgba(217, 164, 6, 0.15); color: #b8860b; }
+        .badge-good { background: rgba(61, 75, 64, 0.15); color: #3d4b40; }
+        .badge-neutral { background: rgba(18, 18, 18, 0.08); color: #6b6b6b; }
     </style>
 </head>
-<body class="bg-gray-50 min-h-screen">
-    <nav class="gradient-bg text-white p-4 shadow-lg">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="/" class="text-xl font-bold">STCM140 Student Tracker</a>
-            <div class="flex gap-6">
-                <a href="/" class="hover:text-blue-200 transition">Dashboard</a>
-                <a href="/students" class="hover:text-blue-200 transition">Students</a>
-                <a href="/assignments" class="hover:text-blue-200 transition">Assignments</a>
-                <a href="/evaluate" class="hover:text-blue-200 transition">Evaluate</a>
-                <a href="/insights" class="hover:text-blue-200 transition">Insights</a>
-                <a href="/settings" class="hover:text-blue-200 transition">Settings</a>
+<body class="font-sans min-h-screen">
+    <div class="paper-overlay"></div>
+
+    <div class="relative z-10">
+        <!-- Navigation -->
+        <nav class="fixed top-0 w-full flex justify-between items-center p-6 md:px-10 z-50 bg-canvas/90 backdrop-blur-md border-b border-ink/5">
+            <div class="flex items-center gap-4">
+                <a href="/" class="font-display text-2xl font-black italic tracking-tighter hover:text-crimson transition-colors">
+                    STCM<span class="text-crimson">140</span>
+                </a>
+                <span class="text-[9px] tracking-[0.3em] font-bold opacity-30 uppercase hidden md:block">Tracker</span>
             </div>
-        </div>
-    </nav>
-    <main class="max-w-7xl mx-auto p-6">
-        {% block content %}{% endblock %}
-    </main>
+            <div class="flex gap-8 text-[10px] font-bold uppercase tracking-widest text-ink items-center">
+                <a href="/" class="nav-link relative">Dashboard</a>
+                <a href="/students" class="nav-link relative">Students</a>
+                <a href="/assignments" class="nav-link relative">Assignments</a>
+                <a href="/evaluate" class="nav-link relative">Evaluate</a>
+                <a href="/insights" class="nav-link relative">Insights</a>
+                <a href="/settings" class="nav-link relative">Settings</a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="max-w-5xl mx-auto pt-28 pb-20 px-6 md:px-8">
+            {% block content %}{% endblock %}
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-ink text-canvas py-12 relative z-10">
+            <div class="max-w-5xl mx-auto px-6 md:px-8">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <span class="font-display text-xl italic font-light">Student</span>
+                        <span class="font-display text-xl font-black"> Tracker</span>
+                        <p class="text-xs text-canvas/40 mt-1">STCM140 | Spring 2026</p>
+                    </div>
+                    <div class="text-right text-xs text-canvas/40">
+                        <a href="https://jamditis.github.io/class/" class="hover:text-crimson transition-colors">Course site</a>
+                        <span class="mx-2">·</span>
+                        <a href="https://montclair.instructure.com" class="hover:text-crimson transition-colors">Canvas</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
     <script>
         {% block scripts %}{% endblock %}
     </script>
@@ -78,56 +186,56 @@ BASE_TEMPLATE = """
 
 DASHBOARD_TEMPLATE = """
 {% extends "base.html" %}
-{% block title %}Dashboard - Student Tracker{% endblock %}
+{% block title %}Dashboard{% endblock %}
 {% block content %}
-<div class="mb-8">
-    <h1 class="text-3xl font-bold text-gray-800 mb-2">Class overview</h1>
-    <p class="text-gray-600">STCM140 - Spring 2026</p>
+<div class="mb-10">
+    <h1 class="text-4xl mb-2">Class overview</h1>
+    <p class="text-mist text-sm tracking-wide">STCM140 · Spring 2026</p>
 </div>
 
 <!-- Stats Cards -->
-<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-        <div class="text-sm text-gray-500 mb-1">Students</div>
-        <div class="text-3xl font-bold text-gray-800">{{ overview.summary.total_students }}</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+    <div class="stat-card rounded-lg p-5">
+        <h3 class="mb-2">Students</h3>
+        <div class="text-3xl font-display font-black text-ink">{{ overview.summary.total_students }}</div>
     </div>
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-        <div class="text-sm text-gray-500 mb-1">Class average</div>
-        <div class="text-3xl font-bold text-blue-600">{{ "%.1f"|format(overview.summary.class_average) }}%</div>
+    <div class="stat-card rounded-lg p-5">
+        <h3 class="mb-2">Class average</h3>
+        <div class="text-3xl font-display font-black text-accent">{{ "%.1f"|format(overview.summary.class_average) }}%</div>
     </div>
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-        <div class="text-sm text-gray-500 mb-1">Assignments</div>
-        <div class="text-3xl font-bold text-gray-800">{{ overview.summary.total_assignments }}</div>
+    <div class="stat-card rounded-lg p-5">
+        <h3 class="mb-2">Assignments</h3>
+        <div class="text-3xl font-display font-black text-ink">{{ overview.summary.total_assignments }}</div>
     </div>
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-        <div class="text-sm text-gray-500 mb-1">Evaluated</div>
-        <div class="text-3xl font-bold text-green-600">{{ overview.summary.total_evaluated_submissions }}</div>
+    <div class="stat-card rounded-lg p-5">
+        <h3 class="mb-2">Evaluated</h3>
+        <div class="text-3xl font-display font-black text-accent">{{ overview.summary.total_evaluated_submissions }}</div>
     </div>
 </div>
 
 <!-- Charts Row -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-        <h3 class="font-semibold text-gray-800 mb-4">Grade distribution</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+    <div class="deckle-card rounded-lg p-6">
+        <h2 class="text-lg mb-4">Grade distribution</h2>
         <canvas id="gradeDistChart"></canvas>
     </div>
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-        <h3 class="font-semibold text-gray-800 mb-4">Student groups</h3>
+    <div class="deckle-card rounded-lg p-6">
+        <h2 class="text-lg mb-4">Student groups</h2>
         <canvas id="groupsChart"></canvas>
     </div>
 </div>
 
 <!-- Assignment Performance -->
-<div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 mb-8">
-    <h3 class="font-semibold text-gray-800 mb-4">Assignment averages</h3>
-    <div class="space-y-3">
+<div class="deckle-card rounded-lg p-6 mb-10">
+    <h2 class="text-lg mb-6">Assignment averages</h2>
+    <div class="space-y-4">
         {% for name, avg in overview.assignment_averages.items() %}
         <div class="flex items-center gap-4">
-            <div class="w-48 text-sm text-gray-600 truncate">{{ name }}</div>
-            <div class="flex-1 bg-gray-200 rounded-full h-4">
-                <div class="bg-blue-500 h-4 rounded-full" style="width: {{ avg }}%"></div>
+            <div class="w-48 text-sm text-mist truncate">{{ name }}</div>
+            <div class="flex-1 bg-clay/50 rounded-full h-3">
+                <div class="bg-accent h-3 rounded-full transition-all" style="width: {{ avg }}%"></div>
             </div>
-            <div class="w-16 text-right text-sm font-medium text-gray-700">{{ "%.1f"|format(avg) }}%</div>
+            <div class="w-16 text-right text-sm font-semibold text-ink">{{ "%.1f"|format(avg) }}%</div>
         </div>
         {% endfor %}
     </div>
@@ -135,49 +243,49 @@ DASHBOARD_TEMPLATE = """
 
 <!-- Student Groups -->
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <div class="bg-red-50 rounded-xl p-6 border border-red-100">
-        <h3 class="font-semibold text-red-800 mb-3">At risk ({{ groups.at_risk|length }})</h3>
+    <div class="deckle-card rounded-lg p-6 border-l-4 border-crimson">
+        <h2 class="text-lg mb-4 text-crimson">At risk <span class="text-sm font-normal">({{ groups.at_risk|length }})</span></h2>
         {% if groups.at_risk %}
-        <ul class="space-y-2">
+        <ul class="space-y-3">
             {% for s in groups.at_risk[:5] %}
-            <li class="text-sm">
-                <a href="/student/{{ s.id }}" class="text-red-700 hover:underline">{{ s.name }}</a>
-                <span class="text-red-500 text-xs ml-2">{{ "%.0f"|format(s.average) }}%</span>
+            <li class="flex justify-between items-center">
+                <a href="/student/{{ s.id }}" class="text-sm hover:text-crimson">{{ s.name }}</a>
+                <span class="badge badge-risk">{{ "%.0f"|format(s.average) }}%</span>
             </li>
             {% endfor %}
         </ul>
         {% else %}
-        <p class="text-sm text-red-600">No students at risk</p>
+        <p class="text-sm text-mist">No students at risk</p>
         {% endif %}
     </div>
-    <div class="bg-yellow-50 rounded-xl p-6 border border-yellow-100">
-        <h3 class="font-semibold text-yellow-800 mb-3">Struggling ({{ groups.struggling|length }})</h3>
+    <div class="deckle-card rounded-lg p-6 border-l-4 border-yellow-600">
+        <h2 class="text-lg mb-4 text-yellow-700">Struggling <span class="text-sm font-normal">({{ groups.struggling|length }})</span></h2>
         {% if groups.struggling %}
-        <ul class="space-y-2">
+        <ul class="space-y-3">
             {% for s in groups.struggling[:5] %}
-            <li class="text-sm">
-                <a href="/student/{{ s.id }}" class="text-yellow-700 hover:underline">{{ s.name }}</a>
-                <span class="text-yellow-500 text-xs ml-2">{{ "%.0f"|format(s.average) }}%</span>
+            <li class="flex justify-between items-center">
+                <a href="/student/{{ s.id }}" class="text-sm hover:text-crimson">{{ s.name }}</a>
+                <span class="badge badge-warn">{{ "%.0f"|format(s.average) }}%</span>
             </li>
             {% endfor %}
         </ul>
         {% else %}
-        <p class="text-sm text-yellow-600">No struggling students</p>
+        <p class="text-sm text-mist">No struggling students</p>
         {% endif %}
     </div>
-    <div class="bg-green-50 rounded-xl p-6 border border-green-100">
-        <h3 class="font-semibold text-green-800 mb-3">High performers ({{ groups.high_performers|length }})</h3>
+    <div class="deckle-card rounded-lg p-6 border-l-4 border-accent">
+        <h2 class="text-lg mb-4 text-accent">High performers <span class="text-sm font-normal">({{ groups.high_performers|length }})</span></h2>
         {% if groups.high_performers %}
-        <ul class="space-y-2">
+        <ul class="space-y-3">
             {% for s in groups.high_performers[:5] %}
-            <li class="text-sm">
-                <a href="/student/{{ s.id }}" class="text-green-700 hover:underline">{{ s.name }}</a>
-                <span class="text-green-500 text-xs ml-2">{{ "%.0f"|format(s.average) }}%</span>
+            <li class="flex justify-between items-center">
+                <a href="/student/{{ s.id }}" class="text-sm hover:text-crimson">{{ s.name }}</a>
+                <span class="badge badge-good">{{ "%.0f"|format(s.average) }}%</span>
             </li>
             {% endfor %}
         </ul>
         {% else %}
-        <p class="text-sm text-green-600">No high performers yet</p>
+        <p class="text-sm text-mist">No high performers yet</p>
         {% endif %}
     </div>
 </div>
@@ -193,13 +301,16 @@ new Chart(document.getElementById('gradeDistChart'), {
         labels: ['A', 'B', 'C', 'D', 'F'],
         datasets: [{
             data: [gradeData.A, gradeData.B, gradeData.C, gradeData.D, gradeData.F],
-            backgroundColor: ['#10B981', '#3B82F6', '#F59E0B', '#F97316', '#EF4444']
+            backgroundColor: ['#3d4b40', '#5a6b5e', '#CA3553', '#d6cdb7', '#121212']
         }]
     },
     options: {
         responsive: true,
         plugins: { legend: { display: false } },
-        scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
+        scales: {
+            y: { beginAtZero: true, ticks: { stepSize: 1 }, grid: { color: 'rgba(18,18,18,0.05)' } },
+            x: { grid: { display: false } }
+        }
     }
 });
 
@@ -216,12 +327,12 @@ new Chart(document.getElementById('groupsChart'), {
                 groupsData.struggling,
                 groupsData.at_risk
             ],
-            backgroundColor: ['#10B981', '#3B82F6', '#8B5CF6', '#F59E0B', '#F97316', '#EF4444']
+            backgroundColor: ['#3d4b40', '#5a6b5e', '#7a8b7e', '#d6cdb7', '#e8a849', '#CA3553']
         }]
     },
     options: {
         responsive: true,
-        plugins: { legend: { position: 'right' } }
+        plugins: { legend: { position: 'right', labels: { font: { family: 'Plus Jakarta Sans', size: 11 } } } }
     }
 });
 {% endblock %}
@@ -229,57 +340,57 @@ new Chart(document.getElementById('groupsChart'), {
 
 STUDENTS_TEMPLATE = """
 {% extends "base.html" %}
-{% block title %}Students - Student Tracker{% endblock %}
+{% block title %}Students{% endblock %}
 {% block content %}
-<div class="flex justify-between items-center mb-6">
-    <h1 class="text-3xl font-bold text-gray-800">Students</h1>
+<div class="flex justify-between items-center mb-8">
+    <h1 class="text-4xl">Students</h1>
     <div class="flex gap-3">
         <input type="text" id="search" placeholder="Search students..."
-               class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-        <button onclick="location.href='/student/add'" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+               class="px-4 py-2 bg-white/50 border border-ink/10 rounded-lg focus:outline-none focus:border-accent text-sm">
+        <button onclick="location.href='/student/add'" class="px-4 py-2 bg-accent text-canvas rounded-lg hover:bg-accent/90 transition text-sm font-medium">
             Add student
         </button>
     </div>
 </div>
 
-<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-    <table class="w-full">
-        <thead class="bg-gray-50 border-b border-gray-200">
+<div class="deckle-card rounded-lg overflow-hidden">
+    <table>
+        <thead>
             <tr>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Submissions</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Average</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Submissions</th>
+                <th>Average</th>
+                <th>Status</th>
+                <th class="text-right">Actions</th>
             </tr>
         </thead>
-        <tbody class="divide-y divide-gray-200">
+        <tbody>
             {% for student in students %}
-            <tr class="hover:bg-gray-50 student-row">
-                <td class="px-6 py-4 whitespace-nowrap">
-                    <a href="/student/{{ student.id }}" class="text-blue-600 hover:underline font-medium">{{ student.name }}</a>
+            <tr class="student-row">
+                <td>
+                    <a href="/student/{{ student.id }}" class="font-medium">{{ student.name }}</a>
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ student.email or '-' }}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ student.submission_count }}</td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                    <span class="text-sm font-medium {% if student.average >= 90 %}text-green-600{% elif student.average >= 70 %}text-blue-600{% elif student.average > 0 %}text-yellow-600{% else %}text-gray-400{% endif %}">
-                        {% if student.average > 0 %}{{ "%.1f"|format(student.average) }}%{% else %}-{% endif %}
+                <td class="text-mist">{{ student.email or '—' }}</td>
+                <td class="text-mist">{{ student.submission_count }}</td>
+                <td>
+                    <span class="font-semibold {% if student.average >= 90 %}text-accent{% elif student.average >= 70 %}text-ink{% elif student.average > 0 %}text-yellow-700{% else %}text-mist{% endif %}">
+                        {% if student.average > 0 %}{{ "%.1f"|format(student.average) }}%{% else %}—{% endif %}
                     </span>
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap">
+                <td>
                     {% if student.status == 'at_risk' %}
-                    <span class="px-2 py-1 text-xs rounded-full bg-red-100 text-red-800">At risk</span>
+                    <span class="badge badge-risk">At risk</span>
                     {% elif student.status == 'struggling' %}
-                    <span class="px-2 py-1 text-xs rounded-full bg-yellow-100 text-yellow-800">Struggling</span>
-                    {% elif student.status == 'high' %}
-                    <span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">High performer</span>
+                    <span class="badge badge-warn">Struggling</span>
+                    {% elif student.status == 'high_performers' %}
+                    <span class="badge badge-good">High performer</span>
                     {% else %}
-                    <span class="px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-800">Active</span>
+                    <span class="badge badge-neutral">Active</span>
                     {% endif %}
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap text-right text-sm">
-                    <a href="/student/{{ student.id }}" class="text-blue-600 hover:underline">View</a>
+                <td class="text-right">
+                    <a href="/student/{{ student.id }}" class="text-sm hover:text-crimson">View →</a>
                 </td>
             </tr>
             {% endfor %}
@@ -301,145 +412,139 @@ document.getElementById('search').addEventListener('input', function(e) {
 
 STUDENT_DETAIL_TEMPLATE = """
 {% extends "base.html" %}
-{% block title %}{{ student.name }} - Student Tracker{% endblock %}
+{% block title %}{{ student.name }}{% endblock %}
 {% block content %}
-<div class="flex justify-between items-start mb-6">
+<div class="flex justify-between items-start mb-8">
     <div>
-        <a href="/students" class="text-blue-600 hover:underline text-sm mb-2 inline-block">&larr; Back to students</a>
-        <h1 class="text-3xl font-bold text-gray-800">{{ student.name }}</h1>
-        <p class="text-gray-600">{{ student.email or 'No email' }}</p>
+        <a href="/students" class="text-sm text-mist hover:text-crimson mb-3 inline-block">← Back to students</a>
+        <h1 class="text-4xl">{{ student.name }}</h1>
+        <p class="text-mist mt-1">{{ student.email or 'No email on file' }}</p>
     </div>
     <div class="flex gap-3">
-        <button onclick="location.href='/student/{{ student.id }}/note'" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+        <button onclick="location.href='/student/{{ student.id }}/note'" class="px-4 py-2 border border-ink/10 rounded-lg hover:bg-white/50 transition text-sm">
             Add note
         </button>
-        <button onclick="generateInsights()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+        <button onclick="generateInsights()" class="px-4 py-2 bg-crimson text-canvas rounded-lg hover:bg-crimson/90 transition text-sm font-medium">
             Generate insights
         </button>
     </div>
 </div>
 
 <!-- Stats -->
-<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-        <div class="text-sm text-gray-500 mb-1">Overall grade</div>
-        <div class="text-3xl font-bold {% if summary.metrics.overall_percentage >= 90 %}text-green-600{% elif summary.metrics.overall_percentage >= 70 %}text-blue-600{% else %}text-yellow-600{% endif %}">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+    <div class="stat-card rounded-lg p-5">
+        <h3 class="mb-2">Overall grade</h3>
+        <div class="text-3xl font-display font-black {% if summary.metrics.overall_percentage >= 90 %}text-accent{% elif summary.metrics.overall_percentage >= 70 %}text-ink{% else %}text-crimson{% endif %}">
             {{ "%.1f"|format(summary.metrics.overall_percentage) }}%
         </div>
     </div>
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-        <div class="text-sm text-gray-500 mb-1">Submissions</div>
-        <div class="text-3xl font-bold text-gray-800">{{ summary.metrics.submissions }}/{{ summary.metrics.total_assignments }}</div>
+    <div class="stat-card rounded-lg p-5">
+        <h3 class="mb-2">Submissions</h3>
+        <div class="text-3xl font-display font-black text-ink">{{ summary.metrics.submissions }}/{{ summary.metrics.total_assignments }}</div>
     </div>
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-        <div class="text-sm text-gray-500 mb-1">On-time rate</div>
-        <div class="text-3xl font-bold text-gray-800">{{ "%.0f"|format(summary.metrics.on_time_rate) }}%</div>
+    <div class="stat-card rounded-lg p-5">
+        <h3 class="mb-2">On-time rate</h3>
+        <div class="text-3xl font-display font-black text-ink">{{ "%.0f"|format(summary.metrics.on_time_rate) }}%</div>
     </div>
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-        <div class="text-sm text-gray-500 mb-1">Total points</div>
-        <div class="text-3xl font-bold text-gray-800">{{ "%.0f"|format(summary.metrics.total_earned) }}/{{ "%.0f"|format(summary.metrics.total_possible) }}</div>
+    <div class="stat-card rounded-lg p-5">
+        <h3 class="mb-2">Total points</h3>
+        <div class="text-3xl font-display font-black text-ink">{{ "%.0f"|format(summary.metrics.total_earned) }}<span class="text-mist font-normal text-lg">/{{ "%.0f"|format(summary.metrics.total_possible) }}</span></div>
     </div>
 </div>
 
 <!-- Two columns -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
     <!-- Skills -->
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-        <h3 class="font-semibold text-gray-800 mb-4">Current skill levels</h3>
+    <div class="deckle-card rounded-lg p-6">
+        <h2 class="text-lg mb-5">Current skill levels</h2>
         {% if summary.current_skills %}
         <div class="space-y-3">
             {% for skill, level in summary.current_skills.items() %}
-            <div class="flex items-center justify-between">
-                <span class="text-sm text-gray-600 capitalize">{{ skill.replace('_', ' ') }}</span>
-                <span class="px-2 py-1 text-xs rounded-full
-                    {% if level == 'advanced' %}bg-green-100 text-green-800
-                    {% elif level == 'proficient' %}bg-blue-100 text-blue-800
-                    {% elif level == 'developing' %}bg-yellow-100 text-yellow-800
-                    {% else %}bg-gray-100 text-gray-800{% endif %}">
+            <div class="flex items-center justify-between py-2 border-b border-ink/5 last:border-0">
+                <span class="text-sm capitalize">{{ skill.replace('_', ' ') }}</span>
+                <span class="badge {% if level == 'advanced' %}badge-good{% elif level == 'proficient' %}badge-neutral{% elif level == 'developing' %}badge-warn{% else %}badge-neutral{% endif %}">
                     {{ level|capitalize }}
                 </span>
             </div>
             {% endfor %}
         </div>
         {% else %}
-        <p class="text-sm text-gray-500">No skill assessments yet</p>
+        <p class="text-sm text-mist">No skill assessments yet</p>
         {% endif %}
     </div>
 
     <!-- Strengths & Improvements -->
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-        <h3 class="font-semibold text-gray-800 mb-4">Patterns</h3>
-        <div class="mb-4">
-            <h4 class="text-sm font-medium text-green-700 mb-2">Recurring strengths</h4>
+    <div class="deckle-card rounded-lg p-6">
+        <h2 class="text-lg mb-5">Patterns</h2>
+        <div class="mb-5">
+            <h3 class="text-accent mb-3">Recurring strengths</h3>
             {% if strengths.recurring_strengths %}
-            <ul class="space-y-1">
+            <ul class="space-y-2">
                 {% for s in strengths.recurring_strengths[:3] %}
-                <li class="text-sm text-gray-600">{{ s.text }}</li>
+                <li class="text-sm pl-4 border-l-2 border-accent/30">{{ s.text|replace('**', '')|replace('*', '') }}</li>
                 {% endfor %}
             </ul>
             {% else %}
-            <p class="text-sm text-gray-500">No patterns identified yet</p>
+            <p class="text-sm text-mist">No patterns identified yet</p>
             {% endif %}
         </div>
         <div>
-            <h4 class="text-sm font-medium text-yellow-700 mb-2">Areas for growth</h4>
+            <h3 class="text-yellow-700 mb-3">Areas for growth</h3>
             {% if strengths.recurring_improvements %}
-            <ul class="space-y-1">
+            <ul class="space-y-2">
                 {% for i in strengths.recurring_improvements[:3] %}
-                <li class="text-sm text-gray-600">{{ i.text }}</li>
+                <li class="text-sm pl-4 border-l-2 border-yellow-400/50">{{ i.text|replace('**', '')|replace('*', '') }}</li>
                 {% endfor %}
             </ul>
             {% else %}
-            <p class="text-sm text-gray-500">No patterns identified yet</p>
+            <p class="text-sm text-mist">No patterns identified yet</p>
             {% endif %}
         </div>
     </div>
 </div>
 
 <!-- Progression Chart -->
-<div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 mb-8">
-    <h3 class="font-semibold text-gray-800 mb-4">Score progression</h3>
+<div class="deckle-card rounded-lg p-6 mb-10">
+    <h2 class="text-lg mb-5">Score progression</h2>
     <canvas id="progressionChart" height="100"></canvas>
 </div>
 
 <!-- Submissions Table -->
-<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden mb-8">
-    <h3 class="font-semibold text-gray-800 p-4 border-b border-gray-200">Submissions</h3>
-    <table class="w-full">
-        <thead class="bg-gray-50 border-b border-gray-200">
+<div class="deckle-card rounded-lg overflow-hidden mb-10">
+    <div class="p-5 border-b border-ink/5">
+        <h2 class="text-lg">Submissions</h2>
+    </div>
+    <table>
+        <thead>
             <tr>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Assignment</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Score</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Submitted</th>
-                <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Actions</th>
+                <th>Assignment</th>
+                <th>Status</th>
+                <th>Score</th>
+                <th>Submitted</th>
+                <th class="text-right">Actions</th>
             </tr>
         </thead>
-        <tbody class="divide-y divide-gray-200">
+        <tbody>
             {% for sub in submissions %}
-            <tr class="hover:bg-gray-50">
-                <td class="px-6 py-4 text-sm font-medium text-gray-900">{{ sub.assignment_name }}</td>
-                <td class="px-6 py-4">
-                    <span class="px-2 py-1 text-xs rounded-full
-                        {% if sub.status == 'submitted' %}bg-green-100 text-green-800
-                        {% elif sub.status == 'late' %}bg-yellow-100 text-yellow-800
-                        {% elif sub.status == 'missing' %}bg-red-100 text-red-800
-                        {% else %}bg-gray-100 text-gray-800{% endif %}">
+            <tr>
+                <td class="font-medium">{{ sub.assignment_name }}</td>
+                <td>
+                    <span class="badge {% if sub.status == 'submitted' %}badge-good{% elif sub.status == 'late' %}badge-warn{% elif sub.status == 'missing' %}badge-risk{% else %}badge-neutral{% endif %}">
                         {{ sub.status|capitalize }}
                     </span>
                 </td>
-                <td class="px-6 py-4 text-sm text-gray-500">
+                <td class="text-mist">
                     {% if sub.score is not none %}
                     {{ "%.1f"|format(sub.score) }}/{{ "%.0f"|format(sub.max_score) }}
                     {% else %}
-                    -
+                    —
                     {% endif %}
                 </td>
-                <td class="px-6 py-4 text-sm text-gray-500">{{ sub.submitted_at or '-' }}</td>
-                <td class="px-6 py-4 text-right text-sm">
-                    <a href="/submission/{{ sub.id }}" class="text-blue-600 hover:underline">View</a>
+                <td class="text-mist">{{ sub.submitted_at or '—' }}</td>
+                <td class="text-right">
+                    <a href="/submission/{{ sub.id }}" class="text-sm hover:text-crimson">View</a>
                     {% if sub.status != 'pending' and sub.score is none %}
-                    <a href="/submission/{{ sub.id }}/evaluate" class="text-green-600 hover:underline ml-3">Evaluate</a>
+                    <a href="/submission/{{ sub.id }}/evaluate" class="text-sm text-accent hover:text-crimson ml-3">Evaluate</a>
                     {% endif %}
                 </td>
             </tr>
@@ -449,35 +554,35 @@ STUDENT_DETAIL_TEMPLATE = """
 </div>
 
 <!-- Notes -->
-<div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-    <h3 class="font-semibold text-gray-800 mb-4">Instructor notes</h3>
+<div class="deckle-card rounded-lg p-6">
+    <h2 class="text-lg mb-5">Instructor notes</h2>
     {% if notes %}
     <div class="space-y-4">
         {% for note in notes %}
-        <div class="p-4 bg-gray-50 rounded-lg">
-            <div class="flex justify-between items-start mb-2">
-                <span class="px-2 py-1 text-xs rounded-full bg-gray-200 text-gray-700">{{ note.type }}</span>
-                <span class="text-xs text-gray-500">{{ note.created_at }}</span>
+        <div class="p-4 bg-white/30 rounded-lg">
+            <div class="flex justify-between items-start mb-3">
+                <span class="badge badge-neutral">{{ note.type }}</span>
+                <span class="text-xs text-mist">{{ note.created_at }}</span>
             </div>
-            <p class="text-sm text-gray-700">{{ note.content }}</p>
+            <p class="text-sm leading-relaxed">{{ note.content|replace('**', '')|replace('*', '') }}</p>
         </div>
         {% endfor %}
     </div>
     {% else %}
-    <p class="text-sm text-gray-500">No notes yet</p>
+    <p class="text-sm text-mist">No notes yet</p>
     {% endif %}
 </div>
 
 <!-- Insights Modal -->
-<div id="insightsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-    <div class="bg-white rounded-xl shadow-xl max-w-2xl w-full mx-4 max-h-[80vh] overflow-y-auto">
+<div id="insightsModal" class="fixed inset-0 bg-ink/60 hidden items-center justify-center z-50 backdrop-blur-sm">
+    <div class="bg-canvas rounded-lg shadow-xl max-w-2xl w-full mx-4 max-h-[80vh] overflow-y-auto">
         <div class="p-6">
-            <div class="flex justify-between items-start mb-4">
-                <h3 class="text-xl font-bold text-gray-800">AI insights</h3>
-                <button onclick="closeInsights()" class="text-gray-500 hover:text-gray-700">&times;</button>
+            <div class="flex justify-between items-start mb-6">
+                <h2 class="text-2xl">AI insights</h2>
+                <button onclick="closeInsights()" class="text-mist hover:text-crimson text-2xl leading-none">×</button>
             </div>
-            <div id="insightsContent" class="space-y-4">
-                <p class="text-gray-500">Loading...</p>
+            <div id="insightsContent" class="space-y-5">
+                <p class="text-mist">Loading...</p>
             </div>
         </div>
     </div>
@@ -495,8 +600,8 @@ if (progressionData.timeline && progressionData.timeline.length > 0) {
             datasets: [{
                 label: 'Score %',
                 data: progressionData.timeline.map(t => t.percentage),
-                borderColor: '#3B82F6',
-                backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                borderColor: '#3d4b40',
+                backgroundColor: 'rgba(61, 75, 64, 0.1)',
                 fill: true,
                 tension: 0.3
             }]
@@ -504,7 +609,8 @@ if (progressionData.timeline && progressionData.timeline.length > 0) {
         options: {
             responsive: true,
             scales: {
-                y: { beginAtZero: true, max: 100 }
+                y: { beginAtZero: true, max: 100, grid: { color: 'rgba(18,18,18,0.05)' } },
+                x: { grid: { display: false } }
             },
             plugins: {
                 legend: { display: false }
@@ -520,38 +626,83 @@ function generateInsights() {
     fetch('/api/student/{{ student.id }}/insights')
         .then(r => r.json())
         .then(data => {
-            let html = '';
+            const container = document.getElementById('insightsContent');
+            container.replaceChildren(); // Clear safely
+
             if (data.error) {
-                html = `<p class="text-red-500">${data.error}</p>`;
-            } else {
-                html = `
-                    <div class="p-4 bg-blue-50 rounded-lg">
-                        <h4 class="font-medium text-blue-800 mb-2">Overall assessment</h4>
-                        <p class="text-sm text-blue-700">${data.overall_assessment}</p>
-                    </div>
-                    <div>
-                        <h4 class="font-medium text-gray-800 mb-2">Recommendations</h4>
-                        <ul class="list-disc list-inside space-y-1">
-                            ${data.recommendations.map(r => `<li class="text-sm text-gray-600">${r}</li>`).join('')}
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-medium text-gray-800 mb-2">Teaching strategies</h4>
-                        <ul class="list-disc list-inside space-y-1">
-                            ${data.teaching_strategies.map(s => `<li class="text-sm text-gray-600">${s}</li>`).join('')}
-                        </ul>
-                    </div>
-                    ${data.concerns ? `
-                    <div class="p-4 bg-yellow-50 rounded-lg">
-                        <h4 class="font-medium text-yellow-800 mb-2">Concerns</h4>
-                        <ul class="list-disc list-inside space-y-1">
-                            ${data.concerns.map(c => `<li class="text-sm text-yellow-700">${c}</li>`).join('')}
-                        </ul>
-                    </div>
-                    ` : ''}
-                `;
+                const errorP = document.createElement('p');
+                errorP.className = 'text-crimson';
+                errorP.textContent = data.error;
+                container.appendChild(errorP);
+                return;
             }
-            document.getElementById('insightsContent').innerHTML = html;
+
+            // Overall assessment
+            const assessDiv = document.createElement('div');
+            assessDiv.className = 'p-4 bg-accent/10 rounded-lg border-l-4 border-accent';
+            const assessH = document.createElement('h3');
+            assessH.className = 'font-semibold text-accent mb-2 text-sm uppercase tracking-wide';
+            assessH.textContent = 'Overall assessment';
+            const assessP = document.createElement('p');
+            assessP.className = 'text-sm leading-relaxed';
+            assessP.textContent = data.overall_assessment;
+            assessDiv.appendChild(assessH);
+            assessDiv.appendChild(assessP);
+            container.appendChild(assessDiv);
+
+            // Recommendations
+            const recDiv = document.createElement('div');
+            const recH = document.createElement('h3');
+            recH.className = 'font-semibold mb-3 text-sm uppercase tracking-wide text-mist';
+            recH.textContent = 'Recommendations';
+            recDiv.appendChild(recH);
+            const recUl = document.createElement('ul');
+            recUl.className = 'space-y-2';
+            data.recommendations.forEach(r => {
+                const li = document.createElement('li');
+                li.className = 'text-sm pl-4 border-l-2 border-ink/10';
+                li.textContent = r;
+                recUl.appendChild(li);
+            });
+            recDiv.appendChild(recUl);
+            container.appendChild(recDiv);
+
+            // Teaching strategies
+            const stratDiv = document.createElement('div');
+            const stratH = document.createElement('h3');
+            stratH.className = 'font-semibold mb-3 text-sm uppercase tracking-wide text-mist';
+            stratH.textContent = 'Teaching strategies';
+            stratDiv.appendChild(stratH);
+            const stratUl = document.createElement('ul');
+            stratUl.className = 'space-y-2';
+            data.teaching_strategies.forEach(s => {
+                const li = document.createElement('li');
+                li.className = 'text-sm pl-4 border-l-2 border-ink/10';
+                li.textContent = s;
+                stratUl.appendChild(li);
+            });
+            stratDiv.appendChild(stratUl);
+            container.appendChild(stratDiv);
+
+            // Concerns (if any)
+            if (data.concerns && data.concerns.length > 0) {
+                const conDiv = document.createElement('div');
+                conDiv.className = 'p-4 bg-crimson/10 rounded-lg border-l-4 border-crimson';
+                const conH = document.createElement('h3');
+                conH.className = 'font-semibold text-crimson mb-2 text-sm uppercase tracking-wide';
+                conH.textContent = 'Concerns';
+                conDiv.appendChild(conH);
+                const conUl = document.createElement('ul');
+                conUl.className = 'space-y-2';
+                data.concerns.forEach(c => {
+                    const li = document.createElement('li');
+                    li.className = 'text-sm';
+                    li.textContent = c;
+                    conUl.appendChild(li);
+                });
+                conDiv.appendChild(conUl);
+                container.appendChild(conDiv);
+            }
         });
 }
 
@@ -564,44 +715,46 @@ function closeInsights() {
 
 ASSIGNMENTS_TEMPLATE = """
 {% extends "base.html" %}
-{% block title %}Assignments - Student Tracker{% endblock %}
+{% block title %}Assignments{% endblock %}
 {% block content %}
-<div class="flex justify-between items-center mb-6">
-    <h1 class="text-3xl font-bold text-gray-800">Assignments</h1>
-    <button onclick="location.href='/assignment/add'" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+<div class="flex justify-between items-center mb-8">
+    <h1 class="text-4xl">Assignments</h1>
+    <button onclick="location.href='/assignment/add'" class="px-4 py-2 bg-accent text-canvas rounded-lg hover:bg-accent/90 transition text-sm font-medium">
         Add assignment
     </button>
 </div>
 
-<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-    <table class="w-full">
-        <thead class="bg-gray-50 border-b border-gray-200">
+<div class="deckle-card rounded-lg overflow-hidden">
+    <table>
+        <thead>
             <tr>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Assignment</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Type</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Points</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Due date</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Submissions</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Average</th>
-                <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Actions</th>
+                <th>Assignment</th>
+                <th>Type</th>
+                <th>Points</th>
+                <th>Due date</th>
+                <th>Submissions</th>
+                <th>Average</th>
+                <th class="text-right">Actions</th>
             </tr>
         </thead>
-        <tbody class="divide-y divide-gray-200">
+        <tbody>
             {% for a in assignments %}
-            <tr class="hover:bg-gray-50">
-                <td class="px-6 py-4">
-                    <a href="/assignment/{{ a.id }}" class="text-blue-600 hover:underline font-medium">{{ a.name }}</a>
+            <tr>
+                <td>
+                    <a href="/assignment/{{ a.id }}" class="font-medium">{{ a.name }}</a>
                 </td>
-                <td class="px-6 py-4 text-sm text-gray-500 capitalize">{{ a.assignment_type or 'General' }}</td>
-                <td class="px-6 py-4 text-sm text-gray-500">{{ a.points_possible }}</td>
-                <td class="px-6 py-4 text-sm text-gray-500">{{ a.due_date or '-' }}</td>
-                <td class="px-6 py-4 text-sm text-gray-500">{{ a.submission_count }}</td>
-                <td class="px-6 py-4 text-sm font-medium {% if a.average >= 80 %}text-green-600{% elif a.average >= 60 %}text-yellow-600{% elif a.average > 0 %}text-red-600{% else %}text-gray-400{% endif %}">
-                    {% if a.average > 0 %}{{ "%.1f"|format(a.average) }}%{% else %}-{% endif %}
+                <td class="text-mist capitalize">{{ a.assignment_type or 'General' }}</td>
+                <td class="text-mist">{{ a.points_possible }}</td>
+                <td class="text-mist">{{ a.due_date or '—' }}</td>
+                <td class="text-mist">{{ a.submission_count }}</td>
+                <td>
+                    <span class="font-semibold {% if a.average >= 80 %}text-accent{% elif a.average >= 60 %}text-yellow-700{% elif a.average > 0 %}text-crimson{% else %}text-mist{% endif %}">
+                        {% if a.average > 0 %}{{ "%.1f"|format(a.average) }}%{% else %}—{% endif %}
+                    </span>
                 </td>
-                <td class="px-6 py-4 text-right text-sm">
-                    <a href="/assignment/{{ a.id }}" class="text-blue-600 hover:underline">View</a>
-                    <a href="/assignment/{{ a.id }}/evaluate-all" class="text-green-600 hover:underline ml-3">Evaluate all</a>
+                <td class="text-right">
+                    <a href="/assignment/{{ a.id }}" class="text-sm hover:text-crimson">View</a>
+                    <a href="/assignment/{{ a.id }}/evaluate-all" class="text-sm text-accent hover:text-crimson ml-3">Evaluate all</a>
                 </td>
             </tr>
             {% endfor %}
@@ -613,23 +766,23 @@ ASSIGNMENTS_TEMPLATE = """
 
 EVALUATE_TEMPLATE = """
 {% extends "base.html" %}
-{% block title %}Evaluate - Student Tracker{% endblock %}
+{% block title %}Evaluate{% endblock %}
 {% block content %}
-<div class="mb-6">
-    <h1 class="text-3xl font-bold text-gray-800 mb-2">Evaluate submissions</h1>
-    <p class="text-gray-600">Run automated Haiku evaluations or add manual grades</p>
+<div class="mb-10">
+    <h1 class="text-4xl mb-2">Evaluate submissions</h1>
+    <p class="text-mist text-sm">Run automated Haiku evaluations or add manual grades</p>
 </div>
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
     <!-- Automated Evaluation -->
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-        <h3 class="font-semibold text-gray-800 mb-4">Automated evaluation</h3>
-        <p class="text-sm text-gray-600 mb-4">Use Claude Haiku to evaluate pending submissions against rubrics.</p>
+    <div class="deckle-card rounded-lg p-6">
+        <h2 class="text-lg mb-4">Automated evaluation</h2>
+        <p class="text-sm text-mist mb-5 leading-relaxed">Use Claude Haiku to evaluate pending submissions against rubrics.</p>
 
         <form action="/api/evaluate/batch" method="POST" class="space-y-4">
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Assignment (optional)</label>
-                <select name="assignment_id" class="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                <label class="block text-sm font-medium mb-2">Assignment (optional)</label>
+                <select name="assignment_id" class="w-full px-3 py-2 bg-white/50 border border-ink/10 rounded-lg focus:outline-none focus:border-accent text-sm">
                     <option value="">All assignments</option>
                     {% for a in assignments %}
                     <option value="{{ a.id }}">{{ a.name }}</option>
@@ -637,25 +790,25 @@ EVALUATE_TEMPLATE = """
                 </select>
             </div>
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Limit</label>
+                <label class="block text-sm font-medium mb-2">Limit</label>
                 <input type="number" name="limit" value="10" min="1" max="50"
-                       class="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                       class="w-full px-3 py-2 bg-white/50 border border-ink/10 rounded-lg focus:outline-none focus:border-accent text-sm">
             </div>
-            <button type="submit" class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+            <button type="submit" class="w-full px-4 py-2 bg-crimson text-canvas rounded-lg hover:bg-crimson/90 transition text-sm font-medium">
                 Run evaluation
             </button>
         </form>
     </div>
 
     <!-- Manual Evaluation -->
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-        <h3 class="font-semibold text-gray-800 mb-4">Manual evaluation</h3>
-        <p class="text-sm text-gray-600 mb-4">Add or override grades manually for specific submissions.</p>
+    <div class="deckle-card rounded-lg p-6">
+        <h2 class="text-lg mb-4">Manual evaluation</h2>
+        <p class="text-sm text-mist mb-5 leading-relaxed">Add or override grades manually for specific submissions.</p>
 
         <form action="/api/evaluate/manual" method="POST" class="space-y-4">
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Student</label>
-                <select name="student_id" id="manual-student" class="w-full px-3 py-2 border border-gray-300 rounded-lg" onchange="loadStudentSubmissions()">
+                <label class="block text-sm font-medium mb-2">Student</label>
+                <select name="student_id" id="manual-student" class="w-full px-3 py-2 bg-white/50 border border-ink/10 rounded-lg focus:outline-none focus:border-accent text-sm" onchange="loadStudentSubmissions()">
                     <option value="">Select student</option>
                     {% for s in students %}
                     <option value="{{ s.id }}">{{ s.name }}</option>
@@ -663,22 +816,22 @@ EVALUATE_TEMPLATE = """
                 </select>
             </div>
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Submission</label>
-                <select name="submission_id" id="manual-submission" class="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                <label class="block text-sm font-medium mb-2">Submission</label>
+                <select name="submission_id" id="manual-submission" class="w-full px-3 py-2 bg-white/50 border border-ink/10 rounded-lg focus:outline-none focus:border-accent text-sm">
                     <option value="">Select student first</option>
                 </select>
             </div>
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Score</label>
+                <label class="block text-sm font-medium mb-2">Score</label>
                 <input type="number" name="score" step="0.5" min="0"
-                       class="w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+                       class="w-full px-3 py-2 bg-white/50 border border-ink/10 rounded-lg focus:outline-none focus:border-accent text-sm" required>
             </div>
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Feedback</label>
+                <label class="block text-sm font-medium mb-2">Feedback</label>
                 <textarea name="feedback" rows="3"
-                          class="w-full px-3 py-2 border border-gray-300 rounded-lg" required></textarea>
+                          class="w-full px-3 py-2 bg-white/50 border border-ink/10 rounded-lg focus:outline-none focus:border-accent text-sm leading-relaxed" required></textarea>
             </div>
-            <button type="submit" class="w-full px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+            <button type="submit" class="w-full px-4 py-2 bg-accent text-canvas rounded-lg hover:bg-accent/90 transition text-sm font-medium">
                 Save evaluation
             </button>
         </form>
@@ -686,33 +839,35 @@ EVALUATE_TEMPLATE = """
 </div>
 
 <!-- Pending Evaluations -->
-<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-    <h3 class="font-semibold text-gray-800 p-4 border-b border-gray-200">Pending evaluations ({{ pending|length }})</h3>
+<div class="deckle-card rounded-lg overflow-hidden">
+    <div class="p-5 border-b border-ink/5">
+        <h2 class="text-lg">Pending evaluations <span class="text-mist font-normal">({{ pending|length }})</span></h2>
+    </div>
     {% if pending %}
-    <table class="w-full">
-        <thead class="bg-gray-50 border-b border-gray-200">
+    <table>
+        <thead>
             <tr>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Student</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Assignment</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Submitted</th>
-                <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Actions</th>
+                <th>Student</th>
+                <th>Assignment</th>
+                <th>Submitted</th>
+                <th class="text-right">Actions</th>
             </tr>
         </thead>
-        <tbody class="divide-y divide-gray-200">
+        <tbody>
             {% for p in pending[:20] %}
-            <tr class="hover:bg-gray-50">
-                <td class="px-6 py-4 text-sm text-gray-900">{{ p.student_name }}</td>
-                <td class="px-6 py-4 text-sm text-gray-500">{{ p.assignment_name }}</td>
-                <td class="px-6 py-4 text-sm text-gray-500">{{ p.submitted_at or '-' }}</td>
-                <td class="px-6 py-4 text-right text-sm">
-                    <a href="/submission/{{ p.id }}/evaluate" class="text-blue-600 hover:underline">Evaluate</a>
+            <tr>
+                <td>{{ p.student_name }}</td>
+                <td class="text-mist">{{ p.assignment_name }}</td>
+                <td class="text-mist">{{ p.submitted_at or '—' }}</td>
+                <td class="text-right">
+                    <a href="/submission/{{ p.id }}/evaluate" class="text-sm hover:text-crimson">Evaluate →</a>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
     {% else %}
-    <p class="p-4 text-sm text-gray-500">No pending evaluations</p>
+    <p class="p-5 text-sm text-mist">No pending evaluations</p>
     {% endif %}
 </div>
 {% endblock %}
@@ -723,15 +878,29 @@ function loadStudentSubmissions() {
     const submissionSelect = document.getElementById('manual-submission');
 
     if (!studentId) {
-        submissionSelect.innerHTML = '<option value="">Select student first</option>';
+        submissionSelect.replaceChildren();
+        const opt = document.createElement('option');
+        opt.value = '';
+        opt.textContent = 'Select student first';
+        submissionSelect.appendChild(opt);
         return;
     }
 
     fetch(`/api/student/${studentId}/submissions`)
         .then(r => r.json())
         .then(data => {
-            submissionSelect.innerHTML = '<option value="">Select submission</option>' +
-                data.map(s => `<option value="${s.id}">${s.assignment_name} (${s.status})</option>`).join('');
+            submissionSelect.replaceChildren();
+            const defaultOpt = document.createElement('option');
+            defaultOpt.value = '';
+            defaultOpt.textContent = 'Select submission';
+            submissionSelect.appendChild(defaultOpt);
+
+            data.forEach(s => {
+                const opt = document.createElement('option');
+                opt.value = s.id;
+                opt.textContent = `${s.assignment_name} (${s.status})`;
+                submissionSelect.appendChild(opt);
+            });
         });
 }
 {% endblock %}
@@ -739,27 +908,27 @@ function loadStudentSubmissions() {
 
 INSIGHTS_TEMPLATE = """
 {% extends "base.html" %}
-{% block title %}Insights - Student Tracker{% endblock %}
+{% block title %}Insights{% endblock %}
 {% block content %}
-<div class="mb-6">
-    <h1 class="text-3xl font-bold text-gray-800 mb-2">Class insights</h1>
-    <p class="text-gray-600">AI-powered analysis and recommendations</p>
+<div class="mb-10">
+    <h1 class="text-4xl mb-2">Class insights</h1>
+    <p class="text-mist text-sm">AI-powered analysis and recommendations</p>
 </div>
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-        <h3 class="font-semibold text-gray-800 mb-4">Generate new insights</h3>
-        <p class="text-sm text-gray-600 mb-4">Analyze current class performance and generate recommendations.</p>
-        <button onclick="generateClassInsights()" class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+    <div class="deckle-card rounded-lg p-6">
+        <h2 class="text-lg mb-4">Generate new insights</h2>
+        <p class="text-sm text-mist mb-5 leading-relaxed">Analyze current class performance and generate recommendations.</p>
+        <button onclick="generateClassInsights()" class="w-full px-4 py-2 bg-crimson text-canvas rounded-lg hover:bg-crimson/90 transition text-sm font-medium">
             Generate class insights
         </button>
     </div>
 
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-        <h3 class="font-semibold text-gray-800 mb-4">Create snapshot</h3>
-        <p class="text-sm text-gray-600 mb-4">Save current class state for historical tracking.</p>
+    <div class="deckle-card rounded-lg p-6">
+        <h2 class="text-lg mb-4">Create snapshot</h2>
+        <p class="text-sm text-mist mb-5 leading-relaxed">Save current class state for historical tracking.</p>
         <form action="/api/snapshot" method="POST">
-            <button type="submit" class="w-full px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+            <button type="submit" class="w-full px-4 py-2 bg-accent text-canvas rounded-lg hover:bg-accent/90 transition text-sm font-medium">
                 Create progress snapshot
             </button>
         </form>
@@ -767,37 +936,39 @@ INSIGHTS_TEMPLATE = """
 </div>
 
 <!-- Insights Display -->
-<div id="insightsDisplay" class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 mb-8 hidden">
-    <h3 class="font-semibold text-gray-800 mb-4">Latest insights</h3>
-    <div id="insightsContent" class="space-y-4"></div>
+<div id="insightsDisplay" class="deckle-card rounded-lg p-6 mb-10 hidden">
+    <h2 class="text-lg mb-5">Latest insights</h2>
+    <div id="insightsContent" class="space-y-5"></div>
 </div>
 
 <!-- Historical Snapshots -->
-<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-    <h3 class="font-semibold text-gray-800 p-4 border-b border-gray-200">Progress history</h3>
+<div class="deckle-card rounded-lg overflow-hidden">
+    <div class="p-5 border-b border-ink/5">
+        <h2 class="text-lg">Progress history</h2>
+    </div>
     {% if snapshots %}
-    <table class="w-full">
-        <thead class="bg-gray-50 border-b border-gray-200">
+    <table>
+        <thead>
             <tr>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Date</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Class average</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Submission rate</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Insights</th>
+                <th>Date</th>
+                <th>Class average</th>
+                <th>Submission rate</th>
+                <th>Insights</th>
             </tr>
         </thead>
-        <tbody class="divide-y divide-gray-200">
+        <tbody>
             {% for s in snapshots %}
-            <tr class="hover:bg-gray-50">
-                <td class="px-6 py-4 text-sm text-gray-900">{{ s.date }}</td>
-                <td class="px-6 py-4 text-sm text-gray-500">{{ "%.1f"|format(s.class_average or 0) }}%</td>
-                <td class="px-6 py-4 text-sm text-gray-500">{{ "%.0f"|format(s.submission_rate or 0) }}%</td>
-                <td class="px-6 py-4 text-sm text-gray-500">{{ (s.insights or [])|length }} insights</td>
+            <tr>
+                <td>{{ s.date }}</td>
+                <td class="text-mist">{{ "%.1f"|format(s.class_average or 0) }}%</td>
+                <td class="text-mist">{{ "%.0f"|format(s.submission_rate or 0) }}%</td>
+                <td class="text-mist">{{ (s.insights or [])|length }} insights</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
     {% else %}
-    <p class="p-4 text-sm text-gray-500">No snapshots yet. Create one to start tracking progress over time.</p>
+    <p class="p-5 text-sm text-mist">No snapshots yet. Create one to start tracking progress over time.</p>
     {% endif %}
 </div>
 {% endblock %}
@@ -808,48 +979,95 @@ function generateClassInsights() {
     const content = document.getElementById('insightsContent');
 
     display.classList.remove('hidden');
-    content.innerHTML = '<p class="text-gray-500">Analyzing class data...</p>';
+    content.replaceChildren();
+    const loadingP = document.createElement('p');
+    loadingP.className = 'text-mist';
+    loadingP.textContent = 'Analyzing class data...';
+    content.appendChild(loadingP);
 
     fetch('/api/class/insights')
         .then(r => r.json())
         .then(data => {
+            content.replaceChildren();
+
             if (data.error) {
-                content.innerHTML = `<p class="text-red-500">${data.error}</p>`;
+                const errorP = document.createElement('p');
+                errorP.className = 'text-crimson';
+                errorP.textContent = data.error;
+                content.appendChild(errorP);
                 return;
             }
 
-            content.innerHTML = `
-                <div class="p-4 bg-blue-50 rounded-lg">
-                    <h4 class="font-medium text-blue-800 mb-2">Class health</h4>
-                    <p class="text-sm text-blue-700">${data.class_health}</p>
-                </div>
+            // Class health
+            const healthDiv = document.createElement('div');
+            healthDiv.className = 'p-4 bg-accent/10 rounded-lg border-l-4 border-accent';
+            const healthH = document.createElement('h3');
+            healthH.className = 'font-semibold text-accent mb-2 text-sm uppercase tracking-wide';
+            healthH.textContent = 'Class health';
+            const healthP = document.createElement('p');
+            healthP.className = 'text-sm leading-relaxed';
+            healthP.textContent = data.class_health;
+            healthDiv.appendChild(healthH);
+            healthDiv.appendChild(healthP);
+            content.appendChild(healthDiv);
 
-                <div>
-                    <h4 class="font-medium text-gray-800 mb-2">Skills needing attention</h4>
-                    <div class="flex flex-wrap gap-2">
-                        ${data.skills_needing_attention.map(s => `<span class="px-2 py-1 text-xs bg-yellow-100 text-yellow-800 rounded-full">${s}</span>`).join('')}
-                    </div>
-                </div>
+            // Skills needing attention
+            const skillsDiv = document.createElement('div');
+            const skillsH = document.createElement('h3');
+            skillsH.className = 'font-semibold mb-3 text-sm uppercase tracking-wide text-mist';
+            skillsH.textContent = 'Skills needing attention';
+            skillsDiv.appendChild(skillsH);
+            const skillsContainer = document.createElement('div');
+            skillsContainer.className = 'flex flex-wrap gap-2';
+            data.skills_needing_attention.forEach(s => {
+                const span = document.createElement('span');
+                span.className = 'badge badge-warn';
+                span.textContent = s;
+                skillsContainer.appendChild(span);
+            });
+            skillsDiv.appendChild(skillsContainer);
+            content.appendChild(skillsDiv);
 
-                <div>
-                    <h4 class="font-medium text-gray-800 mb-2">Group recommendations</h4>
-                    <div class="space-y-2">
-                        ${Object.entries(data.group_recommendations).map(([group, rec]) => `
-                            <div class="p-3 bg-gray-50 rounded-lg">
-                                <span class="text-sm font-medium text-gray-700 capitalize">${group}:</span>
-                                <span class="text-sm text-gray-600">${rec}</span>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
+            // Group recommendations
+            const recDiv = document.createElement('div');
+            const recH = document.createElement('h3');
+            recH.className = 'font-semibold mb-3 text-sm uppercase tracking-wide text-mist';
+            recH.textContent = 'Group recommendations';
+            recDiv.appendChild(recH);
+            const recContainer = document.createElement('div');
+            recContainer.className = 'space-y-2';
+            Object.entries(data.group_recommendations).forEach(([group, rec]) => {
+                const item = document.createElement('div');
+                item.className = 'p-3 bg-white/30 rounded-lg';
+                const label = document.createElement('span');
+                label.className = 'text-sm font-medium capitalize';
+                label.textContent = group + ': ';
+                const text = document.createElement('span');
+                text.className = 'text-sm text-mist';
+                text.textContent = rec;
+                item.appendChild(label);
+                item.appendChild(text);
+                recContainer.appendChild(item);
+            });
+            recDiv.appendChild(recContainer);
+            content.appendChild(recDiv);
 
-                <div>
-                    <h4 class="font-medium text-gray-800 mb-2">Suggested interventions</h4>
-                    <ul class="list-disc list-inside space-y-1">
-                        ${data.suggested_interventions.map(i => `<li class="text-sm text-gray-600">${i}</li>`).join('')}
-                    </ul>
-                </div>
-            `;
+            // Suggested interventions
+            const intDiv = document.createElement('div');
+            const intH = document.createElement('h3');
+            intH.className = 'font-semibold mb-3 text-sm uppercase tracking-wide text-mist';
+            intH.textContent = 'Suggested interventions';
+            intDiv.appendChild(intH);
+            const intUl = document.createElement('ul');
+            intUl.className = 'space-y-2';
+            data.suggested_interventions.forEach(i => {
+                const li = document.createElement('li');
+                li.className = 'text-sm pl-4 border-l-2 border-ink/10';
+                li.textContent = i;
+                intUl.appendChild(li);
+            });
+            intDiv.appendChild(intUl);
+            content.appendChild(intDiv);
         });
 }
 {% endblock %}
@@ -857,110 +1075,110 @@ function generateClassInsights() {
 
 SETTINGS_TEMPLATE = """
 {% extends "base.html" %}
-{% block title %}Settings - Student Tracker{% endblock %}
+{% block title %}Settings{% endblock %}
 {% block content %}
-<div class="mb-6">
-    <h1 class="text-3xl font-bold text-gray-800 mb-2">Settings</h1>
-    <p class="text-gray-600">Configure integrations and sync data</p>
+<div class="mb-10">
+    <h1 class="text-4xl mb-2">Settings</h1>
+    <p class="text-mist text-sm">Configure integrations and sync data</p>
 </div>
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     <!-- Canvas Sync -->
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-        <h3 class="font-semibold text-gray-800 mb-4">Canvas integration</h3>
-        <p class="text-sm text-gray-600 mb-4">Sync students, assignments, and submissions from Canvas LMS.</p>
+    <div class="deckle-card rounded-lg p-6">
+        <h2 class="text-lg mb-4">Canvas integration</h2>
+        <p class="text-sm text-mist mb-5 leading-relaxed">Sync students, assignments, and submissions from Canvas LMS.</p>
 
-        <div class="mb-4 p-3 bg-gray-50 rounded-lg">
-            <div class="text-sm text-gray-600">
-                <strong>Status:</strong>
+        <div class="mb-5 p-3 bg-white/30 rounded-lg">
+            <div class="text-sm">
+                <span class="font-medium">Status:</span>
                 {% if canvas_configured %}
-                <span class="text-green-600">Configured</span>
+                <span class="text-accent font-semibold">Configured</span>
                 {% else %}
-                <span class="text-red-600">Not configured</span>
+                <span class="text-crimson font-semibold">Not configured</span>
                 {% endif %}
             </div>
         </div>
 
         <form action="/api/sync/canvas" method="POST">
             <button type="submit" {% if not canvas_configured %}disabled{% endif %}
-                    class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed">
+                    class="w-full px-4 py-2 bg-crimson text-canvas rounded-lg hover:bg-crimson/90 transition text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed">
                 Sync from Canvas
             </button>
         </form>
     </div>
 
     <!-- Database -->
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-        <h3 class="font-semibold text-gray-800 mb-4">Database</h3>
-        <p class="text-sm text-gray-600 mb-4">Initialize or reset the database.</p>
+    <div class="deckle-card rounded-lg p-6">
+        <h2 class="text-lg mb-4">Database</h2>
+        <p class="text-sm text-mist mb-5 leading-relaxed">Initialize or reset the database.</p>
 
         <div class="space-y-3">
             <form action="/api/db/init" method="POST">
-                <button type="submit" class="w-full px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+                <button type="submit" class="w-full px-4 py-2 bg-accent text-canvas rounded-lg hover:bg-accent/90 transition text-sm font-medium">
                     Initialize database
                 </button>
             </form>
 
-            <a href="/api/export/grades" class="block w-full px-4 py-2 border border-gray-300 rounded-lg text-center hover:bg-gray-50 transition">
+            <a href="/api/export/grades" class="block w-full px-4 py-2 border border-ink/10 rounded-lg text-center hover:bg-white/50 transition text-sm">
                 Export grades (CSV)
             </a>
         </div>
     </div>
 
     <!-- Import -->
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-        <h3 class="font-semibold text-gray-800 mb-4">Import data</h3>
-        <p class="text-sm text-gray-600 mb-4">Import students or submissions from files.</p>
+    <div class="deckle-card rounded-lg p-6">
+        <h2 class="text-lg mb-4">Import data</h2>
+        <p class="text-sm text-mist mb-5 leading-relaxed">Import students or submissions from files.</p>
 
-        <form action="/api/import" method="POST" enctype="multipart/form-data" class="space-y-3">
+        <form action="/api/import" method="POST" enctype="multipart/form-data" class="space-y-4">
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Import type</label>
-                <select name="import_type" class="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                <label class="block text-sm font-medium mb-2">Import type</label>
+                <select name="import_type" class="w-full px-3 py-2 bg-white/50 border border-ink/10 rounded-lg focus:outline-none focus:border-accent text-sm">
                     <option value="students_csv">Students (CSV)</option>
                     <option value="submissions_csv">Submissions (CSV)</option>
                     <option value="assignments_json">Assignments (JSON)</option>
                 </select>
             </div>
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">File</label>
+                <label class="block text-sm font-medium mb-2">File</label>
                 <input type="file" name="file" accept=".csv,.json"
-                       class="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                       class="w-full px-3 py-2 bg-white/50 border border-ink/10 rounded-lg focus:outline-none focus:border-accent text-sm">
             </div>
-            <button type="submit" class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+            <button type="submit" class="w-full px-4 py-2 bg-crimson text-canvas rounded-lg hover:bg-crimson/90 transition text-sm font-medium">
                 Import
             </button>
         </form>
     </div>
 
     <!-- API Keys -->
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-        <h3 class="font-semibold text-gray-800 mb-4">API configuration</h3>
-        <p class="text-sm text-gray-600 mb-4">Required environment variables:</p>
+    <div class="deckle-card rounded-lg p-6">
+        <h2 class="text-lg mb-4">API configuration</h2>
+        <p class="text-sm text-mist mb-5 leading-relaxed">Required environment variables:</p>
 
-        <div class="space-y-2 text-sm">
-            <div class="flex items-center gap-2">
+        <div class="space-y-3 text-sm">
+            <div class="flex items-center gap-3 py-2 border-b border-ink/5">
                 {% if anthropic_configured %}
-                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                <span class="w-2 h-2 bg-accent rounded-full"></span>
                 {% else %}
-                <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                <span class="w-2 h-2 bg-crimson rounded-full"></span>
                 {% endif %}
-                <code class="bg-gray-100 px-2 py-1 rounded">ANTHROPIC_API_KEY</code>
+                <code class="bg-white/50 px-2 py-1 rounded text-xs">ANTHROPIC_API_KEY</code>
             </div>
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-3 py-2 border-b border-ink/5">
                 {% if canvas_configured %}
-                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                <span class="w-2 h-2 bg-accent rounded-full"></span>
                 {% else %}
-                <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                <span class="w-2 h-2 bg-crimson rounded-full"></span>
                 {% endif %}
-                <code class="bg-gray-100 px-2 py-1 rounded">CANVAS_API_TOKEN</code>
+                <code class="bg-white/50 px-2 py-1 rounded text-xs">CANVAS_API_TOKEN</code>
             </div>
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-3 py-2">
                 {% if canvas_course_configured %}
-                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                <span class="w-2 h-2 bg-accent rounded-full"></span>
                 {% else %}
-                <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                <span class="w-2 h-2 bg-crimson rounded-full"></span>
                 {% endif %}
-                <code class="bg-gray-100 px-2 py-1 rounded">CANVAS_COURSE_ID</code>
+                <code class="bg-white/50 px-2 py-1 rounded text-xs">CANVAS_COURSE_ID</code>
             </div>
         </div>
     </div>

@@ -25,6 +25,18 @@ venv/
 student_tracker.db
 *.db
 
+# Temporary files (prevent accidental secret exposure)
+*.tmp
+*.temp
+*~
+.claude_temp*
+
+# Secret files
+secrets.json
+credentials.json
+*.key
+*.pem
+
 # Jekyll build
 _site/
 .jekyll-cache/
