@@ -2,6 +2,15 @@
 
 This is the GitHub Pages site and supporting tools for STCM140: Multimedia Production for Strategic Communications at Montclair State University, Spring 2026.
 
+## Workflow orchestration
+
+- **Plan first** — Enter plan mode for non-trivial tasks (3+ steps). If things go sideways, stop and re-plan.
+- **Use subagents** — Offload research, exploration, and parallel analysis. One task per subagent.
+- **Self-improvement** — After corrections, document lessons. Write rules that prevent the same mistake.
+- **Verify before done** — Never mark complete without proof. Run tests, check logs, demonstrate correctness.
+- **Demand elegance** — For non-trivial changes, ask "is there a more elegant way?" Skip for simple fixes.
+- **Autonomous fixing** — When given a bug: just fix it. Zero hand-holding required.
+
 ## Critical instructions
 
 **NEVER use or write in Title Case. Always use and write in sentence case.**
