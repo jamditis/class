@@ -84,6 +84,14 @@ class/
 │   ├── assignments.md       # Assignment descriptions
 │   ├── lectures.md          # Recordings and key concepts
 │   └── resources.md         # Tools and reference materials
+├── student_tracker/         # Student dashboard and AI evaluator
+│   ├── dashboard.py         # Flask web dashboard (port 5002)
+│   ├── evaluator.py         # Claude Sonnet evaluation engine
+│   ├── teaching_context.py  # Course philosophy and AI detection patterns
+│   ├── analyzer.py          # Student analytics and skill tracking
+│   ├── models.py            # SQLAlchemy models (Student, Submission, Evaluation)
+│   ├── canvas_fetcher.py    # Canvas LMS API sync
+│   └── cli.py               # Command-line interface
 ├── fathom_stcm140.py        # Fetch class recordings from Fathom API
 ├── fathom_webhook_server.py # Webhook server for auto-sync
 ├── fathom_fetch.py          # Basic Fathom API fetch script
@@ -123,6 +131,54 @@ Class recordings are automatically named using NotebookLM convention:
 - `🎙️ LECTURE: [title] (DDMMMYY)`
 
 Run `python fathom_stcm140.py` to fetch and export recordings to `fathom_stcm140/` folder.
+
+## Student tracker
+
+**Dashboard:** https://class.amditis.tech (Cloudflare Access protected)
+**Service:** `student-tracker` (systemd, port 5002)
+**Database:** `student_tracker/students.db` (SQLite)
+
+### Evaluator system
+
+The evaluator uses Claude Sonnet to provide feedback in Joe's voice with teaching context:
+
+| Component | Purpose |
+|-----------|---------|
+| `evaluator.py` | Main eval engine using claude-sonnet-4-20250514 |
+| `teaching_context.py` | Course philosophy, assignment contexts, AI detection |
+
+**Features:**
+- Feedback in Joe's voice (brief, direct, warm)
+- Assignment-specific context (Cluetrain, research dossier, persona, copywriting)
+- AI writing detection with "slop" phrase patterns
+- Evaluation history (old evals marked `is_final=False`)
+- Re-evaluate with custom instructor notes
+
+### Common tasks
+
+**Sync Canvas data:**
+```bash
+cd /home/jamditis/projects/class
+source venv/bin/activate
+python -m student_tracker.cli sync
+```
+
+**Evaluate submissions:**
+```bash
+python -m student_tracker.cli evaluate --assignment "Cluetrain"
+```
+
+**Re-evaluate with context:**
+Use the dashboard form at `/submission/<id>` or:
+```python
+from student_tracker.evaluator import evaluate_submission_with_context
+evaluate_submission_with_context(submission_id=49, context_notes="Student discussed in office hours", force=True)
+```
+
+**Restart service:**
+```bash
+sudo systemctl restart student-tracker
+```
 
 ## Design system
 
