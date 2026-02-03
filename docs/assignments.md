@@ -15,6 +15,7 @@ All assignments are submitted through Canvas. Due dates are Thursdays at 11:59 P
 |------------|--------|-----|
 | Read the Cluetrain Manifesto | 25 | Jan 29 |
 | Cluetrain Manifesto media analysis | 25 | Feb 3 |
+| Design principles prep | 15 | Feb 5 |
 | Design a slide deck that doesn't suck | 50 | Feb 5 |
 | Alien planet travel poster | 50 | Feb 19 |
 | Research dossier | 50 | Feb 26 |
@@ -70,6 +71,14 @@ Find a piece of media that is relevant to the Cluetrain Manifesto and analyze ho
 - The manifesto was written in 1999, at the dawn of the commercial internet
 - Consider how markets, companies, and conversations have changed (or haven't)
 - Strong submissions will go beyond surface-level observations to analyze *why* the principle does or doesn't hold up
+
+---
+
+### Design principles prep (15 pts)
+
+**Due:** Thursday, February 5 (before class)
+
+[Full assignment details](https://docs.google.com/document/d/PLACEHOLDER)
 
 ---
 

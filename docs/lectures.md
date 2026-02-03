@@ -16,6 +16,7 @@ Class sessions are recorded and available for review. Recordings include AI-gene
 | Jan 22 | Introduction & digital literacy | [Watch](https://fathom.video/share/kMHzPP1fxQh3fj9H9_KLKnCLj9EfbZiB) |
 | Jan 27 | Info needs and the shiny new thing | [Watch](https://fathom.video/share/MEnwBjLss5Rz26ScD6ZnGjnS5LAuUbYM) |
 | Jan 29 | Cluetrain manifesto discussion | [Watch](https://fathom.video/share/shap7yeWzKzfsgd8y3y1esvsBbmKXBqU) |
+| Feb 3 | AI tools & assignment submission | [Watch](https://fathom.video/calls/555106563) |
 
 *Recordings are added after each class session.*
 

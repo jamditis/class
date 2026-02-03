@@ -366,9 +366,9 @@ def evaluate_submission(
     submission_id: int,
     force: bool = False,
     custom_rubric: dict = None
-) -> Optional[Evaluation]:
+) -> Optional[int]:
     """
-    Evaluate a submission using Claude Haiku.
+    Evaluate a submission using Claude Sonnet.
 
     Args:
         submission_id: Database ID of the submission to evaluate
@@ -376,7 +376,7 @@ def evaluate_submission(
         custom_rubric: Optional custom rubric to use instead of default
 
     Returns:
-        Evaluation object or None if evaluation failed
+        Evaluation ID or None if evaluation failed
     """
     session = get_session()
 
@@ -465,9 +465,15 @@ def evaluate_submission(
         session.add(evaluation)
         session.commit()
 
-        print(f"Evaluated submission {submission_id}: {result.get('overall_score')}/{assignment.points_possible}")
+        # Get the ID before closing session to avoid DetachedInstanceError
+        eval_id = evaluation.id
+        score = result.get('overall_score')
+
+        print(f"Evaluated submission {submission_id}: {score}/{assignment.points_possible}")
         session.close()
-        return evaluation
+
+        # Return the ID (callers can fetch fresh if they need the full object)
+        return eval_id
 
     except json.JSONDecodeError as e:
         print(f"Failed to parse Haiku response: {e}")
@@ -484,7 +490,7 @@ def evaluate_submission_with_context(
     context_notes: str = "",
     force: bool = False,
     custom_rubric: dict = None
-) -> Optional[Evaluation]:
+) -> Optional[int]:
     """
     Evaluate a submission with additional instructor-provided context.
 
@@ -660,9 +666,15 @@ Respond ONLY with the JSON object, no other text."""
         session.add(evaluation)
         session.commit()
 
-        print(f"Evaluated submission {submission_id} with context: {result.get('overall_score')}/{assignment.points_possible}")
+        # Get the ID before closing session to avoid DetachedInstanceError
+        eval_id = evaluation.id
+        score = result.get('overall_score')
+
+        print(f"Evaluated submission {submission_id} with context: {score}/{assignment.points_possible}")
         session.close()
-        return evaluation
+
+        # Return the ID (callers can fetch fresh if they need the full object)
+        return eval_id
 
     except json.JSONDecodeError as e:
         print(f"Failed to parse response: {e}")
@@ -702,7 +714,7 @@ def evaluate_all_pending(
     # Exclude submissions that already have final evaluations
     evaluated_ids = session.query(Evaluation.submission_id).filter(
         Evaluation.is_final == True
-    ).subquery()
+    ).scalar_subquery()
 
     query = query.filter(~Submission.id.in_(evaluated_ids))
 

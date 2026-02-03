@@ -14,6 +14,7 @@ title: Schedule
 | Thu, Jan 29 | Academic engagement verification | — |
 | Thu, Jan 29 | Read the Cluetrain Manifesto | 25 |
 | Tue, Feb 3 | Cluetrain Manifesto media analysis | 25 |
+| Thu, Feb 5 | Design principles prep | 15 |
 | Thu, Feb 5 | Design a slide deck that doesn't suck | 50 |
 | Thu, Feb 19 | Alien planet travel poster | 50 |
 | Thu, Feb 26 | Research dossier | 50 |
@@ -23,7 +24,7 @@ title: Schedule
 | Thu, Apr 9 | Featured images + social graphics | 75 |
 | Mon, May 4 | Final project: Multimedia asset package | ~40% |
 
-**Total points before final:** 525 pts
+**Total points before final:** 540 pts
 
 ---
 
@@ -49,13 +50,16 @@ Digital literacy, media markets, and why human voices matter.
 
 ---
 
-### Week 3: February 3-5 — Principles of design
+### Week 3: February 3-5 — AI tools & design principles
 
-The fundamentals of visual communication.
+Assignment protocols, AI usage, and visual communication fundamentals.
 
-- **Topic:** Contrast, hierarchy, alignment, balance, and why bad design hurts credibility
-- **Activity:** Introduction to design thinking and slide deck planning
+- **Tuesday:** AI usage policy, assignment submission protocols, the "Schrödinger's Document" strategy
+- **Thursday:** Design principles — contrast, hierarchy, alignment, balance
+- **Activity:** In-class alien propaganda poster (Canva), slide deck planning
+- **Recommended AI tools:** Gemini (best value via Google One), Claude (technical tasks), ChatGPT
 - **Due Tue, Feb 3 (before class):** Cluetrain Manifesto media analysis (25 pts)
+- **Due Thu, Feb 5 (before class):** Design principles prep (15 pts)
 - **Due Thu, Feb 5:** Design a slide deck that doesn't suck (50 pts)
 
 ---
