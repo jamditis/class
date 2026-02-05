@@ -16,8 +16,8 @@ All assignments are submitted through Canvas. Due dates are Thursdays at 11:59 P
 | Read the Cluetrain Manifesto | 25 | Jan 29 |
 | Cluetrain Manifesto media analysis | 25 | Feb 3 |
 | Design principles prep | 15 | Feb 5 |
-| Design a slide deck that doesn't suck | 50 | Feb 17 |
 | Alien propaganda poster | 50 | Feb 10 |
+| Design a slide deck that doesn't suck | 50 | Feb 17 |
 | Research dossier | 50 | Feb 26 |
 | Campaign strategy | 75 | Mar 5 |
 | User/customer persona | 75 | Mar 19 |
