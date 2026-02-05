@@ -17,7 +17,7 @@ All assignments are submitted through Canvas. Due dates are Thursdays at 11:59 P
 | Cluetrain Manifesto media analysis | 25 | Feb 3 |
 | Design principles prep | 15 | Feb 5 |
 | Design a slide deck that doesn't suck | 50 | Feb 5 |
-| Alien planet travel poster | 50 | Feb 19 |
+| Alien propaganda poster | 50 | Feb 10 |
 | Research dossier | 50 | Feb 26 |
 | Campaign strategy | 75 | Mar 5 |
 | User/customer persona | 75 | Mar 19 |
@@ -98,21 +98,51 @@ Create a 5-7 slide presentation on a topic of your choice that demonstrates stro
 
 ---
 
-### Alien planet travel poster (50 pts)
+### Alien propaganda poster (50 pts)
 
-**Due:** Thursday, February 19
+**Due:** Tuesday, February 10 at 10:00 AM (before class)
 
-Using the design principles covered in Week 3, create a travel poster for a fictional alien planet.
+Design an 8.5" x 11" vertical propaganda poster for a fictional alien society. You are the chief propagandist for an alien government — your job is to persuade the residents of your planet using the design principles we covered in class.
+
+**The scenario:**
+
+Invent an alien planet with its own name, government, and social structure. Then create a poster that communicates a specific persuasive message to the planet's residents. This could be a recruitment ad, a public safety announcement, a loyalty campaign, a call to action — anything that a government might use to influence its citizens.
 
 **Requirements:**
 
-- Print-ready at 11x17 inches, 300 DPI
-- Compelling headline and tagline
-- At least one visual element
-- Clear visual hierarchy and intentional color use
-- Should feel like something you'd actually see in a travel agency (on another planet)
+1. **World-building** — Give your alien planet a name, a type of government, and a reason for the propaganda. What are you trying to convince residents to do, believe, or feel?
 
-This is introduced as an in-class activity during Week 4 and due the following week.
+2. **Content** — Your poster must include:
+   - A catchy slogan or headline
+   - At least one original symbol or logo for your alien society
+   - Supporting text (a sentence or two that reinforces the message)
+
+3. **Design principles** — Demonstrate what we covered in class:
+   - **Hierarchy** — Guide the viewer's eye to the most important information first
+   - **Contrast** — Use color, size, or weight to create visual interest and emphasis
+   - **Recurring motif** — Include at least one repeating visual element that ties the design together
+
+4. **Format** — 8.5" x 11" vertical orientation. Submit as a PNG or PDF.
+
+5. **Tools** — Use whatever you want: Canva, Photoshop, Figma, Illustrator, hand-drawn and scanned, AI image generators — your call. If you use AI tools, you still need to make intentional design decisions about layout, hierarchy, and composition.
+
+**Grading criteria:**
+
+- Clear persuasive message and world-building (10 pts)
+- Effective use of hierarchy and contrast (15 pts)
+- Original symbol/logo and recurring motif (10 pts)
+- Overall visual quality and cohesion (10 pts)
+- Correct format and on-time submission (5 pts)
+
+**Extra credit (5 pts):**
+
+You can earn up to 5 extra credit points by doing one or both of the following:
+- **Present your poster** in class for a live critique
+- **Submit a written breakdown** of your design decisions — explain what principles you used, what choices you made, and why
+
+**Submission:**
+
+Submit via **Canvas** before 10:00 AM on Tuesday, February 10. Upload your poster as a PNG or PDF file.
 
 ---
 
