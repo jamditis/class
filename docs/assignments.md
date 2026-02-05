@@ -16,7 +16,7 @@ All assignments are submitted through Canvas. Due dates are Thursdays at 11:59 P
 | Read the Cluetrain Manifesto | 25 | Jan 29 |
 | Cluetrain Manifesto media analysis | 25 | Feb 3 |
 | Design principles prep | 15 | Feb 5 |
-| Design a slide deck that doesn't suck | 50 | Feb 5 |
+| Design a slide deck that doesn't suck | 50 | Feb 17 |
 | Alien propaganda poster | 50 | Feb 10 |
 | Research dossier | 50 | Feb 26 |
 | Campaign strategy | 75 | Mar 5 |
@@ -84,7 +84,7 @@ Find a piece of media that is relevant to the Cluetrain Manifesto and analyze ho
 
 ### Design a slide deck that doesn't suck (50 pts)
 
-**Due:** Thursday, February 5
+**Due:** Tuesday, February 17
 
 Create a 5-7 slide presentation on a topic of your choice that demonstrates strong design principles: visual hierarchy, contrast, alignment, and restraint.
 
