@@ -17,8 +17,78 @@ Class sessions are recorded and available for review. Recordings include AI-gene
 | Jan 27 | Info needs and the shiny new thing | [Watch](https://fathom.video/share/MEnwBjLss5Rz26ScD6ZnGjnS5LAuUbYM) |
 | Jan 29 | Cluetrain manifesto discussion | [Watch](https://fathom.video/share/shap7yeWzKzfsgd8y3y1esvsBbmKXBqU) |
 | Feb 3 | AI tools & assignment submission | [Watch](https://fathom.video/calls/555106563) |
+| Feb 5 | Design principles & slide design | [Watch](https://fathom.video/calls/558149217) |
 
 *Recordings are added after each class session.*
+
+---
+
+## Lecture summaries
+
+AI-generated summaries from class recordings, reviewed for accuracy. Use these for review or if you missed a session.
+
+### Feb 5 — Design principles and slide design
+
+**Key takeaways:**
+- Every visual choice (hierarchy, space, balance, contrast) is a strategic tool to guide a viewer's eye and convey a message
+- Presentation slides are visual aids for a speaker (minimal text, 6x6 rule), while "read-ahead" decks are standalone documents — never read presentation slides aloud
+- To fix a stuck slide design, try making a key image "big as hell" (dramatic focal point) or "a million tiny ones" (pattern/texture)
+
+**Topics covered:**
+- **Hierarchy** — guides the eye to the most important information first, using size, prominence, and color
+- **Space (whitespace)** — creates focus and a clean, modern feel
+- **Balance and symmetry** — creates a sense of order
+- **Contrast** — creates visual interest and emphasizes differences
+- **Rhythm and repetition** — creates movement or unity through recurring elements (motifs)
+- **Slide design best practices** — 6x6 rule, use presenter notes, avoid GIFs, troubleshoot with scale
+- **Homework: alien propaganda poster** — design an 8.5" x 11" vertical poster for an alien society using these principles (due Feb 10)
+
+---
+
+### Feb 3 — AI tools and assignment submission
+
+**Key takeaways:**
+- Submit Google Doc/Drive links immediately when an assignment is released — the link is static, so you can keep working until grading begins ("Schrödinger's Document" strategy)
+- Sloppy AI use (unformatted text, generic phrasing) is immediately identifiable and unacceptable — use AI to augment skills, not replace them
+- Recommended AI tools: Gemini (best value via Google One), Claude (best for technical tasks), ChatGPT (least recommended for this class)
+
+**Topics covered:**
+- **Submission format** — Google Docs and Google Drive folders required; treat assignments as professional deliverables
+- **Late submissions** — assignments open for ~2 days post-deadline with a point deduction
+- **AI usage policy** — allowed for research, note-taking, structuring; disallowed for generating final creative work
+- **Canva Pro setup** — apply for free education account using your .edu email
+- **Upcoming assignments** — alien propaganda poster (in-class) and "slide deck that doesn't suck" (weekend)
+
+---
+
+### Jan 29 — Cluetrain manifesto discussion
+
+**Key takeaways:**
+- The 1999 "Cluetrain Manifesto" was framed as a "95 Thesis" for the digital age, challenging corporate communication norms
+- Getting a sense of humor "requires big values, a little humility, straight talk, and a genuine point of view" — not just jokes on a corporate website
+- The "corporate roast" trend on social media (e.g., Wendy's) is a superficial attempt at humor that fails to meet the manifesto's standard of genuine humility
+
+**Topics covered:**
+- **AI-generated slide decks** — NotebookLM can create slide decks from lecture transcripts (QR codes don't work yet, but content is accurate)
+- **Content distribution** — recordings posted via Canvas Discussions to trigger email notifications (bypasses 50MB file upload limit)
+- **Cluetrain discussion** — thesis #20-22 on companies needing to lighten up and take themselves less seriously
+- **Keyboard shortcut stickers** — given as rewards for strong discussion answers
+
+---
+
+### Jan 22 — Introduction and digital literacy
+
+**Key takeaways:**
+- The syllabus is the primary guide, but Canvas Announcements are the definitive source for updates
+- Treat your computer as a personal tool to be customized, not a fragile machine — mastering shortcuts signals advanced digital literacy to employers
+- Install a password manager, ad blocker (uBlock Origin), and tab manager (OneTab) as essential browser extensions
+
+**Topics covered:**
+- **"Mountain of principle"** — the core philosophy is to create and experiment without fear of imperfection
+- **Keyboard shortcuts** — copy, cut, paste, new tab, reopen closed tab, switch applications, jump to address bar
+- **Essential browser extensions** — password manager, uBlock Origin, OneTab, CopyClip (Mac), Grammarly, Video Speed Controller, Greenshot
+- **File types** — plain text (.txt), markdown (.md), and HTML (.html)
+- **First assignment** — read the "95 Theses of the Cluetrain Manifesto" and the Josh Topolsky article
 
 ---
 
