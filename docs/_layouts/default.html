@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }} | STCM140</title>
 
+    <!-- Favicon -->
+    {% if page.title == 'Schedule' %}
+    <link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/assets/favicons/schedule.svg">
+    {% elsif page.title == 'Assignments' %}
+    <link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/assets/favicons/assignments.svg">
+    {% elsif page.title == 'Lectures' %}
+    <link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/assets/favicons/lectures.svg">
+    {% elsif page.title == 'Resources' %}
+    <link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/assets/favicons/resources.svg">
+    {% else %}
+    <link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/assets/favicons/home.svg">
+    {% endif %}
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
