@@ -18,6 +18,8 @@ Class sessions are recorded and available for review. Recordings include AI-gene
 | Jan 29 | Cluetrain manifesto discussion | [Watch](https://fathom.video/share/shap7yeWzKzfsgd8y3y1esvsBbmKXBqU) |
 | Feb 3 | AI tools & assignment submission | [Watch](https://fathom.video/calls/555106563) |
 | Feb 5 | Design principles & slide design | [Watch](https://fathom.video/calls/558149217) |
+| Feb 10 | Critique propaganda posters and introduce the next assignment | [Watch](https://fathom.video/share/NizhVy-uyKdfSRjq6pTBNc5LxyFRskEy) |
+| Feb 12 | Slide design and final project overview | [Watch](https://fathom.video/share/NKsLsu-V_ycoTfbZDXsbRx6WYxpJp7jc) |
 
 *Recordings are added after each class session.*
 
@@ -26,6 +28,32 @@ Class sessions are recorded and available for review. Recordings include AI-gene
 ## Lecture summaries
 
 AI-generated summaries from class recordings, reviewed for accuracy. Use these for review or if you missed a session.
+
+### Feb 10 — Critique propaganda posters and introduce the next assignment
+
+**Key takeaways:**
+- **Poster Critique:** Designs were critiqued for poor hierarchy, excessive borders, and illegible text. Key advice: use the rule of thirds for clear focal points and align text left, not center.
+- **New Assignment:** Create a 10-slide deck on a "nonsensical" topic, due Thursday, to apply design principles to a multi-canvas project.
+- **Final Project:** The final project will be assigned Thursday, with spring break (starts March 8) as a potential work period.
+
+**Topics covered:**
+- **Propaganda Poster Critiques** — **"Crush Their Nuts" Poster**
+- **New Assignment: "Create a Slide Deck That Doesn't Suck"** — **Objective:** Apply design principles to a multi-canvas project (10 slides).
+
+---
+
+### Feb 12 — Slide design and final project overview
+
+**Key takeaways:**
+- **Final Project Assigned:** A cumulative project to create a multimedia campaign for a real or fictional organization.
+- **Strategic Foundation:** The project requires a Style Guide, Research Dossier, Customer Personas, and a Campaign Strategy document before creative work begins.
+- **Creative Deliverables:** The campaign must include two written pieces, four social media graphics, and nine social media captions (three for Twitter to force conciseness).
+
+**Topics covered:**
+- **Slide Deck Review & Feedback** — **River's Presentation (Lizzie McAlpine):**
+- **Final Project: Multimedia Campaign** — **Objective:** Create a multimedia campaign for a real or fictional entity.
+
+---
 
 ### Feb 5 — Design principles and slide design
 
