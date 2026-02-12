@@ -108,6 +108,11 @@ class Submission(Base):
     submitted_at = Column(DateTime, nullable=True)
     status = Column(String(20), default=SubmissionStatus.PENDING.value)
 
+    # Canvas grade data (from instructor via SpeedGrader)
+    canvas_score = Column(Float, nullable=True)        # Numeric grade from Canvas
+    canvas_grade = Column(String(20), nullable=True)   # Letter/formatted grade from Canvas
+    canvas_comments = Column(JSON, nullable=True)       # List of comment dicts from Canvas
+
     # Manual input source tracking
     input_source = Column(String(50), default="canvas")  # canvas, manual, csv_import, etc.
 

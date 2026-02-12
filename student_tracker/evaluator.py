@@ -21,7 +21,7 @@ from .teaching_context import get_teaching_context
 
 # Anthropic API configuration
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-EVAL_MODEL = "claude-sonnet-4-20250514"  # Upgraded from Haiku for better feedback
+EVAL_MODEL = "claude-sonnet-4-5-20250929"  # Upgraded to Sonnet 4.5 for better feedback
 PROMPT_VERSION = "2.0"
 
 # Joe's voice/style for feedback (brief, warm, direct, uses contractions)

@@ -51,6 +51,9 @@ BASE_TEMPLATE = """
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Student Tracker{% endblock %} | STCM140</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+
     <!-- Fonts (matching GitHub Pages) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -541,8 +544,12 @@ STUDENT_DETAIL_TEMPLATE = """
                     </span>
                 </td>
                 <td class="text-mist">
-                    {% if sub.score is not none %}
+                    {% if sub.canvas_score is not none %}
+                    <span class="font-medium text-ink">{{ "%.1f"|format(sub.canvas_score) }}</span>/{{ "%.0f"|format(sub.max_score) }}
+                    <span class="text-xs text-mist ml-1">Canvas</span>
+                    {% elif sub.score is not none %}
                     {{ "%.1f"|format(sub.score) }}/{{ "%.0f"|format(sub.max_score) }}
+                    <span class="text-xs text-mist ml-1">AI</span>
                     {% else %}
                     —
                     {% endif %}
@@ -838,10 +845,17 @@ ASSIGNMENT_DETAIL_TEMPLATE = """
                     </span>
                 </td>
                 <td>
-                    {% if sub.score is not none %}
+                    {% if sub.canvas_score is not none %}
+                    {% set canvas_pct = (sub.canvas_score / assignment.points_possible * 100) if assignment.points_possible > 0 else 0 %}
+                    <span class="font-semibold {% if canvas_pct >= 80 %}text-accent{% elif canvas_pct >= 60 %}text-yellow-700{% else %}text-crimson{% endif %}">
+                        {{ "%.1f"|format(sub.canvas_score) }}/{{ assignment.points_possible }} ({{ "%.0f"|format(canvas_pct) }}%)
+                    </span>
+                    <span class="text-xs text-mist ml-1">Canvas</span>
+                    {% elif sub.score is not none %}
                     <span class="font-semibold {% if sub.percentage >= 80 %}text-accent{% elif sub.percentage >= 60 %}text-yellow-700{% else %}text-crimson{% endif %}">
                         {{ "%.1f"|format(sub.score) }}/{{ assignment.points_possible }} ({{ "%.0f"|format(sub.percentage) }}%)
                     </span>
+                    <span class="text-xs text-mist ml-1">AI</span>
                     {% else %}
                     <span class="text-mist">Not evaluated</span>
                     {% endif %}
@@ -868,12 +882,32 @@ SUBMISSION_DETAIL_TEMPLATE = """
     <p class="text-mist mt-1">{{ submission.assignment_name }} · {{ submission.points_possible }} points</p>
 </div>
 
+<!-- Canvas grade -->
+{% if submission.canvas_score is not none %}
+<div class="deckle-card rounded-lg p-4 mb-6 border-l-4 border-blue-400 bg-blue-50/30">
+    <div class="flex items-center justify-between">
+        <div>
+            <h3 class="text-xs text-mist mb-1 uppercase tracking-wide">Canvas grade</h3>
+            <span class="text-2xl font-bold">{{ "%.1f"|format(submission.canvas_score) }}</span>
+            <span class="text-mist">/{{ submission.points_possible }}</span>
+            {% if submission.canvas_grade %}
+            <span class="ml-3 px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-sm font-medium">{{ submission.canvas_grade }}</span>
+            {% endif %}
+        </div>
+        {% set canvas_pct = (submission.canvas_score / submission.points_possible * 100) if submission.points_possible > 0 else 0 %}
+        <span class="text-lg font-semibold {% if canvas_pct >= 80 %}text-accent{% elif canvas_pct >= 60 %}text-yellow-700{% else %}text-crimson{% endif %}">
+            {{ "%.0f"|format(canvas_pct) }}%
+        </span>
+    </div>
+</div>
+{% endif %}
+
 <!-- Stats Row -->
 {% if evaluation %}
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
     <!-- Score Gauge -->
     <div class="deckle-card rounded-lg p-4 text-center">
-        <h3 class="text-xs text-mist mb-2 uppercase tracking-wide">Score</h3>
+        <h3 class="text-xs text-mist mb-2 uppercase tracking-wide">AI score</h3>
         <div class="relative w-20 h-20 mx-auto">
             <svg class="w-full h-full transform -rotate-90">
                 <circle cx="40" cy="40" r="35" stroke="#d6cdb7" stroke-width="6" fill="none"/>
@@ -987,6 +1021,24 @@ SUBMISSION_DETAIL_TEMPLATE = """
 <div class="deckle-card rounded-lg p-6 mb-10">
     <h2 class="text-lg mb-4">Feedback</h2>
     <p class="text-sm leading-relaxed">{{ evaluation.feedback }}</p>
+</div>
+{% endif %}
+
+<!-- Canvas comments -->
+{% if submission.canvas_comments %}
+<div class="deckle-card rounded-lg p-6 mb-10">
+    <h2 class="text-lg mb-4">Canvas comments</h2>
+    <div class="space-y-4">
+        {% for comment in submission.canvas_comments %}
+        <div class="p-4 bg-blue-50/30 rounded-lg border-l-2 border-blue-300">
+            <div class="flex justify-between items-start mb-2">
+                <span class="text-sm font-medium">{{ comment.author_name }}</span>
+                <span class="text-xs text-mist">{{ comment.created_at[:10] if comment.created_at else '' }}</span>
+            </div>
+            <p class="text-sm leading-relaxed">{{ comment.comment }}</p>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endif %}
 
@@ -1807,6 +1859,8 @@ def student_detail(student_id: int):
             "status": sub.status,
             "score": final_eval.score if final_eval else None,
             "max_score": sub.assignment.points_possible,
+            "canvas_score": sub.canvas_score,
+            "canvas_grade": sub.canvas_grade,
             "submitted_at": sub.submitted_at.strftime("%Y-%m-%d") if sub.submitted_at else None
         })
 
@@ -1882,6 +1936,7 @@ def assignment_detail(assignment_id: int):
             "status": sub.status,
             "score": final_eval.score if final_eval else None,
             "percentage": (final_eval.score / assignment.points_possible * 100) if final_eval and assignment.points_possible > 0 else None,
+            "canvas_score": sub.canvas_score,
             "submitted_at": sub.submitted_at.strftime("%Y-%m-%d %H:%M") if sub.submitted_at else None,
             "has_evaluation": final_eval is not None
         })
@@ -2019,7 +2074,10 @@ def submission_detail(submission_id: int):
         "points_possible": submission.assignment.points_possible,
         "status": submission.status,
         "content": submission.content,
-        "submitted_at": submission.submitted_at.strftime("%Y-%m-%d %H:%M") if submission.submitted_at else None
+        "submitted_at": submission.submitted_at.strftime("%Y-%m-%d %H:%M") if submission.submitted_at else None,
+        "canvas_score": submission.canvas_score,
+        "canvas_grade": submission.canvas_grade,
+        "canvas_comments": submission.canvas_comments
     }
 
     # Get evaluation history (all evaluations, not just final)
