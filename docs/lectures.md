@@ -29,19 +29,6 @@ Class sessions are recorded and available for review. Recordings include AI-gene
 
 AI-generated summaries from class recordings, reviewed for accuracy. Use these for review or if you missed a session.
 
-### Feb 10 — Critique propaganda posters and introduce the next assignment
-
-**Key takeaways:**
-- **Poster Critique:** Designs were critiqued for poor hierarchy, excessive borders, and illegible text. Key advice: use the rule of thirds for clear focal points and align text left, not center.
-- **New Assignment:** Create a 10-slide deck on a "nonsensical" topic, due Thursday, to apply design principles to a multi-canvas project.
-- **Final Project:** The final project will be assigned Thursday, with spring break (starts March 8) as a potential work period.
-
-**Topics covered:**
-- **Propaganda Poster Critiques** — **"Crush Their Nuts" Poster**
-- **New Assignment: "Create a Slide Deck That Doesn't Suck"** — **Objective:** Apply design principles to a multi-canvas project (10 slides).
-
----
-
 ### Feb 12 — Slide design and final project overview
 
 **Key takeaways:**
@@ -52,6 +39,19 @@ AI-generated summaries from class recordings, reviewed for accuracy. Use these f
 **Topics covered:**
 - **Slide Deck Review & Feedback** — **River's Presentation (Lizzie McAlpine):**
 - **Final Project: Multimedia Campaign** — **Objective:** Create a multimedia campaign for a real or fictional entity.
+
+---
+
+### Feb 10 — Critique propaganda posters and introduce the next assignment
+
+**Key takeaways:**
+- **Poster Critique:** Designs were critiqued for poor hierarchy, excessive borders, and illegible text. Key advice: use the rule of thirds for clear focal points and align text left, not center.
+- **New Assignment:** Create a 10-slide deck on a "nonsensical" topic, due Thursday, to apply design principles to a multi-canvas project.
+- **Final Project:** The final project will be assigned Thursday, with spring break (starts March 8) as a potential work period.
+
+**Topics covered:**
+- **Propaganda Poster Critiques** — **"Crush Their Nuts" Poster**
+- **New Assignment: "Create a Slide Deck That Doesn't Suck"** — **Objective:** Apply design principles to a multi-canvas project (10 slides).
 
 ---
 
