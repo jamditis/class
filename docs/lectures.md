@@ -20,6 +20,7 @@ Class sessions are recorded and available for review. Recordings include AI-gene
 | Feb 5 | Design principles & slide design | [Watch](https://fathom.video/calls/558149217) |
 | Feb 10 | Critique propaganda posters and introduce the next assignment | [Watch](https://fathom.video/share/NizhVy-uyKdfSRjq6pTBNc5LxyFRskEy) |
 | Feb 12 | Slide design and final project overview | [Watch](https://fathom.video/share/NKsLsu-V_ycoTfbZDXsbRx6WYxpJp7jc) |
+| Feb 17 | To kick off the final project and define the initial research phase | [Watch](https://fathom.video/share/K-sxWDod42c1Qyfrs7w9nkrnPm_z1Ntn) |
 
 *Recordings are added after each class session.*
 
@@ -28,6 +29,23 @@ Class sessions are recorded and available for review. Recordings include AI-gene
 ## Lecture summaries
 
 AI-generated summaries from class recordings, reviewed for accuracy. Use these for review or if you missed a session.
+
+### Feb 17 — To kick off the final project and define the initial research phase
+
+**Key takeaways:**
+- **Final Project:** All assignments from now on contribute to a single final project: creating a multimedia campaign for a real or fictional organization.
+- **Research Dossier:** The first deliverable is a Research Dossier (or Landscape Scan) to map the organization's ecosystem (competitors, audience, gaps) and inform the campaign strategy.
+- **Strategic Focus:** Choose a smaller organization or a hyper-specific campaign for a large one. This avoids being overwhelmed by existing work and allows for more creative impact.
+
+**Topics covered:**
+- **Final Project Overview** — The final project is a cumulative campaign for a real or fictional organization.
+- **Project Selection Strategy** — **Avoid Dominant Brands (e.g., Apple, Disney):**
+- **Research Dossier (Landscape Scan)** — **Purpose:** To map the organization's ecosystem and identify strategic opportunities.
+- **Example: Hammond Museum Campaign** — **Organization:** Hammond Museum and Japanese Stroll Garden (real, local).
+- **Google Drive Setup & Submission** — **Process:**
+- **Syllabus & Communication Updates** — **Syllabus:** Being updated to reflect the new assignment structure.
+
+---
 
 ### Feb 12 — Slide design and final project overview
 
