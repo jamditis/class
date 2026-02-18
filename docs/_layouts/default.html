@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+<!--
+  STCM140: multimedia production for strategic communications
+  montclair state university, spring 2026
+  instructor: joe amditis (amditis@montclair.edu)
+
+  if you're a student who just opened view-source:
+  that curiosity will serve you better than any assignment grade.
+
+  if you're anyone else: this is a course site. jekyll + tailwind. nothing wild.
+  live at: jamditis.github.io/class/
+-->
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -419,5 +430,14 @@
         document.querySelectorAll('.reveal-section').forEach(section => {
             observer.observe(section);
         });
-    </script></body>
+    </script>
+
+    <script>
+      /* easter egg — hello, curious student */
+      console.log('%c STCM140 ', 'background: #121212; color: #CA3553; font-weight: bold; font-size: 16px; padding: 4px 8px; border-radius: 2px;')
+      console.log('%c multimedia production for strategic communications — montclair state, spring 2026', 'color: #666; font-style: italic; font-size: 13px;')
+      console.log('%c stack: jekyll · tailwind cdn · github pages · fraunces + plus jakarta sans', 'color: #999; font-size: 11px;')
+      console.log('%c instructor: joe amditis  —  amditis@montclair.edu', 'color: #999; font-size: 11px;')
+    </script>
+</body>
 </html>
