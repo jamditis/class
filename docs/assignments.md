@@ -141,11 +141,11 @@ Submit via **Canvas** before 10:00 AM on Tuesday, February 10. Upload your poste
 
 **Due:** Tuesday, February 24
 
-The Research Dossier is your project's living research document — a structured scratchpad where you gather everything about your organization: competitors, audience, trends, gaps, and inspiration. The first submission is a low-stakes check for direction, not a final draft. You'll continue building it throughout the semester.
+The Research Dossier (or Landscape Scan) is your project's living research document — a structured scratchpad where you map everything about your organization: competitors, audience, trends, gaps, and inspiration. This first submission is a low-stakes directional check, not a final draft. You'll keep building it throughout the semester and submit the full version as part of the final project.
 
 **Choose your organization first.** If you haven't picked one yet, here's what works well:
 
-- A small-to-medium business (local coffee shop, bakery, gym) that's good at what it does but weak on marketing
+- A small-to-medium business (local coffee shop, bakery, gym) that's good at what it does but has clear marketing gaps
 - A local or community organization (a theater, a non-profit, a community group)
 - A fictional brand you create from scratch
 - A hyper-specific campaign for a larger brand (one product launch, one regional initiative)
@@ -154,19 +154,21 @@ Avoid large dominant brands (Disney, Apple, the Knicks) — their existing profe
 
 **What to include:**
 
-- **Competitor analysis** — 3-5 competitors or comparable organizations, covering social media presence, pricing, and key messaging
+- **Competitor analysis** — 3–5 competitors or comparable organizations, covering social media presence, pricing, and key messaging
 - **Audience analysis** — current vs. potential audience; who they are and what they need
 - **SWOT analysis** — Strengths, Weaknesses, Opportunities, Threats
 - **Inspiration** — content or campaigns that could inform your approach
-- **Customer persona(s)** — at least one draft persona: a short bio, typical day/schedule, goals, and pain points
+- **Customer persona(s)** — at least one draft persona: a short bio, typical daily schedule, goals, and pain points
 
 **Submission:**
 
-Share your Google Doc as **"Anyone with the link can edit"** and submit the link via Canvas. You do not need to uncheck "Notify people" for this one — the point of editor access is so I can leave inline comments.
+Set up one Google Drive folder for your entire final project. Set sharing permissions to **"Anyone at Montclair State University can edit."** Submit that folder's URL in Canvas — this one-time setup covers all future assignment submissions and gives me editor access to leave inline comments.
 
 **Grading:**
 
-This submission is graded on completion and general direction (35 points), not on the quality or depth of the final content. Show me you've picked an organization and started gathering research.
+This submission is graded on completion and general direction (35 points), not on the quality or depth of the content. Show me you've picked an organization and started gathering real information.
+
+[More details about this deliverable.]({{ site.baseurl }}/deliverables/research-dossier)
 
 ---
 
@@ -174,15 +176,29 @@ This submission is graded on completion and general direction (35 points), not o
 
 **Due:** Thursday, March 5
 
-Write a 2-3 page strategic document outlining how your organization would deploy the assets you've created.
+Write a 1–2 page strategic document that bridges your research dossier and your creative production. This is the plan before you make anything — what you're doing, why, where, and how you'll know if it worked.
 
-**Include:**
+**Structure your strategy using this framework:**
 
-- **Campaign goal:** What are you trying to achieve?
-- **Target audience:** Who are you reaching? Describe your intended audience based on your research dossier findings.
-- **Platform strategy:** Where will these assets live and why?
-- **Content calendar:** A two-week sample showing when and where each asset type would be posted
-- **Success metrics:** How will you measure whether this worked?
+1. **Goal** — one specific, measurable statement of what the campaign accomplishes. Name the audience, the outcome, and a timeframe. "Grow our Instagram" is not a goal. "Increase first-time visits from MSU students by 40 in 90 days" is a goal.
+
+2. **Strategies** — 2–4 broad directional approaches to reaching that goal. Strategies explain why you're doing something, not what specifically you'll do.
+
+3. **Tactics** — the specific, actionable things you'll do to execute each strategy. Each tactic should map to a strategy.
+
+4. **KPIs** — 3–5 metrics you'll track to measure success. Pick numbers you can actually measure, with a baseline and a target.
+
+5. **CTAs** — the specific actions you want your audience to take. Define these upfront so they're consistent across all content.
+
+**Also include:**
+
+A two-week sample content calendar showing what you'd post, where, and when — enough to show you've thought about posting frequency and platform mix.
+
+**Submission:**
+
+Add the campaign strategy to your project Google Drive folder. Submit the folder URL in Canvas (same link as the research dossier — no new folder needed).
+
+[More details about this deliverable.]({{ site.baseurl }}/deliverables/campaign-strategy)
 
 ---
 
@@ -190,15 +206,25 @@ Write a 2-3 page strategic document outlining how your organization would deploy
 
 **Due:** Thursday, March 19
 
-Develop a detailed customer/user persona for your final project organization.
+Create 2–3 detailed customer/user personas for your final project organization. A persona is a fictional-but-research-grounded profile of one specific type of customer — specific enough that you can design and write content for that person directly.
 
-**Requirements:**
+As we discussed in class: personas lead directly to campaign ideas. A persona who commutes to work every morning and stops for coffee on the way becomes the premise for a morning-rush loyalty campaign. Build the person first, and the ideas follow.
 
-- Demographic information
-- Psychographic profile (values, interests, pain points)
-- Media consumption habits
-- Goals and challenges
-- How your organization serves their needs
+**Each persona should include:**
+
+- **Bio** — 1–2 sentences to give the person a face. Name, age, occupation, and a detail that makes them real.
+- **Typical day** — walk through their daily schedule at the level of detail that's relevant to your organization. Where are they? What devices are they on? When do they have time to engage?
+- **Goals** — what are they trying to accomplish, both generally and in moments relevant to your organization?
+- **Pain points** — what frustrates them? What problems are they actively trying to solve?
+- **How they interact with your organization** — what brings them in, what keeps them coming back, and what could drive them away?
+
+**The personas should be distinct from each other.** Don't create three versions of the same 22-year-old. Push yourself to understand at least two meaningfully different customer types.
+
+**Submission:**
+
+Add your persona document to your project Google Drive folder. Submit the folder URL in Canvas.
+
+[More details about this deliverable.]({{ site.baseurl }}/deliverables/personas)
 
 ---
 
@@ -206,14 +232,26 @@ Develop a detailed customer/user persona for your final project organization.
 
 **Due:** Thursday, March 26
 
-Write 3 pieces of copy using a "solutions lens" — critiquing industry problems while offering constructive alternatives.
+Write 3 distinct pieces of copy using a "solutions lens" — each one identifies a real problem in your organization's industry, explains why it matters, and points to better alternatives. This is not a complaint piece. The solutions lens means you're raising the bar by showing what good looks like.
 
-**Requirements:**
+**The three pieces:**
 
-- 3 distinct pieces (social post, email, blog intro)
-- Each addresses a real problem in your field
-- Maintains professional, constructive tone
-- Demonstrates clear voice and perspective
+1. **Social post** — Twitter/X format, 280 characters maximum. Forces you to name the problem and the alternative with no room to hedge.
+
+2. **Email** — subject line plus 2–3 short paragraphs. Write it as if sending to a real subscriber list. The subject line is half the assignment.
+
+3. **Blog post opening** — the first 3–4 paragraphs of a longer piece. Hook the reader with a specific scene or observation, name the problem clearly, and end with enough momentum that they'd keep reading.
+
+**For each piece:**
+- Write in your organization's voice — these should feel like they came from your brand
+- Name the problem with specificity — "many brands" is too vague; describe the actual behavior or failure
+- Point to at least one real example of a brand doing it better, and say specifically what they're doing right
+
+**Submission:**
+
+Add all three pieces to a single Google Doc in your project Drive folder. Submit the folder URL in Canvas.
+
+[More details about this deliverable.]({{ site.baseurl }}/deliverables/written-pieces)
 
 ---
 
@@ -221,18 +259,24 @@ Write 3 pieces of copy using a "solutions lens" — critiquing industry problems
 
 **Due:** Thursday, April 9
 
-Create a cohesive set of visual assets for your final project organization.
+Create a cohesive set of visual assets for your final project organization, all consistent with your style guide.
 
 **Deliverables:**
 
-- **3 featured images** for blog posts/articles (1200x630 pixels)
-- **3 social media graphics** (1080x1080 pixels)
+- **2 featured images** — graphics for blog post social previews (1200×630 pixels). These appear when your content is shared as a link on social media and determine whether someone clicks through.
+- **4 social media graphics** — standalone images for direct posting (1080×1080 pixels). These need to work on their own, without the context of an article.
 
 **Requirements:**
 
-- Consistent branding (colors, fonts, visual style)
-- Proper alt text descriptions for all images
-- Export-ready for web (PNG or JPEG, optimized file size)
+- Consistent with your style guide (colors, fonts, visual language)
+- Alt text for every image
+- Exported as PNG or JPEG, optimized for web
+
+**Submission:**
+
+Add all six image files to your project Google Drive folder — do not embed them in a Google Doc. Submit the folder URL in Canvas.
+
+[More details about featured images.]({{ site.baseurl }}/deliverables/featured-images) [More details about social graphics.]({{ site.baseurl }}/deliverables/social-graphics)
 
 ---
 
