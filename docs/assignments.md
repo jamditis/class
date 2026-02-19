@@ -251,21 +251,21 @@ Create a multimedia campaign for a real or fictional organization. All assignmen
 
 **Required deliverables:**
 
-1. **Style guide and branding kit** — A detailed manual with specific rules for fonts, colors (primary and secondary palettes), tone, grammar, and design elements. Goal: anyone following the guide could post for the company without the audience noticing a difference.
+1. **Style guide and branding kit** — A detailed manual with specific rules for fonts, colors (primary and secondary palettes), tone, grammar, and design elements. Goal: anyone following the guide could post for the company without the audience noticing a difference. [More details about this deliverable.]({{ site.baseurl }}/deliverables/style-guide)
 
-2. **Research dossier** — Your living internal document: competitor analysis, audience analysis, SWOT, and inspiration. (Built throughout the semester.)
+2. **Research dossier** — Your living internal document: competitor analysis, audience analysis, SWOT, and inspiration. (Built throughout the semester.) [More details about this deliverable.]({{ site.baseurl }}/deliverables/research-dossier)
 
-3. **Customer/user personas** — 2–3 fictional profiles of ideal customers, each with a bio, typical day, goals, and pain points. These lead directly to campaign ideas.
+3. **Customer/user personas** — 2–3 fictional profiles of ideal customers, each with a bio, typical day, goals, and pain points. These lead directly to campaign ideas. [More details about this deliverable.]({{ site.baseurl }}/deliverables/personas)
 
-4. **Campaign strategy document** — A 1–2 page plan structured as: Goal → Strategies → Tactics → KPIs (success metrics) → CTAs (calls to action).
+4. **Campaign strategy document** — A 1–2 page plan structured as: Goal → Strategies → Tactics → KPIs (success metrics) → CTAs (calls to action). [More details about this deliverable.]({{ site.baseurl }}/deliverables/campaign-strategy)
 
-5. **Two written pieces** — One must be a "call-out" piece: identify an industry problem, explain its impact, and highlight brands doing it right.
+5. **Two written pieces** — One must be a "call-out" piece: identify an industry problem, explain its impact, and highlight brands doing it right. [More details about this deliverable.]({{ site.baseurl }}/deliverables/written-pieces)
 
-6. **Two featured images** — Graphics for blog post social previews (1200×630 pixels). These boost click-through rates when your posts appear in social feeds.
+6. **Two featured images** — Graphics for blog post social previews (1200×630 pixels). These boost click-through rates when your posts appear in social feeds. [More details about this deliverable.]({{ site.baseurl }}/deliverables/featured-images)
 
-7. **Four social media graphics** — Standalone images for direct posting (1080×1080 pixels). Must be visually compelling on their own.
+7. **Four social media graphics** — Standalone images for direct posting (1080×1080 pixels). Must be visually compelling on their own. [More details about this deliverable.]({{ site.baseurl }}/deliverables/social-graphics)
 
-8. **Nine social media captions** — Three must be for Twitter/X to practice writing within the character limit and force conciseness.
+8. **Nine social media captions** — Three must be for Twitter/X to practice writing within the character limit and force conciseness. [More details about this deliverable.]({{ site.baseurl }}/deliverables/social-captions)
 
 **Submission note:** For any graphics embedded in Google Docs, you must also include the raw image files (PNG or JPEG) in your shared project folder.
 
