@@ -14,11 +14,10 @@ All assignments are submitted through Canvas. Due dates are Thursdays at 11:59 P
 | Assignment | Points | Due |
 |------------|--------|-----|
 | Read the Cluetrain Manifesto | 25 | Jan 29 |
-| Cluetrain Manifesto media analysis | 25 | Feb 3 |
-| Design principles prep | 15 | Feb 5 |
+| Cluetrain Manifesto media analysis | 35 | Feb 3 |
 | Alien propaganda poster | 50 | Feb 10 |
-| Design a slide deck that doesn't suck | 50 | Feb 17 |
-| Research dossier | 50 | Feb 26 |
+| Design a slide deck that doesn't suck | 50 | Feb 12 |
+| Research dossier | 35 | Feb 24 |
 | Campaign strategy | 75 | Mar 5 |
 | User/customer persona | 75 | Mar 19 |
 | Critical copywriting | 100 | Mar 26 |
@@ -37,7 +36,7 @@ Read the "95 Theses of the Cluetrain Manifesto" and come prepared to discuss its
 
 ---
 
-### Cluetrain Manifesto media analysis (25 pts)
+### Cluetrain Manifesto media analysis (35 pts)
 
 **Due:** Tuesday, February 3 at 10:00 AM (before class)
 
@@ -74,17 +73,9 @@ Find a piece of media that is relevant to the Cluetrain Manifesto and analyze ho
 
 ---
 
-### Design principles prep (15 pts)
-
-**Due:** Thursday, February 5 (before class)
-
-[Full assignment details](https://docs.google.com/document/d/PLACEHOLDER)
-
----
-
 ### Design a slide deck that doesn't suck (50 pts)
 
-**Due:** Tuesday, February 17
+**Due:** Thursday, February 12
 
 Create a 5-7 slide presentation on a topic of your choice that demonstrates strong design principles: visual hierarchy, contrast, alignment, and restraint.
 
@@ -146,18 +137,36 @@ Submit via **Canvas** before 10:00 AM on Tuesday, February 10. Upload your poste
 
 ---
 
-### Research dossier (50 pts)
+### Research dossier (35 pts)
 
-**Due:** Thursday, February 26
+**Due:** Tuesday, February 24
 
-Create a comprehensive research dossier for your final project organization. This should include competitor analysis, audience research, and content inspiration.
+The Research Dossier is your project's living research document — a structured scratchpad where you gather everything about your organization: competitors, audience, trends, gaps, and inspiration. The first submission is a low-stakes check for direction, not a final draft. You'll continue building it throughout the semester.
 
-**Requirements:**
+**Choose your organization first.** If you haven't picked one yet, here's what works well:
 
-- 3-5 competitor examples with analysis
-- Audience demographics and psychographics
-- Content examples that inspire your approach
-- Key findings and strategic implications
+- A small-to-medium business (local coffee shop, bakery, gym) that's good at what it does but weak on marketing
+- A local or community organization (a theater, a non-profit, a community group)
+- A fictional brand you create from scratch
+- A hyper-specific campaign for a larger brand (one product launch, one regional initiative)
+
+Avoid large dominant brands (Disney, Apple, the Knicks) — their existing professional work is overwhelming and limits your creative freedom. If you're unsure whether your choice works, come to office hours or reply to this assignment.
+
+**What to include:**
+
+- **Competitor analysis** — 3-5 competitors or comparable organizations, covering social media presence, pricing, and key messaging
+- **Audience analysis** — current vs. potential audience; who they are and what they need
+- **SWOT analysis** — Strengths, Weaknesses, Opportunities, Threats
+- **Inspiration** — content or campaigns that could inform your approach
+- **Customer persona(s)** — at least one draft persona: a short bio, typical day/schedule, goals, and pain points
+
+**Submission:**
+
+Share your Google Doc as **"Anyone with the link can edit"** and submit the link via Canvas. You do not need to uncheck "Notify people" for this one — the point of editor access is so I can leave inline comments.
+
+**Grading:**
+
+This submission is graded on completion and general direction (35 points), not on the quality or depth of the final content. Show me you've picked an organization and started gathering research.
 
 ---
 
@@ -227,23 +236,40 @@ Create a cohesive set of visual assets for your final project organization.
 
 ---
 
-## Final project: Multimedia asset package (~40%)
+## Final project: Multimedia campaign (~40%)
 
 **Due:** Monday, May 4
 
-Create a complete multimedia asset package for an organization of your choice. This brings together everything you've learned throughout the semester.
+Create a multimedia campaign for a real or fictional organization. All assignments from here on are deliverables for this project — you're building it piece by piece throughout the semester.
 
-**Required components:**
+**Choose your organization wisely.** Avoid large, dominant brands (Disney, Apple, the Knicks) — their existing professional work is too high a bar to compete with and limits your creative freedom. Strong options:
 
-1. Research dossier
-2. User/customer persona
-3. Brand style guide
-4. 3 blog post featured images
-5. 3 social media graphics
-6. Campaign strategy document
-7. 500-word reflection on your process
+- A small-to-medium business (local coffee shop, bakery, gym) that's good at what it does but weak on marketing
+- A local or niche organization (a theater, a community group, a non-profit)
+- A fictional brand you invent from scratch
+- A hyper-specific campaign for a large brand (e.g., one product launch or one regional initiative)
 
-**Presentation:** You will present your asset package during finals week. Be prepared to explain your strategic decisions and walk through your deliverables.
+**Required deliverables:**
+
+1. **Style guide and branding kit** — A detailed manual with specific rules for fonts, colors (primary and secondary palettes), tone, grammar, and design elements. Goal: anyone following the guide could post for the company without the audience noticing a difference.
+
+2. **Research dossier** — Your living internal document: competitor analysis, audience analysis, SWOT, and inspiration. (Built throughout the semester.)
+
+3. **Customer/user personas** — 2–3 fictional profiles of ideal customers, each with a bio, typical day, goals, and pain points. These lead directly to campaign ideas.
+
+4. **Campaign strategy document** — A 1–2 page plan structured as: Goal → Strategies → Tactics → KPIs (success metrics) → CTAs (calls to action).
+
+5. **Two written pieces** — One must be a "call-out" piece: identify an industry problem, explain its impact, and highlight brands doing it right.
+
+6. **Two featured images** — Graphics for blog post social previews (1200×630 pixels). These boost click-through rates when your posts appear in social feeds.
+
+7. **Four social media graphics** — Standalone images for direct posting (1080×1080 pixels). Must be visually compelling on their own.
+
+8. **Nine social media captions** — Three must be for Twitter/X to practice writing within the character limit and force conciseness.
+
+**Submission note:** For any graphics embedded in Google Docs, you must also include the raw image files (PNG or JPEG) in your shared project folder.
+
+**Presentation:** You will present your campaign during finals week. Be prepared to walk through your strategic decisions and explain each deliverable.
 
 ---
 

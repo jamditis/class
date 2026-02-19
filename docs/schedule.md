@@ -13,18 +13,17 @@ title: Schedule
 |----------|------------|--------|
 | Thu, Jan 29 | Academic engagement verification | — |
 | Thu, Jan 29 | Read the Cluetrain Manifesto | 25 |
-| Tue, Feb 3 | Cluetrain Manifesto media analysis | 25 |
-| Thu, Feb 5 | Design principles prep | 15 |
+| Tue, Feb 3 | Cluetrain Manifesto media analysis | 35 |
 | Tue, Feb 10 | Alien propaganda poster | 50 |
-| Tue, Feb 17 | Design a slide deck that doesn't suck | 50 |
-| Thu, Feb 26 | Research dossier | 50 |
+| Thu, Feb 12 | Design a slide deck that doesn't suck | 50 |
+| Tue, Feb 24 | Research dossier | 35 |
 | Thu, Mar 5 | Campaign strategy | 75 |
 | Thu, Mar 19 | User/customer persona | 75 |
 | Thu, Mar 26 | Critical copywriting | 100 |
 | Thu, Apr 9 | Featured images + social graphics | 75 |
 | Mon, May 4 | Final project: Multimedia asset package | ~40% |
 
-**Total points before final:** 540 pts
+**Total points before final:** 520 pts
 
 ---
 
@@ -59,7 +58,6 @@ Assignment protocols, AI usage, and visual communication fundamentals.
 - **Activity:** In-class alien propaganda poster (Canva)
 - **Recommended AI tools:** Gemini (best value via Google One), Claude (technical tasks), ChatGPT
 - **Due Tue, Feb 3 (before class):** Cluetrain Manifesto media analysis (25 pts)
-- **Due Thu, Feb 5 (before class):** Design principles prep (15 pts)
 
 ---
 
@@ -92,7 +90,7 @@ Planning before production.
 
 - **Topic:** Campaign objectives, platform strategy, and content calendars
 - **Focus:** Understanding your audience — moving beyond demographics to motivation
-- **Due Thu, Feb 26:** Research dossier (50 pts)
+- **Due Tue, Feb 24:** Research dossier (35 pts)
 
 ---
 

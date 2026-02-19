@@ -20,7 +20,8 @@ Class sessions are recorded and available for review. Recordings include AI-gene
 | Feb 5 | Design principles & slide design | [Watch](https://fathom.video/calls/558149217) |
 | Feb 10 | Critique propaganda posters and introduce the next assignment | [Watch](https://fathom.video/share/NizhVy-uyKdfSRjq6pTBNc5LxyFRskEy) |
 | Feb 12 | Slide design and final project overview | [Watch](https://fathom.video/share/NKsLsu-V_ycoTfbZDXsbRx6WYxpJp7jc) |
-| Feb 17 | To kick off the final project and define the initial research phase | [Watch](https://fathom.video/share/K-sxWDod42c1Qyfrs7w9nkrnPm_z1Ntn) |
+| Feb 17 | Final project kickoff and research dossier | [Watch](https://fathom.video/share/K-sxWDod42c1Qyfrs7w9nkrnPm_z1Ntn) |
+| Feb 19 | Final project topic strategy | [Watch](https://fathom.video/calls/574092548) |
 
 *Recordings are added after each class session.*
 
@@ -30,20 +31,36 @@ Class sessions are recorded and available for review. Recordings include AI-gene
 
 AI-generated summaries from class recordings, reviewed for accuracy. Use these for review or if you missed a session.
 
-### Feb 17 — To kick off the final project and define the initial research phase
+### Feb 19 — Final project topic strategy
 
 **Key takeaways:**
-- **Final Project:** All assignments from now on contribute to a single final project: creating a multimedia campaign for a real or fictional organization.
-- **Research Dossier:** The first deliverable is a Research Dossier (or Landscape Scan) to map the organization's ecosystem (competitors, audience, gaps) and inform the campaign strategy.
-- **Strategic Focus:** Choose a smaller organization or a hyper-specific campaign for a large one. This avoids being overwhelmed by existing work and allows for more creative impact.
+- Avoid large, established brands (Knicks, Air Jordan) for the final project — their existing marketing makes finding impactful improvements difficult
+- Focus on small-to-medium businesses (SMBs) with clear growth potential — you can apply strategic skills to create tangible, measurable improvements
+- The Research Dossier is a living document. The first submission (due Tuesday) is a low-stakes check for direction, not a final draft
+- Use the class's AI tools (slide decks, NotebookLM) to review material, find citations, and generate mind maps
 
 **Topics covered:**
-- **Final Project Overview** — The final project is a cumulative campaign for a real or fictional organization.
-- **Project Selection Strategy** — **Avoid Dominant Brands (e.g., Apple, Disney):**
-- **Research Dossier (Landscape Scan)** — **Purpose:** To map the organization's ecosystem and identify strategic opportunities.
-- **Example: Hammond Museum Campaign** — **Organization:** Hammond Museum and Japanese Stroll Garden (real, local).
-- **Google Drive Setup & Submission** — **Process:**
-- **Syllabus & Communication Updates** — **Syllabus:** Being updated to reflect the new assignment structure.
+- **Final project selection** — three options: hyper-niche campaign for a large brand, creating a new brand, or (recommended) an SMB
+- **Research Dossier** — first submission due Tuesday; share as a Google Doc with editor access; 35 points for completion/direction
+- **Customer personas** — core dossier component: bio, daily schedule, goals and pain points, and how they interact with your product
+- **Class resources** — slide decks, NotebookLM for AI-generated mind maps and Q&A from transcripts, office hours via Canvas
+
+---
+
+### Feb 17 — Final project kickoff and research dossier
+
+**Key takeaways:**
+- All remaining assignments build toward a single final project: a multimedia campaign for a real or fictional organization
+- The Research Dossier (or Landscape Scan) is the first deliverable — it maps the organization's ecosystem before any creative work begins
+- Choose a smaller organization or a hyper-specific campaign for a large one to avoid being overwhelmed by existing work
+- Create a shared Google Drive folder with "Anyone at Montclair State University can edit" permissions — submit that folder URL for all assignments
+
+**Topics covered:**
+- **Final project overview** — cumulative campaign with all subsequent assignments as deliverables
+- **Project selection strategy** — avoid dominant brands; choose local/fictional orgs or hyper-specific campaigns
+- **Research Dossier content** — competitor analysis, audience analysis (current vs. potential), SWOT analysis
+- **Example: Hammond Museum Campaign** — strategic goal, SMART objectives, audience funnel, CTAs
+- **Google Drive setup** — one shared folder per student, submitted URL grants editor access for feedback
 
 ---
 
