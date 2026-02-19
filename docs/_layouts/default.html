@@ -433,6 +433,182 @@
     </script>
 
     <script>
+    /* inline editor — append ?edit to any page URL to activate */
+    (function() {
+      if (!new URLSearchParams(location.search).has('edit')) return;
+
+      const REPO = 'jamditis/class';
+      const FILE = 'docs/{{ page.path }}';
+      const TOKEN_KEY = 'gh_edit_token';
+      const API = 'https://api.github.com';
+      let fileSha = null;
+      let token = localStorage.getItem(TOKEN_KEY);
+
+      /* always use textContent for variable strings — never innerHTML */
+      function setText(id, str) {
+        const el = document.getElementById(id);
+        if (el) el.textContent = str;
+      }
+
+      function setStatus(msg, isError) {
+        setText('ed-status', msg);
+        const el = document.getElementById('ed-status');
+        if (el) el.style.color = isError ? '#CA3553' : '#3d4b40';
+      }
+
+      async function fetchFile(tok) {
+        const res = await fetch(API + '/repos/' + REPO + '/contents/' + FILE, {
+          headers: { Authorization: 'Bearer ' + tok }
+        });
+        if (res.status === 401 || res.status === 403) throw new Error('auth');
+        if (!res.ok) throw new Error('GitHub API ' + res.status);
+        const data = await res.json();
+        fileSha = data.sha;
+        const bytes = Uint8Array.from(atob(data.content.replace(/\n/g, '')), function(c) { return c.charCodeAt(0); });
+        return new TextDecoder().decode(bytes);
+      }
+
+      async function saveFile() {
+        const content = document.getElementById('ed-textarea').value;
+        const btn = document.getElementById('ed-save');
+        btn.disabled = true;
+        setStatus('Saving...');
+        const encoded = btoa(unescape(encodeURIComponent(content)));
+        const res = await fetch(API + '/repos/' + REPO + '/contents/' + FILE, {
+          method: 'PUT',
+          headers: { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: 'Update ' + FILE + ' via inline editor', content: encoded, sha: fileSha })
+        });
+        if (res.ok) {
+          const updated = await res.json();
+          fileSha = updated.content.sha;
+          setStatus('Saved. Site rebuilds in ~60s.');
+        } else {
+          setStatus('Save failed (' + res.status + ')', true);
+        }
+        btn.disabled = false;
+      }
+
+      function showTokenModal(errorMsg) {
+        /* build modal entirely via DOM methods — no variable content in innerHTML */
+        const overlay = document.createElement('div');
+        overlay.id = 'ed-token-modal';
+        overlay.style.cssText = 'position:fixed;inset:0;background:rgba(18,18,18,.85);z-index:9999;display:flex;align-items:center;justify-content:center;font-family:Plus Jakarta Sans,sans-serif';
+
+        const box = document.createElement('div');
+        box.style.cssText = 'background:#ede6d4;padding:2.5rem;max-width:480px;width:90%;border-radius:2px';
+
+        const h2 = document.createElement('h2');
+        h2.textContent = 'Inline editor';
+        h2.style.cssText = 'font-family:Fraunces,serif;font-size:1.5rem;font-weight:300;font-style:italic;margin:0 0 .5rem';
+
+        const desc = document.createElement('p');
+        desc.textContent = 'Enter a GitHub personal access token with contents:write scope. Stored in your browser only.';
+        desc.style.cssText = 'font-size:.875rem;color:#6b6b6b;margin:0 0 1.5rem';
+
+        const input = document.createElement('input');
+        input.id = 'ed-token-input';
+        input.type = 'password';
+        input.placeholder = 'github_pat_...';
+        input.autocomplete = 'off';
+        input.style.cssText = 'width:100%;padding:.75rem;border:1px solid rgba(18,18,18,.15);background:white;font-family:SF Mono,Monaco,monospace;font-size:.8rem;border-radius:2px;margin-bottom:1rem;box-sizing:border-box';
+
+        const errEl = document.createElement('p');
+        errEl.id = 'ed-token-error';
+        errEl.style.cssText = 'color:#CA3553;font-size:.8rem;margin-bottom:1rem';
+        if (errorMsg) {
+          errEl.textContent = errorMsg; /* textContent only — safe */
+        } else {
+          errEl.style.display = 'none';
+        }
+
+        const btnRow = document.createElement('div');
+        btnRow.style.cssText = 'display:flex;gap:.75rem;justify-content:flex-end';
+
+        const cancelBtn = document.createElement('button');
+        cancelBtn.textContent = 'Cancel';
+        cancelBtn.style.cssText = 'padding:.5rem 1.25rem;font-size:.8rem;font-weight:600;background:transparent;border:1px solid rgba(18,18,18,.2);cursor:pointer;border-radius:2px;font-family:Plus Jakarta Sans,sans-serif';
+
+        const okBtn = document.createElement('button');
+        okBtn.textContent = 'Continue';
+        okBtn.style.cssText = 'padding:.5rem 1.25rem;font-size:.8rem;font-weight:600;background:#121212;color:#ede6d4;border:none;cursor:pointer;border-radius:2px;font-family:Plus Jakarta Sans,sans-serif';
+
+        btnRow.append(cancelBtn, okBtn);
+        box.append(h2, desc, input, errEl, btnRow);
+        overlay.appendChild(box);
+        document.body.appendChild(overlay);
+        input.focus();
+
+        cancelBtn.onclick = function() { location.href = location.pathname; };
+        okBtn.onclick = async function() {
+          const val = input.value.trim();
+          if (!val) return;
+          okBtn.textContent = 'Checking...';
+          okBtn.disabled = true;
+          try {
+            const content = await fetchFile(val);
+            token = val;
+            localStorage.setItem(TOKEN_KEY, val);
+            document.body.removeChild(overlay);
+            buildEditor(content);
+          } catch (e) {
+            document.body.removeChild(overlay);
+            showTokenModal(e.message === 'auth' ? 'Invalid or expired token.' : e.message);
+          }
+        };
+        input.addEventListener('keydown', function(e) { if (e.key === 'Enter') okBtn.click(); });
+      }
+
+      function buildEditor(content) {
+        const main = document.querySelector('main');
+        main.style.maxWidth = '100%';
+        main.style.padding = '2rem 2rem 4rem';
+
+        /* static scaffold — no variable content in innerHTML */
+        main.innerHTML = [
+          '<div style="max-width:900px;margin:0 auto">',
+            '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid rgba(18,18,18,.1);flex-wrap:wrap;gap:.75rem">',
+              '<div>',
+                '<span style="font-family:Fraunces,serif;font-size:1.25rem;font-style:italic;font-weight:300">Editing</span>',
+                '<code id="ed-filepath" style="font-size:.75rem;background:rgba(18,18,18,.06);padding:.2em .5em;border-radius:2px;margin-left:.5rem"></code>',
+              '</div>',
+              '<div style="display:flex;gap:.75rem;align-items:center">',
+                '<span id="ed-status" style="font-size:.8rem"></span>',
+                '<button id="ed-cancel" style="padding:.45rem 1.1rem;font-size:.8rem;font-weight:600;background:transparent;border:1px solid rgba(18,18,18,.2);cursor:pointer;border-radius:2px;font-family:Plus Jakarta Sans,sans-serif">Cancel</button>',
+                '<button id="ed-save" style="padding:.45rem 1.1rem;font-size:.8rem;font-weight:600;background:#121212;color:#ede6d4;border:none;cursor:pointer;border-radius:2px;font-family:Plus Jakarta Sans,sans-serif">Save</button>',
+              '</div>',
+            '</div>',
+            '<textarea id="ed-textarea" spellcheck="false" style="width:100%;height:78vh;padding:1.25rem;font-family:SF Mono,Monaco,Menlo,monospace;font-size:.8rem;line-height:1.7;border:1px solid rgba(18,18,18,.1);background:white;resize:vertical;border-radius:2px;box-sizing:border-box;outline:none"></textarea>',
+            '<p style="font-size:.75rem;color:#6b6b6b;margin-top:.75rem">Markdown. &#x2318;S to save. Commits to main &mdash; site rebuilds in ~60s.</p>',
+          '</div>'
+        ].join('');
+
+        /* set variable content via textContent after building scaffold */
+        setText('ed-filepath', FILE);
+        document.getElementById('ed-textarea').value = content;
+        document.getElementById('ed-save').onclick = saveFile;
+        document.getElementById('ed-cancel').onclick = function() { location.href = location.pathname; };
+        document.getElementById('ed-textarea').addEventListener('keydown', function(e) {
+          if ((e.metaKey || e.ctrlKey) && e.key === 's') { e.preventDefault(); saveFile(); }
+        });
+      }
+
+      async function init() {
+        if (!token) { showTokenModal(); return; }
+        try {
+          const content = await fetchFile(token);
+          buildEditor(content);
+        } catch (e) {
+          localStorage.removeItem(TOKEN_KEY);
+          showTokenModal(e.message === 'auth' ? 'Token expired. Enter a new one.' : e.message);
+        }
+      }
+
+      init();
+    })();
+    </script>
+
+    <script>
       /* easter egg — hello, curious student */
       console.log('%c STCM140 ', 'background: #121212; color: #CA3553; font-weight: bold; font-size: 16px; padding: 4px 8px; border-radius: 2px;')
       console.log('%c multimedia production for strategic communications — montclair state, spring 2026', 'color: #666; font-style: italic; font-size: 13px;')
