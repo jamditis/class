@@ -88,8 +88,8 @@ Presenting slide decks and unveiling the final project.
 
 Planning before production.
 
-- **Topic:** Campaign objectives, platform strategy, and content calendars
-- **Focus:** Understanding your audience — moving beyond demographics to motivation
+- **Tue, Feb 24:** Customer/user personas working session — in-class workshop building 2–3 personas for the final project
+- **Thu, Feb 26:** Campaign objectives, platform strategy, and content calendars
 - **Due Tue, Feb 24:** Research dossier (35 pts)
 
 ---

@@ -22,6 +22,7 @@ Class sessions are recorded and available for review. Recordings include AI-gene
 | Feb 12 | Slide design and final project overview | [Watch](https://fathom.video/share/NKsLsu-V_ycoTfbZDXsbRx6WYxpJp7jc) |
 | Feb 17 | Final project kickoff and research dossier | [Watch](https://fathom.video/share/K-sxWDod42c1Qyfrs7w9nkrnPm_z1Ntn) |
 | Feb 19 | Final project topic strategy | [Watch](https://fathom.video/calls/574092548) |
+| Feb 24 | Customer/user personas working session | [Watch](https://fathom.video/share/V2xdcxboxSxF1zJkeXXqnVGTzHHxryyV) |
 
 *Recordings are added after each class session.*
 
@@ -30,6 +31,22 @@ Class sessions are recorded and available for review. Recordings include AI-gene
 ## Lecture summaries
 
 AI-generated summaries from class recordings, reviewed for accuracy. Use these for review or if you missed a session.
+
+### Feb 24 — Customer/user personas working session
+
+**Key takeaways:**
+- **Customer personas are semi-fictional archetypes** of your target customer, built from data, experience, and intuition — the goal is to get inside their head, not just list demographics.
+- **You need 2–3 personas for the final project** to validate that your campaign features and content actually serve your audience. Every new asset you add should be checked against these personas.
+- **Research Dossier deadline was for submitting the URL**, not the completed dossier. Eight students have a zero for a missing assignment. The dossier is still a required component of the final project.
+
+**Topics covered:**
+- **Research Dossier grades** — the deadline policy: submitting the URL is the milestone, not finishing the document. This mirrors real collaborative workflows.
+- **Personas: definition and purpose** — what to include: demographics, pain points (financial constraints, commuting, poor Wi-Fi), daily routine, media habits, goals and motivations.
+- **Strategic application** — use personas to validate campaign features. Example: a coffee shop targeting college students highlights Wi-Fi speed and study spaces, not just coffee quality.
+- **In-class workshop** — 35 minutes building personas for the final project. Verified sources and templates sent after class.
+- **New class resource page** — a supplemental page with expanded assignment breakdowns, examples, common mistakes, and lecture recordings. Always defer to Canvas for official deadlines and grades.
+
+---
 
 ### Feb 19 — Final project topic strategy
 
