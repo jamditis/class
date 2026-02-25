@@ -23,6 +23,7 @@ Class sessions are recorded and available for review. Recordings include AI-gene
 | Feb 17 | Final project kickoff and research dossier | [Watch](https://fathom.video/share/K-sxWDod42c1Qyfrs7w9nkrnPm_z1Ntn) |
 | Feb 19 | Final project topic strategy | [Watch](https://fathom.video/calls/574092548) |
 | Feb 24 | Customer/user personas working session | [Watch](https://fathom.video/share/V2xdcxboxSxF1zJkeXXqnVGTzHHxryyV) |
+| Jan 20 | Class expectations, student interests, and the final project | [Watch](https://fathom.video/share/UuhKHXQav-vHy_57v-5tyyBCYzJZyano) |
 
 *Recordings are added after each class session.*
 
@@ -31,6 +32,20 @@ Class sessions are recorded and available for review. Recordings include AI-gene
 ## Lecture summaries
 
 AI-generated summaries from class recordings, reviewed for accuracy. Use these for review or if you missed a session.
+
+### Jan 20 — Class expectations, student interests, and the final project
+
+**Key takeaways:**
+- **Final Project:** Design a multimedia asset package for a cause or company. The project is worth 500 points (vs. 50–100 for assignments), making correct submission critical.
+- **Submission Policy:** All work must be shared via a Google Drive link with **Editor access**. Incorrect permissions will result in a zero, as the instructor cannot grade inaccessible files.
+- **Class Philosophy:** Prioritize high-volume creation ("make dog ") to build skills and identify quality work, rather than aiming for perfection from the start.
+
+**Topics covered:**
+- **Instructor's Philosophy & Background** — Joe Amditis's career trajectory (from $4k grant recipient to Associate Director at $101k/yr) illustrates the value of basic tech competence.
+- **Student Interests & Final Project Brainstorm** — A "round the room" exercise revealed diverse student interests, which serve as potential topics for the final project.
+- **Final Project & Class Logistics** — **Final Project:** A multimedia asset package for a chosen organization, campaign, or cause.
+
+---
 
 ### Feb 24 — Customer/user personas working session
 
