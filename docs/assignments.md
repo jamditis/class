@@ -178,15 +178,17 @@ This submission is graded on completion and general direction (35 points), not o
 
 Write a 1–2 page strategic document that bridges your research dossier and your creative production. This is the plan before you make anything — what you're doing, why, where, and how you'll know if it worked.
 
+Your personas are the foundation. Before you write a single word of this document, look at the people you built. Your strategy should flow directly from what those personas want, where they spend time, and what problems they're trying to solve.
+
 **Structure your strategy using this framework:**
 
-1. **Goal** — one specific, measurable statement of what the campaign accomplishes. Name the audience, the outcome, and a timeframe. "Grow our Instagram" is not a goal. "Increase first-time visits from MSU students by 40 in 90 days" is a goal.
+1. **Goal** — one specific, measurable statement of what the campaign accomplishes. Name the audience, the outcome, and a timeframe. Start with a high-level aim ("increase foot traffic"), then drill down to the core business objective ("increase weekday lunch sales by 20% among remote workers by June 1"). One campaign, one primary goal.
 
-2. **Strategies** — 2–4 broad directional approaches to reaching that goal. Strategies explain why you're doing something, not what specifically you'll do.
+2. **Strategies** — 2–4 broad directional approaches to reaching that goal. Strategies explain *why* you're doing something and *where* you're showing up — not what specifically you'll do.
 
-3. **Tactics** — the specific, actionable things you'll do to execute each strategy. Each tactic should map to a strategy.
+3. **Tactics** — the specific, actionable things you'll do to execute each strategy. Each tactic should map to a strategy. "Post on Instagram three times a week" is a tactic, not a strategy.
 
-4. **KPIs** — 3–5 metrics you'll track to measure success. Pick numbers you can actually measure, with a baseline and a target.
+4. **KPIs** — 3–5 metrics you'll track to measure success. Check your analytics *before* you write these — you need a baseline to measure progress. Pick numbers tied to real business outcomes, not vanity metrics like follower counts.
 
 5. **CTAs** — the specific actions you want your audience to take. Define these upfront so they're consistent across all content.
 
@@ -213,7 +215,9 @@ As we discussed in class: personas lead directly to campaign ideas. A persona wh
 **Each persona should include:**
 
 - **Bio** — 1–2 sentences to give the person a face. Name, age, occupation, and a detail that makes them real.
+- **Material conditions** — the external structures shaping their life: income range, transportation (car, bus, on foot), childcare responsibilities, work schedule flexibility. These constrain what's possible for this person.
 - **Typical day** — walk through their daily schedule at the level of detail that's relevant to your organization. Where are they? What devices are they on? When do they have time to engage?
+- **Digital habits** — not just "uses Instagram" but *how* they use it. What accounts do they follow? Do they scroll comments? Do they click links in bio? Where do they discover new things?
 - **Goals** — what are they trying to accomplish, both generally and in moments relevant to your organization?
 - **Pain points** — what frustrates them? What problems are they actively trying to solve?
 - **How they interact with your organization** — what brings them in, what keeps them coming back, and what could drive them away?

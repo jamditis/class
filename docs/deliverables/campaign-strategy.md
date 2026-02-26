@@ -11,9 +11,11 @@ title: Campaign strategy document
 
 ## What this deliverable is
 
-A campaign strategy document is the bridge between your research and your creative output. It answers the question: given everything you learned in the research dossier, what are you actually going to do?
+A campaign strategy document is the bridge between your research and your creative output. It answers the question: given everything you learned in the research dossier and your personas, what are you going to do?
 
 It forces you to make decisions before you start producing content — which platforms, which audiences, what goals, how you'll know if it worked. The goal is clarity, not length. This should be a tight, specific 1–2 page document, not a sprawling report.
+
+Your personas are the foundation for every section. The goal should name the audience your persona represents. The strategies should flow from where that person spends time and what they care about. If the strategy doesn't connect to a real person you built, it's guesswork.
 
 ---
 
@@ -25,13 +27,15 @@ Use this framework: **Goal → Strategies → Tactics → KPIs → CTAs**
 
 One sentence. What does this campaign accomplish? Make it specific enough that you can later evaluate whether you achieved it.
 
+Start with a high-level aim, then drill down to the core business objective. "Increase foot traffic" is too vague — *why* does foot traffic matter? What does it actually accomplish for the business? Keep asking until you hit the real answer: "increase weekday lunch sales from remote workers." That's your goal.
+
 Weak goal:
 > Grow our Instagram following.
 
 Strong goal:
 > Increase awareness of Grounds for Change among MSU graduate students (ages 22–30) in Montclair, driving 40 new in-store visits from that segment by April 30.
 
-The strong version names the audience, specifies the outcome (visits, not followers), includes a number, and sets a timeframe.
+The strong version names the audience (from your persona), specifies the outcome (visits, not followers), includes a number, and sets a timeframe.
 
 ### Strategies
 
@@ -58,7 +62,9 @@ Tactics are the specific, actionable things you'll do to execute each strategy. 
 
 ### KPIs (key performance indicators)
 
-How will you measure success? These should be specific numbers tied to your goal.
+How will you measure success? These should be specific numbers tied to your goal — not vanity metrics like follower counts, but outcomes that reflect real business progress.
+
+**Check your analytics before you write these.** You need a baseline — where you're starting from — or the targets you set are made up. Open your organization's Instagram, Google Business profile, or whatever platform you're working with, and note your current numbers first.
 
 **Example:**
 
@@ -85,7 +91,9 @@ Every piece of content needs a CTA — a specific action you're asking the audie
 
 ## Content calendar
 
-Include a two-week sample calendar showing when and where each piece of content would be posted.
+Include a two-week sample calendar showing when and where each piece of content would be posted. Each post should map to a strategy and include a CTA.
+
+Be realistic about frequency. Three posts a week you can sustain beats daily posts you'll abandon by week two. And vary the content types — don't post the same format every day.
 
 **Example:**
 
@@ -121,7 +129,7 @@ A weak one:
 
 ## Common mistakes
 
-- **Strategies that are actually tactics.** "Post on Instagram three times a week" is a tactic, not a strategy. The strategy is why you're on Instagram, what you're communicating, and to whom.
+- **Tactics labeled as strategies.** "Post on Instagram three times a week" is a tactic, not a strategy. The strategy is why you're on Instagram, what you're communicating, and to whom.
 - **Too many goals.** One campaign, one primary goal. You can have secondary goals, but make them secondary.
 - **Ignoring platform behavior.** A content calendar that posts the exact same thing to Instagram and TikTok on the same day isn't a strategy — it's copy-paste. Each platform has different native formats, posting rhythms, and audience expectations.
 - **No baseline.** If you don't know your starting numbers, you can't measure progress. Check your analytics before you write the KPIs.
