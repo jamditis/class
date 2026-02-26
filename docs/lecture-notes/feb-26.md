@@ -7,7 +7,7 @@ title: Lecture notes — Feb 26
 
 # February 26 — Campaign objectives, platform strategy, and content calendars
 
-*Week 6 · Thursday*
+*Week 6 · Thursday · [Recording](https://fathom.video/share/sm8nQub7Xy92zYnVzT6CJgspsc9oBJ8s) · [Slides]({{ site.baseurl }}/materials/LECTURES/SLIDES-Campaign%20strategy%20and%20platform%20planning.html)*
 
 ---
 

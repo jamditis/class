@@ -209,6 +209,7 @@ Slides are shared after each class when applicable.
 
 | Week | Topic | Slides |
 |------|-------|--------|
+| 6 | Campaign strategy and platform planning | [View]({{ site.baseurl }}/materials/LECTURES/SLIDES-Campaign%20strategy%20and%20platform%20planning.html) |
 | 11 | Writing clearly and effectively | [PDF]({{ site.baseurl }}/materials/LECTURES/SLIDES-Writing%20clearly%20and%20effectively.pdf) |
 
 *More slides will be added throughout the semester.*
