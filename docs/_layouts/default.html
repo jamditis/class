@@ -23,6 +23,8 @@
     <link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/assets/favicons/assignments.svg">
     {% elsif page.title == 'Lectures' %}
     <link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/assets/favicons/lectures.svg">
+    {% elsif page.title == 'Lecture notes' %}
+    <link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/assets/favicons/lectures.svg">
     {% elsif page.title == 'Resources' %}
     <link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/assets/favicons/resources.svg">
     {% else %}
@@ -287,6 +289,7 @@
                 <a href="{{ site.baseurl }}/schedule" class="nav-link relative {% if page.title == 'Schedule' %}active{% endif %}">Schedule</a>
                 <a href="{{ site.baseurl }}/assignments" class="nav-link relative {% if page.title == 'Assignments' %}active{% endif %}">Assignments</a>
                 <a href="{{ site.baseurl }}/lectures" class="nav-link relative {% if page.title == 'Lectures' %}active{% endif %}">Lectures</a>
+                <a href="{{ site.baseurl }}/lecture-notes" class="nav-link relative {% if page.title == 'Lecture notes' %}active{% endif %}">Notes</a>
                 <a href="{{ site.baseurl }}/resources" class="nav-link relative {% if page.title == 'Resources' %}active{% endif %}">Resources</a>
             </div>
 
@@ -312,6 +315,7 @@
                         <a href="{{ site.baseurl }}/schedule" onclick="toggleDrawer()" class="hover:pl-4 hover:text-crimson transition-all duration-300">Schedule</a>
                         <a href="{{ site.baseurl }}/assignments" onclick="toggleDrawer()" class="hover:pl-4 hover:text-crimson transition-all duration-300">Assignments</a>
                         <a href="{{ site.baseurl }}/lectures" onclick="toggleDrawer()" class="hover:pl-4 hover:text-crimson transition-all duration-300">Lectures</a>
+                        <a href="{{ site.baseurl }}/lecture-notes" onclick="toggleDrawer()" class="hover:pl-4 hover:text-crimson transition-all duration-300">Lecture notes</a>
                         <a href="{{ site.baseurl }}/resources" onclick="toggleDrawer()" class="hover:pl-4 hover:text-crimson transition-all duration-300">Resources</a>
                     </nav>
                 </div>
@@ -345,6 +349,7 @@
                         <ul class="space-y-3 text-sm">
                             <li><a href="{{ site.baseurl }}/schedule" class="hover:text-crimson transition-colors">Schedule</a></li>
                             <li><a href="{{ site.baseurl }}/assignments" class="hover:text-crimson transition-colors">Assignments</a></li>
+                            <li><a href="{{ site.baseurl }}/lecture-notes" class="hover:text-crimson transition-colors">Lecture notes</a></li>
                             <li><a href="{{ site.baseurl }}/resources" class="hover:text-crimson transition-colors">Resources</a></li>
                         </ul>
                     </div>
