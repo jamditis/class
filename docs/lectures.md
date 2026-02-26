@@ -23,6 +23,7 @@ Class sessions are recorded and available for review. Recordings include AI-gene
 | Feb 17 | Final project kickoff and research dossier | [Watch](https://fathom.video/share/K-sxWDod42c1Qyfrs7w9nkrnPm_z1Ntn) |
 | Feb 19 | Final project topic strategy | [Watch](https://fathom.video/calls/574092548) |
 | Feb 24 | Customer/user personas working session | [Watch](https://fathom.video/share/V2xdcxboxSxF1zJkeXXqnVGTzHHxryyV) |
+| Feb 26 | Pulling it all together to create your campaign strategy | [Watch](https://fathom.video/share/sm8nQub7Xy92zYnVzT6CJgspsc9oBJ8s) |
 | Jan 20 | Class expectations, student interests, and the final project | [Watch](https://fathom.video/share/UuhKHXQav-vHy_57v-5tyyBCYzJZyano) |
 
 *Recordings are added after each class session.*
@@ -60,6 +61,21 @@ AI-generated summaries from class recordings, reviewed for accuracy. Use these f
 - **Strategic application** — use personas to validate campaign features. Example: a coffee shop targeting college students highlights Wi-Fi speed and study spaces, not just coffee quality.
 - **In-class workshop** — 35 minutes building personas for the final project. Verified sources and templates sent after class.
 - **New class resource page** — a supplemental page with expanded assignment breakdowns, examples, common mistakes, and lecture recordings. Always defer to Canvas for official deadlines and grades.
+
+---
+
+### Feb 26 — Pulling it all together to create your campaign strategy
+
+**Key takeaways:**
+- **Personas need depth** — go beyond demographics to include material conditions (finances, transit access, childcare) and specific digital habits (social follows, comment patterns). Treat persona-building as "data-driven role-playing."
+- **Strategy guides tactics** — a campaign strategy is a short guiding document, not a task list. The flow is: goal → strategies → tactics → KPIs → messaging/CTAs.
+- **KPIs must be specific** — focus on 3–5 metrics tracking real business outcomes (sales conversions), not vanity metrics like impressions or follower counts. More than 5 and you stop tracking all of them.
+- **Content calendars require caution** — pre-scheduled content can become irrelevant or tone-deaf when news breaks. This failure mode is called "tombstoning" (a funeral home ad appearing next to a story about a child's death).
+
+**Topics covered:**
+- **Customer persona feedback** — reviewed student work including a Dave & Buster's persona; the goal is to capture what customers actually want (e.g., an adult-focused, child-free environment), not just the company's preferred brand image
+- **Campaign strategy document structure** — five sections: overview (who is the org, what are its values), goal (one specific sentence with a measurable outcome), strategies (2–4 directional approaches), tactics (specific actions mapped to each strategy), KPIs (3–5 metrics), and messaging/CTAs
+- **Content calendars and "tombstoning"** — useful for planning campaign progression, but scheduled posts can become irrelevant or controversial without real-time monitoring; the Applebee's military discount ad example illustrated the risk
 
 ---
 
