@@ -45,3 +45,7 @@ _site/
 # Admin materials (not for students)
 materials/ADMIN/
 .playwright-mcp/
+
+# Windows artifacts
+desktop.ini
+nul
