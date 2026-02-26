@@ -14,10 +14,10 @@ All assignments are submitted through Canvas. Due dates are Thursdays at 11:59 P
 | Assignment | Points | Due |
 |------------|--------|-----|
 | Read the Cluetrain Manifesto | 25 | Jan 29 |
-| Cluetrain Manifesto media analysis | 25 | Feb 3 |
-| Design a slide deck that doesn't suck | 50 | Feb 5 |
-| Alien planet travel poster | 50 | Feb 19 |
-| Research dossier | 50 | Feb 26 |
+| Cluetrain Manifesto media analysis | 35 | Feb 3 |
+| Alien propaganda poster | 50 | Feb 10 |
+| Design a slide deck that doesn't suck | 50 | Feb 12 |
+| Research dossier | 35 | Feb 24 |
 | Campaign strategy | 75 | Mar 5 |
 | User/customer persona | 75 | Mar 19 |
 | Critical copywriting | 100 | Mar 26 |
@@ -36,7 +36,7 @@ Read the "95 Theses of the Cluetrain Manifesto" and come prepared to discuss its
 
 ---
 
-### Cluetrain Manifesto media analysis (25 pts)
+### Cluetrain Manifesto media analysis (35 pts)
 
 **Due:** Tuesday, February 3 at 10:00 AM (before class)
 
@@ -75,7 +75,7 @@ Find a piece of media that is relevant to the Cluetrain Manifesto and analyze ho
 
 ### Design a slide deck that doesn't suck (50 pts)
 
-**Due:** Thursday, February 5
+**Due:** Thursday, February 12
 
 Create a 5-7 slide presentation on a topic of your choice that demonstrates strong design principles: visual hierarchy, contrast, alignment, and restraint.
 
@@ -89,36 +89,86 @@ Create a 5-7 slide presentation on a topic of your choice that demonstrates stro
 
 ---
 
-### Alien planet travel poster (50 pts)
+### Alien propaganda poster (50 pts)
 
-**Due:** Thursday, February 19
+**Due:** Tuesday, February 10 at 10:00 AM (before class)
 
-Using the design principles covered in Week 3, create a travel poster for a fictional alien planet.
+Design an 8.5" x 11" vertical propaganda poster for a fictional alien society. You are the chief propagandist for an alien government — your job is to persuade the residents of your planet using the design principles we covered in class.
+
+**The scenario:**
+
+Invent an alien planet with its own name, government, and social structure. Then create a poster that communicates a specific persuasive message to the planet's residents. This could be a recruitment ad, a public safety announcement, a loyalty campaign, a call to action — anything that a government might use to influence its citizens.
 
 **Requirements:**
 
-- Print-ready at 11x17 inches, 300 DPI
-- Compelling headline and tagline
-- At least one visual element
-- Clear visual hierarchy and intentional color use
-- Should feel like something you'd actually see in a travel agency (on another planet)
+1. **World-building** — Give your alien planet a name, a type of government, and a reason for the propaganda. What are you trying to convince residents to do, believe, or feel?
 
-This is introduced as an in-class activity during Week 4 and due the following week.
+2. **Content** — Your poster must include:
+   - A catchy slogan or headline
+   - At least one original symbol or logo for your alien society
+   - Supporting text (a sentence or two that reinforces the message)
+
+3. **Design principles** — Demonstrate what we covered in class:
+   - **Hierarchy** — Guide the viewer's eye to the most important information first
+   - **Contrast** — Use color, size, or weight to create visual interest and emphasis
+   - **Recurring motif** — Include at least one repeating visual element that ties the design together
+
+4. **Format** — 8.5" x 11" vertical orientation. Submit as a PNG or PDF.
+
+5. **Tools** — Use whatever you want: Canva, Photoshop, Figma, Illustrator, hand-drawn and scanned, AI image generators — your call. If you use AI tools, you still need to make intentional design decisions about layout, hierarchy, and composition.
+
+**Grading criteria:**
+
+- Clear persuasive message and world-building (10 pts)
+- Effective use of hierarchy and contrast (15 pts)
+- Original symbol/logo and recurring motif (10 pts)
+- Overall visual quality and cohesion (10 pts)
+- Correct format and on-time submission (5 pts)
+
+**Extra credit (5 pts):**
+
+You can earn up to 5 extra credit points by doing one or both of the following:
+- **Present your poster** in class for a live critique
+- **Submit a written breakdown** of your design decisions — explain what principles you used, what choices you made, and why
+
+**Submission:**
+
+Submit via **Canvas** before 10:00 AM on Tuesday, February 10. Upload your poster as a PNG or PDF file.
 
 ---
 
-### Research dossier (50 pts)
+### Research dossier (35 pts)
 
-**Due:** Thursday, February 26
+**Due:** Tuesday, February 24
 
-Create a comprehensive research dossier for your final project organization. This should include competitor analysis, audience research, and content inspiration.
+The Research Dossier (or Landscape Scan) is your project's living research document — a structured scratchpad where you map everything about your organization: competitors, audience, trends, gaps, and inspiration. This first submission is a low-stakes directional check, not a final draft. You'll keep building it throughout the semester and submit the full version as part of the final project.
 
-**Requirements:**
+**Choose your organization first.** If you haven't picked one yet, here's what works well:
 
-- 3-5 competitor examples with analysis
-- Audience demographics and psychographics
-- Content examples that inspire your approach
-- Key findings and strategic implications
+- A small-to-medium business (local coffee shop, bakery, gym) that's good at what it does but has clear marketing gaps
+- A local or community organization (a theater, a non-profit, a community group)
+- A fictional brand you create from scratch
+- A hyper-specific campaign for a larger brand (one product launch, one regional initiative)
+
+Avoid large dominant brands (Disney, Apple, the Knicks) — their existing professional work is overwhelming and limits your creative freedom. If you're unsure whether your choice works, come to office hours or reply to this assignment.
+
+**What to include:**
+
+- **Competitor analysis** — 3–5 competitors or comparable organizations, covering social media presence, pricing, and key messaging
+- **Audience analysis** — current vs. potential audience; who they are and what they need
+- **SWOT analysis** — Strengths, Weaknesses, Opportunities, Threats
+- **Inspiration** — content or campaigns that could inform your approach
+- **Customer persona(s)** — at least one draft persona: a short bio, typical daily schedule, goals, and pain points
+
+**Submission:**
+
+Set up one Google Drive folder for your entire final project. Set sharing permissions to **"Anyone at Montclair State University can edit."** Submit that folder's URL in Canvas — this one-time setup covers all future assignment submissions and gives me editor access to leave inline comments.
+
+**Grading:**
+
+This submission is graded on completion and general direction (35 points), not on the quality or depth of the content. Show me you've picked an organization and started gathering real information.
+
+[More details about this deliverable.]({{ site.baseurl }}/deliverables/research-dossier)
 
 ---
 
@@ -126,15 +176,29 @@ Create a comprehensive research dossier for your final project organization. Thi
 
 **Due:** Thursday, March 5
 
-Write a 2-3 page strategic document outlining how your organization would deploy the assets you've created.
+Write a 1–2 page strategic document that bridges your research dossier and your creative production. This is the plan before you make anything — what you're doing, why, where, and how you'll know if it worked.
 
-**Include:**
+**Structure your strategy using this framework:**
 
-- **Campaign goal:** What are you trying to achieve?
-- **Target audience:** Who are you reaching? Describe your intended audience based on your research dossier findings.
-- **Platform strategy:** Where will these assets live and why?
-- **Content calendar:** A two-week sample showing when and where each asset type would be posted
-- **Success metrics:** How will you measure whether this worked?
+1. **Goal** — one specific, measurable statement of what the campaign accomplishes. Name the audience, the outcome, and a timeframe. "Grow our Instagram" is not a goal. "Increase first-time visits from MSU students by 40 in 90 days" is a goal.
+
+2. **Strategies** — 2–4 broad directional approaches to reaching that goal. Strategies explain why you're doing something, not what specifically you'll do.
+
+3. **Tactics** — the specific, actionable things you'll do to execute each strategy. Each tactic should map to a strategy.
+
+4. **KPIs** — 3–5 metrics you'll track to measure success. Pick numbers you can actually measure, with a baseline and a target.
+
+5. **CTAs** — the specific actions you want your audience to take. Define these upfront so they're consistent across all content.
+
+**Also include:**
+
+A two-week sample content calendar showing what you'd post, where, and when — enough to show you've thought about posting frequency and platform mix.
+
+**Submission:**
+
+Add the campaign strategy to your project Google Drive folder. Submit the folder URL in Canvas (same link as the research dossier — no new folder needed).
+
+[More details about this deliverable.]({{ site.baseurl }}/deliverables/campaign-strategy)
 
 ---
 
@@ -142,15 +206,25 @@ Write a 2-3 page strategic document outlining how your organization would deploy
 
 **Due:** Thursday, March 19
 
-Develop a detailed customer/user persona for your final project organization.
+Create 2–3 detailed customer/user personas for your final project organization. A persona is a fictional-but-research-grounded profile of one specific type of customer — specific enough that you can design and write content for that person directly.
 
-**Requirements:**
+As we discussed in class: personas lead directly to campaign ideas. A persona who commutes to work every morning and stops for coffee on the way becomes the premise for a morning-rush loyalty campaign. Build the person first, and the ideas follow.
 
-- Demographic information
-- Psychographic profile (values, interests, pain points)
-- Media consumption habits
-- Goals and challenges
-- How your organization serves their needs
+**Each persona should include:**
+
+- **Bio** — 1–2 sentences to give the person a face. Name, age, occupation, and a detail that makes them real.
+- **Typical day** — walk through their daily schedule at the level of detail that's relevant to your organization. Where are they? What devices are they on? When do they have time to engage?
+- **Goals** — what are they trying to accomplish, both generally and in moments relevant to your organization?
+- **Pain points** — what frustrates them? What problems are they actively trying to solve?
+- **How they interact with your organization** — what brings them in, what keeps them coming back, and what could drive them away?
+
+**The personas should be distinct from each other.** Don't create three versions of the same 22-year-old. Push yourself to understand at least two meaningfully different customer types.
+
+**Submission:**
+
+Add your persona document to your project Google Drive folder. Submit the folder URL in Canvas.
+
+[More details about this deliverable.]({{ site.baseurl }}/deliverables/personas)
 
 ---
 
@@ -158,14 +232,26 @@ Develop a detailed customer/user persona for your final project organization.
 
 **Due:** Thursday, March 26
 
-Write 3 pieces of copy using a "solutions lens" — critiquing industry problems while offering constructive alternatives.
+Write 3 distinct pieces of copy using a "solutions lens" — each one identifies a real problem in your organization's industry, explains why it matters, and points to better alternatives. This is not a complaint piece. The solutions lens means you're raising the bar by showing what good looks like.
 
-**Requirements:**
+**The three pieces:**
 
-- 3 distinct pieces (social post, email, blog intro)
-- Each addresses a real problem in your field
-- Maintains professional, constructive tone
-- Demonstrates clear voice and perspective
+1. **Social post** — Twitter/X format, 280 characters maximum. Forces you to name the problem and the alternative with no room to hedge.
+
+2. **Email** — subject line plus 2–3 short paragraphs. Write it as if sending to a real subscriber list. The subject line is half the assignment.
+
+3. **Blog post opening** — the first 3–4 paragraphs of a longer piece. Hook the reader with a specific scene or observation, name the problem clearly, and end with enough momentum that they'd keep reading.
+
+**For each piece:**
+- Write in your organization's voice — these should feel like they came from your brand
+- Name the problem with specificity — "many brands" is too vague; describe the actual behavior or failure
+- Point to at least one real example of a brand doing it better, and say specifically what they're doing right
+
+**Submission:**
+
+Add all three pieces to a single Google Doc in your project Drive folder. Submit the folder URL in Canvas.
+
+[More details about this deliverable.]({{ site.baseurl }}/deliverables/written-pieces)
 
 ---
 
@@ -173,38 +259,61 @@ Write 3 pieces of copy using a "solutions lens" — critiquing industry problems
 
 **Due:** Thursday, April 9
 
-Create a cohesive set of visual assets for your final project organization.
+Create a cohesive set of visual assets for your final project organization, all consistent with your style guide.
 
 **Deliverables:**
 
-- **3 featured images** for blog posts/articles (1200x630 pixels)
-- **3 social media graphics** (1080x1080 pixels)
+- **2 featured images** — graphics for blog post social previews (1200×630 pixels). These appear when your content is shared as a link on social media and determine whether someone clicks through.
+- **4 social media graphics** — standalone images for direct posting (1080×1080 pixels). These need to work on their own, without the context of an article.
 
 **Requirements:**
 
-- Consistent branding (colors, fonts, visual style)
-- Proper alt text descriptions for all images
-- Export-ready for web (PNG or JPEG, optimized file size)
+- Consistent with your style guide (colors, fonts, visual language)
+- Alt text for every image
+- Exported as PNG or JPEG, optimized for web
+
+**Submission:**
+
+Add all six image files to your project Google Drive folder — do not embed them in a Google Doc. Submit the folder URL in Canvas.
+
+[More details about featured images.]({{ site.baseurl }}/deliverables/featured-images) [More details about social graphics.]({{ site.baseurl }}/deliverables/social-graphics)
 
 ---
 
-## Final project: Multimedia asset package (~40%)
+## Final project: Multimedia campaign (~40%)
 
 **Due:** Monday, May 4
 
-Create a complete multimedia asset package for an organization of your choice. This brings together everything you've learned throughout the semester.
+Create a multimedia campaign for a real or fictional organization. All assignments from here on are deliverables for this project — you're building it piece by piece throughout the semester.
 
-**Required components:**
+**Choose your organization wisely.** Avoid large, dominant brands (Disney, Apple, the Knicks) — their existing professional work is too high a bar to compete with and limits your creative freedom. Strong options:
 
-1. Research dossier
-2. User/customer persona
-3. Brand style guide
-4. 3 blog post featured images
-5. 3 social media graphics
-6. Campaign strategy document
-7. 500-word reflection on your process
+- A small-to-medium business (local coffee shop, bakery, gym) that's good at what it does but weak on marketing
+- A local or niche organization (a theater, a community group, a non-profit)
+- A fictional brand you invent from scratch
+- A hyper-specific campaign for a large brand (e.g., one product launch or one regional initiative)
 
-**Presentation:** You will present your asset package during finals week. Be prepared to explain your strategic decisions and walk through your deliverables.
+**Required deliverables:**
+
+1. **Style guide and branding kit** — A detailed manual with specific rules for fonts, colors (primary and secondary palettes), tone, grammar, and design elements. Goal: anyone following the guide could post for the company without the audience noticing a difference. [More details about this deliverable.]({{ site.baseurl }}/deliverables/style-guide)
+
+2. **Research dossier** — Your living internal document: competitor analysis, audience analysis, SWOT, and inspiration. (Built throughout the semester.) [More details about this deliverable.]({{ site.baseurl }}/deliverables/research-dossier)
+
+3. **Customer/user personas** — 2–3 fictional profiles of ideal customers, each with a bio, typical day, goals, and pain points. These lead directly to campaign ideas. [More details about this deliverable.]({{ site.baseurl }}/deliverables/personas)
+
+4. **Campaign strategy document** — A 1–2 page plan structured as: Goal → Strategies → Tactics → KPIs (success metrics) → CTAs (calls to action). [More details about this deliverable.]({{ site.baseurl }}/deliverables/campaign-strategy)
+
+5. **Two written pieces** — One must be a "call-out" piece: identify an industry problem, explain its impact, and highlight brands doing it right. [More details about this deliverable.]({{ site.baseurl }}/deliverables/written-pieces)
+
+6. **Two featured images** — Graphics for blog post social previews (1200×630 pixels). These boost click-through rates when your posts appear in social feeds. [More details about this deliverable.]({{ site.baseurl }}/deliverables/featured-images)
+
+7. **Four social media graphics** — Standalone images for direct posting (1080×1080 pixels). Must be visually compelling on their own. [More details about this deliverable.]({{ site.baseurl }}/deliverables/social-graphics)
+
+8. **Nine social media captions** — Three must be for Twitter/X to practice writing within the character limit and force conciseness. [More details about this deliverable.]({{ site.baseurl }}/deliverables/social-captions)
+
+**Submission note:** For any graphics embedded in Google Docs, you must also include the raw image files (PNG or JPEG) in your shared project folder.
+
+**Presentation:** You will present your campaign during finals week. Be prepared to walk through your strategic decisions and explain each deliverable.
 
 ---
 

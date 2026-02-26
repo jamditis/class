@@ -125,7 +125,7 @@ def fetch_all_submissions() -> list[dict]:
         params={
             "student_ids[]": "all",
             "per_page": 100,
-            "include[]": ["assignment", "user"]
+            "include[]": ["assignment", "user", "submission_comments"]
         }
     )
 
@@ -305,6 +305,20 @@ def sync_submissions_to_db(assignment_id: Optional[int] = None) -> int:
                 # Store URLs to attachments
                 content = "\n".join([att.get("url", "") for att in attachments])
 
+        # Extract Canvas grade data
+        canvas_score = s.get("score")
+        canvas_grade = s.get("grade")
+
+        # Extract and clean submission comments
+        raw_comments = s.get("submission_comments", [])
+        canvas_comments = None
+        if raw_comments:
+            canvas_comments = [{
+                "author_name": c.get("author_name", "Unknown"),
+                "comment": c.get("comment", ""),
+                "created_at": c.get("created_at", "")
+            } for c in raw_comments if c.get("comment")]
+
         # Check if submission exists
         submission = session.query(Submission).filter_by(
             student_id=student.id,
@@ -317,6 +331,10 @@ def sync_submissions_to_db(assignment_id: Optional[int] = None) -> int:
             submission.content = content
             submission.submitted_at = submission_time
             submission.status = status
+            submission.canvas_score = canvas_score
+            submission.canvas_grade = canvas_grade
+            if canvas_comments:
+                submission.canvas_comments = canvas_comments
         else:
             # Create new
             submission = Submission(
@@ -326,7 +344,10 @@ def sync_submissions_to_db(assignment_id: Optional[int] = None) -> int:
                 content=content,
                 submitted_at=submission_time,
                 status=status,
-                input_source="canvas"
+                input_source="canvas",
+                canvas_score=canvas_score,
+                canvas_grade=canvas_grade,
+                canvas_comments=canvas_comments
             )
             session.add(submission)
             synced_count += 1

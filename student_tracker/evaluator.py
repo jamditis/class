@@ -17,11 +17,25 @@ from .models import (
     get_session, Submission, Evaluation, Assignment,
     EvaluationSource, SkillLevel
 )
+from .teaching_context import get_teaching_context
 
 # Anthropic API configuration
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-HAIKU_MODEL = "claude-3-5-haiku-20241022"
-PROMPT_VERSION = "1.0"
+EVAL_MODEL = "claude-sonnet-4-5-20250929"  # Upgraded to Sonnet 4.5 for better feedback
+PROMPT_VERSION = "2.0"
+
+# Joe's voice/style for feedback (brief, warm, direct, uses contractions)
+INSTRUCTOR_VOICE = """
+Write feedback in Joe's voice:
+- Be brief and direct. Don't over-explain.
+- Warm but efficient. Encouraging without being cheesy.
+- Use contractions: "you've", "that's", "don't", "I'll"
+- Casual-professional tone: "Nice work on..." not "You have done well..."
+- Use exclamation points for positive reinforcement
+- "Let me know if you have questions" not "please do not hesitate to contact me"
+- Avoid corporate speak and filler phrases
+- If something needs work, be direct but constructive: "This needs more..." not "Perhaps you might consider..."
+"""
 
 
 def get_client() -> anthropic.Anthropic:
@@ -287,7 +301,14 @@ def build_evaluation_prompt(
         for level, desc in criterion.get("levels", {}).items():
             criteria_text += f"   - {level}: {desc}\n"
 
-    prompt = f"""You are an experienced instructor evaluating a student submission for an undergraduate multimedia production course. Evaluate the following submission carefully and provide detailed feedback.
+    # Get teaching context for this assignment
+    teaching_context = get_teaching_context(assignment_name)
+
+    prompt = f"""You're evaluating a student submission for STCM140 (Multimedia Production for Strategic Communications) at Montclair State.
+
+{INSTRUCTOR_VOICE}
+
+{teaching_context}
 
 ASSIGNMENT: {assignment_name}
 DESCRIPTION: {assignment_description}
@@ -301,7 +322,7 @@ STUDENT SUBMISSION:
 {submission_content[:10000]}
 ---
 
-Evaluate this submission and respond with a JSON object containing:
+Evaluate this submission and respond with a JSON object:
 
 {{
     "overall_score": <number from 0 to {points_possible}>,
@@ -309,25 +330,32 @@ Evaluate this submission and respond with a JSON object containing:
         "<criterion_name>": {{
             "level": "<emerging|developing|proficient|advanced>",
             "score": <number>,
-            "feedback": "<brief specific feedback for this criterion>"
+            "feedback": "<brief, direct feedback in Joe's voice>"
         }}
     }},
     "skill_ratings": {{
         "<skill_name>": "<emerging|developing|proficient|advanced>"
     }},
     "strengths": [
-        "<specific strength 1>",
-        "<specific strength 2>"
+        "<specific thing they did well - be concrete>",
+        "<another strength if applicable>"
     ],
     "areas_for_improvement": [
-        "<specific area 1>",
-        "<specific area 2>"
+        "<what to work on - direct but constructive>",
+        "<another area if needed>"
     ],
-    "overall_feedback": "<2-3 sentences of constructive, encouraging feedback>",
-    "next_steps": "<1-2 specific suggestions for what the student should focus on next>"
+    "overall_feedback": "<1-3 sentences in Joe's voice. Warm, direct, specific to their work. Start with what's working, then what needs attention.>",
+    "next_steps": "<1 concrete suggestion for their next assignment>",
+    "ai_likelihood": {{
+        "score": <0-100, where 0=definitely human, 100=definitely AI>,
+        "signals": ["<specific phrases or patterns that triggered this assessment>"],
+        "note": "<brief note if AI was likely used, null if score < 30>"
+    }}
 }}
 
-Be specific in your feedback, referencing actual content from the submission. Be constructive and encouraging while being honest about areas for improvement. Calibrate scores appropriately - not every submission should be advanced, and emerging doesn't mean failure.
+Be specific - reference actual content from their submission. Calibrate scores fairly - proficient is solid B-level work, advanced is genuinely exceptional. Don't grade inflate.
+
+For AI detection: Look for the slop words/patterns listed above. A score of 0-20 means clearly human voice. 20-50 means some generic phrases but mostly original. 50-80 means significant AI assistance likely. 80-100 means almost certainly AI-generated.
 
 Respond ONLY with the JSON object, no other text."""
 
@@ -338,9 +366,9 @@ def evaluate_submission(
     submission_id: int,
     force: bool = False,
     custom_rubric: dict = None
-) -> Optional[Evaluation]:
+) -> Optional[int]:
     """
-    Evaluate a submission using Claude Haiku.
+    Evaluate a submission using Claude Sonnet.
 
     Args:
         submission_id: Database ID of the submission to evaluate
@@ -348,7 +376,7 @@ def evaluate_submission(
         custom_rubric: Optional custom rubric to use instead of default
 
     Returns:
-        Evaluation object or None if evaluation failed
+        Evaluation ID or None if evaluation failed
     """
     session = get_session()
 
@@ -359,15 +387,21 @@ def evaluate_submission(
         return None
 
     # Check for existing evaluation
-    if not force:
-        existing = session.query(Evaluation).filter_by(
-            submission_id=submission_id,
-            is_final=True
-        ).first()
-        if existing:
-            print(f"Submission {submission_id} already has a final evaluation")
-            session.close()
-            return existing
+    existing = session.query(Evaluation).filter_by(
+        submission_id=submission_id,
+        is_final=True
+    ).first()
+
+    if existing and not force:
+        print(f"Submission {submission_id} already has a final evaluation")
+        session.close()
+        return existing
+
+    # If forcing re-eval, mark old evaluation as non-final (preserve history)
+    if existing and force:
+        existing.is_final = False
+        session.commit()
+        print(f"Archived previous evaluation for submission {submission_id}")
 
     assignment = submission.assignment
     if not submission.content:
@@ -397,7 +431,7 @@ def evaluate_submission(
     try:
         client = get_client()
         response = client.messages.create(
-            model=HAIKU_MODEL,
+            model=EVAL_MODEL,
             max_tokens=2000,
             messages=[{"role": "user", "content": prompt}]
         )
@@ -405,6 +439,12 @@ def evaluate_submission(
         # Parse response
         response_text = response.content[0].text
         result = json.loads(response_text)
+
+        # Merge AI likelihood into skill_ratings for storage
+        skill_ratings = result.get("skill_ratings", {})
+        ai_likelihood = result.get("ai_likelihood", {})
+        if ai_likelihood:
+            skill_ratings["_ai_likelihood"] = ai_likelihood
 
         # Create evaluation record
         evaluation = Evaluation(
@@ -415,8 +455,8 @@ def evaluate_submission(
             feedback=result.get("overall_feedback"),
             strengths=result.get("strengths"),
             areas_for_improvement=result.get("areas_for_improvement"),
-            skill_ratings=result.get("skill_ratings"),
-            haiku_model_version=HAIKU_MODEL,
+            skill_ratings=skill_ratings,
+            haiku_model_version=EVAL_MODEL,
             haiku_prompt_version=PROMPT_VERSION,
             haiku_raw_response=response_text,
             is_final=True
@@ -425,12 +465,219 @@ def evaluate_submission(
         session.add(evaluation)
         session.commit()
 
-        print(f"Evaluated submission {submission_id}: {result.get('overall_score')}/{assignment.points_possible}")
+        # Get the ID before closing session to avoid DetachedInstanceError
+        eval_id = evaluation.id
+        score = result.get('overall_score')
+
+        print(f"Evaluated submission {submission_id}: {score}/{assignment.points_possible}")
         session.close()
-        return evaluation
+
+        # Return the ID (callers can fetch fresh if they need the full object)
+        return eval_id
 
     except json.JSONDecodeError as e:
         print(f"Failed to parse Haiku response: {e}")
+        session.close()
+        return None
+    except Exception as e:
+        print(f"Evaluation failed: {e}")
+        session.close()
+        return None
+
+
+def evaluate_submission_with_context(
+    submission_id: int,
+    context_notes: str = "",
+    force: bool = False,
+    custom_rubric: dict = None
+) -> Optional[int]:
+    """
+    Evaluate a submission with additional instructor-provided context.
+
+    The context_notes are added to the evaluation prompt to guide the AI.
+
+    Args:
+        submission_id: Database ID of the submission to evaluate
+        context_notes: Additional context from the instructor
+        force: If True, create new evaluation even if one exists
+        custom_rubric: Optional custom rubric to use
+
+    Returns:
+        Evaluation object or None if evaluation failed
+    """
+    session = get_session()
+
+    submission = session.query(Submission).get(submission_id)
+    if not submission:
+        print(f"Submission {submission_id} not found")
+        session.close()
+        return None
+
+    # Check for existing evaluation
+    existing = session.query(Evaluation).filter_by(
+        submission_id=submission_id,
+        is_final=True
+    ).first()
+
+    if existing and not force:
+        print(f"Submission {submission_id} already has a final evaluation")
+        session.close()
+        return existing
+
+    # If forcing re-eval, mark old evaluation as non-final (preserve history)
+    if existing and force:
+        existing.is_final = False
+        session.commit()
+        print(f"Archived previous evaluation for submission {submission_id}")
+
+    assignment = submission.assignment
+    if not submission.content:
+        print(f"Submission {submission_id} has no content to evaluate")
+        session.close()
+        return None
+
+    # Get rubric
+    rubric = custom_rubric or assignment.rubric
+    if not rubric:
+        rubric = DEFAULT_RUBRICS.get(
+            assignment.assignment_type or "general",
+            DEFAULT_RUBRICS["general"]
+        )
+
+    # Get teaching context
+    teaching_context = get_teaching_context(assignment.name)
+
+    # Add instructor notes if provided
+    instructor_context = ""
+    if context_notes:
+        instructor_context = f"""
+
+### Instructor notes for this evaluation:
+{context_notes}
+
+Take these notes into account when evaluating. They may provide context about the student, the submission, or areas to focus on.
+"""
+
+    # Build criteria text
+    criteria_text = ""
+    for i, criterion in enumerate(rubric.get("criteria", []), 1):
+        criteria_text += f"\n{i}. {criterion['name']} ({criterion['weight']}%)\n"
+        criteria_text += f"   Description: {criterion['description']}\n"
+        criteria_text += "   Levels:\n"
+        for level, desc in criterion.get("levels", {}).items():
+            criteria_text += f"   - {level}: {desc}\n"
+
+    # Build prompt with context
+    prompt = f"""You're evaluating a student submission for STCM140 (Multimedia Production for Strategic Communications) at Montclair State.
+
+{INSTRUCTOR_VOICE}
+
+{teaching_context}
+{instructor_context}
+
+ASSIGNMENT: {assignment.name}
+DESCRIPTION: {assignment.description or ""}
+POINTS POSSIBLE: {assignment.points_possible}
+
+RUBRIC CRITERIA:
+{criteria_text}
+
+STUDENT SUBMISSION:
+---
+{submission.content[:10000]}
+---
+
+Evaluate this submission and respond with a JSON object:
+
+{{
+    "overall_score": <number from 0 to {assignment.points_possible}>,
+    "score_breakdown": {{
+        "<criterion_name>": {{
+            "level": "<emerging|developing|proficient|advanced>",
+            "score": <number>,
+            "feedback": "<brief, direct feedback in Joe's voice>"
+        }}
+    }},
+    "skill_ratings": {{
+        "<skill_name>": "<emerging|developing|proficient|advanced>"
+    }},
+    "strengths": [
+        "<specific thing they did well - be concrete>",
+        "<another strength if applicable>"
+    ],
+    "areas_for_improvement": [
+        "<what to work on - direct but constructive>",
+        "<another area if needed>"
+    ],
+    "overall_feedback": "<1-3 sentences in Joe's voice. Warm, direct, specific to their work. Start with what's working, then what needs attention.>",
+    "next_steps": "<1 concrete suggestion for their next assignment>",
+    "ai_likelihood": {{
+        "score": <0-100, where 0=definitely human, 100=definitely AI>,
+        "signals": ["<specific phrases or patterns that triggered this assessment>"],
+        "note": "<brief note if AI was likely used, null if score < 30>"
+    }}
+}}
+
+Be specific - reference actual content from their submission. Calibrate scores fairly - proficient is solid B-level work, advanced is genuinely exceptional. Don't grade inflate.
+
+For AI detection: Look for the slop words/patterns listed above. A score of 0-20 means clearly human voice. 20-50 means some generic phrases but mostly original. 50-80 means significant AI assistance likely. 80-100 means almost certainly AI-generated.
+
+Respond ONLY with the JSON object, no other text."""
+
+    # Call API
+    try:
+        client = get_client()
+        response = client.messages.create(
+            model=EVAL_MODEL,
+            max_tokens=2000,
+            messages=[{"role": "user", "content": prompt}]
+        )
+
+        # Parse response
+        response_text = response.content[0].text
+        result = json.loads(response_text)
+
+        # Merge AI likelihood into skill_ratings for storage
+        skill_ratings = result.get("skill_ratings", {})
+        ai_likelihood = result.get("ai_likelihood", {})
+        if ai_likelihood:
+            skill_ratings["_ai_likelihood"] = ai_likelihood
+
+        # Store context notes in the raw response
+        if context_notes:
+            result["_instructor_context"] = context_notes
+
+        # Create evaluation record
+        evaluation = Evaluation(
+            submission_id=submission_id,
+            source=EvaluationSource.HAIKU_AUTO.value,
+            score=result.get("overall_score"),
+            score_breakdown=result.get("score_breakdown"),
+            feedback=result.get("overall_feedback"),
+            strengths=result.get("strengths"),
+            areas_for_improvement=result.get("areas_for_improvement"),
+            skill_ratings=skill_ratings,
+            haiku_model_version=EVAL_MODEL,
+            haiku_prompt_version=PROMPT_VERSION + ("+ctx" if context_notes else ""),
+            haiku_raw_response=json.dumps(result),
+            is_final=True
+        )
+
+        session.add(evaluation)
+        session.commit()
+
+        # Get the ID before closing session to avoid DetachedInstanceError
+        eval_id = evaluation.id
+        score = result.get('overall_score')
+
+        print(f"Evaluated submission {submission_id} with context: {score}/{assignment.points_possible}")
+        session.close()
+
+        # Return the ID (callers can fetch fresh if they need the full object)
+        return eval_id
+
+    except json.JSONDecodeError as e:
+        print(f"Failed to parse response: {e}")
         session.close()
         return None
     except Exception as e:
@@ -467,7 +714,7 @@ def evaluate_all_pending(
     # Exclude submissions that already have final evaluations
     evaluated_ids = session.query(Evaluation.submission_id).filter(
         Evaluation.is_final == True
-    ).subquery()
+    ).scalar_subquery()
 
     query = query.filter(~Submission.id.in_(evaluated_ids))
 
@@ -517,7 +764,7 @@ def batch_evaluate_text(
         try:
             client = get_client()
             response = client.messages.create(
-                model=HAIKU_MODEL,
+                model=EVAL_MODEL,
                 max_tokens=2000,
                 messages=[{"role": "user", "content": prompt}]
             )

@@ -23,7 +23,7 @@ from .analyzer import (
     generate_class_insights, create_progress_snapshot,
     get_progress_history
 )
-from .haiku_evaluator import evaluate_submission, evaluate_all_pending
+from .evaluator import evaluate_submission, evaluate_all_pending
 from .canvas_fetcher import full_sync as canvas_full_sync
 from .manual_input import (
     add_student, add_manual_evaluation, add_student_note,
@@ -50,6 +50,9 @@ BASE_TEMPLATE = """
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Student Tracker{% endblock %} | STCM140</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
 
     <!-- Fonts (matching GitHub Pages) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -541,8 +544,12 @@ STUDENT_DETAIL_TEMPLATE = """
                     </span>
                 </td>
                 <td class="text-mist">
-                    {% if sub.score is not none %}
+                    {% if sub.canvas_score is not none %}
+                    <span class="font-medium text-ink">{{ "%.1f"|format(sub.canvas_score) }}</span>/{{ "%.0f"|format(sub.max_score) }}
+                    <span class="text-xs text-mist ml-1">Canvas</span>
+                    {% elif sub.score is not none %}
                     {{ "%.1f"|format(sub.score) }}/{{ "%.0f"|format(sub.max_score) }}
+                    <span class="text-xs text-mist ml-1">AI</span>
                     {% else %}
                     —
                     {% endif %}
@@ -768,6 +775,378 @@ ASSIGNMENTS_TEMPLATE = """
         </tbody>
     </table>
 </div>
+{% endblock %}
+"""
+
+ASSIGNMENT_DETAIL_TEMPLATE = """
+{% extends "base.html" %}
+{% block title %}{{ assignment.name }}{% endblock %}
+{% block content %}
+<div class="mb-8">
+    <a href="/assignments" class="text-sm text-mist hover:text-crimson mb-3 inline-block">← Back to assignments</a>
+    <h1 class="text-4xl">{{ assignment.name }}</h1>
+    <p class="text-mist mt-1">{{ assignment.assignment_type|capitalize if assignment.assignment_type else 'General' }} · {{ assignment.points_possible }} points{% if assignment.due_date %} · Due {{ assignment.due_date }}{% endif %}</p>
+</div>
+
+<!-- Stats -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+    <div class="stat-card rounded-lg p-5">
+        <h3 class="mb-2">Submissions</h3>
+        <div class="text-3xl font-display font-black text-ink">{{ stats.total_submissions }}</div>
+    </div>
+    <div class="stat-card rounded-lg p-5">
+        <h3 class="mb-2">Evaluated</h3>
+        <div class="text-3xl font-display font-black text-accent">{{ stats.evaluated }}</div>
+    </div>
+    <div class="stat-card rounded-lg p-5">
+        <h3 class="mb-2">Average</h3>
+        <div class="text-3xl font-display font-black text-ink">{{ "%.1f"|format(stats.average_pct) }}%</div>
+    </div>
+    <div class="stat-card rounded-lg p-5">
+        <h3 class="mb-2">Range</h3>
+        <div class="text-xl font-display font-black text-mist">{{ "%.0f"|format(stats.lowest) }}-{{ "%.0f"|format(stats.highest) }}</div>
+    </div>
+</div>
+
+{% if assignment.description %}
+<div class="deckle-card rounded-lg p-6 mb-10">
+    <h2 class="text-lg mb-4">Description</h2>
+    <p class="text-sm text-mist leading-relaxed">{{ assignment.description }}</p>
+</div>
+{% endif %}
+
+<!-- Submissions Table -->
+<div class="deckle-card rounded-lg overflow-hidden">
+    <div class="p-5 border-b border-ink/5 flex justify-between items-center">
+        <h2 class="text-lg">Submissions</h2>
+        <a href="/assignment/{{ assignment.id }}/evaluate-all" class="px-4 py-2 bg-crimson text-canvas rounded-lg hover:bg-crimson/90 transition text-sm font-medium">
+            Evaluate all pending
+        </a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Student</th>
+                <th>Status</th>
+                <th>Score</th>
+                <th>Submitted</th>
+                <th class="text-right">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sub in submissions %}
+            <tr>
+                <td>
+                    <a href="/student/{{ sub.student_id }}" class="font-medium hover:text-crimson">{{ sub.student_name }}</a>
+                </td>
+                <td>
+                    <span class="badge {% if sub.status == 'submitted' %}badge-good{% elif sub.status == 'late' %}badge-warn{% elif sub.status == 'missing' %}badge-risk{% else %}badge-neutral{% endif %}">
+                        {{ sub.status|capitalize }}
+                    </span>
+                </td>
+                <td>
+                    {% if sub.canvas_score is not none %}
+                    {% set canvas_pct = (sub.canvas_score / assignment.points_possible * 100) if assignment.points_possible > 0 else 0 %}
+                    <span class="font-semibold {% if canvas_pct >= 80 %}text-accent{% elif canvas_pct >= 60 %}text-yellow-700{% else %}text-crimson{% endif %}">
+                        {{ "%.1f"|format(sub.canvas_score) }}/{{ assignment.points_possible }} ({{ "%.0f"|format(canvas_pct) }}%)
+                    </span>
+                    <span class="text-xs text-mist ml-1">Canvas</span>
+                    {% elif sub.score is not none %}
+                    <span class="font-semibold {% if sub.percentage >= 80 %}text-accent{% elif sub.percentage >= 60 %}text-yellow-700{% else %}text-crimson{% endif %}">
+                        {{ "%.1f"|format(sub.score) }}/{{ assignment.points_possible }} ({{ "%.0f"|format(sub.percentage) }}%)
+                    </span>
+                    <span class="text-xs text-mist ml-1">AI</span>
+                    {% else %}
+                    <span class="text-mist">Not evaluated</span>
+                    {% endif %}
+                </td>
+                <td class="text-mist">{{ sub.submitted_at or '—' }}</td>
+                <td class="text-right">
+                    <a href="/submission/{{ sub.id }}" class="text-sm hover:text-crimson">View →</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+"""
+
+SUBMISSION_DETAIL_TEMPLATE = """
+{% extends "base.html" %}
+{% block title %}{{ submission.student_name }} - {{ submission.assignment_name }}{% endblock %}
+{% block content %}
+<div class="mb-8">
+    <a href="/assignment/{{ submission.assignment_id }}" class="text-sm text-mist hover:text-crimson mb-3 inline-block">← Back to {{ submission.assignment_name }}</a>
+    <h1 class="text-4xl">{{ submission.student_name }}</h1>
+    <p class="text-mist mt-1">{{ submission.assignment_name }} · {{ submission.points_possible }} points</p>
+</div>
+
+<!-- Canvas grade -->
+{% if submission.canvas_score is not none %}
+<div class="deckle-card rounded-lg p-4 mb-6 border-l-4 border-blue-400 bg-blue-50/30">
+    <div class="flex items-center justify-between">
+        <div>
+            <h3 class="text-xs text-mist mb-1 uppercase tracking-wide">Canvas grade</h3>
+            <span class="text-2xl font-bold">{{ "%.1f"|format(submission.canvas_score) }}</span>
+            <span class="text-mist">/{{ submission.points_possible }}</span>
+            {% if submission.canvas_grade %}
+            <span class="ml-3 px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-sm font-medium">{{ submission.canvas_grade }}</span>
+            {% endif %}
+        </div>
+        {% set canvas_pct = (submission.canvas_score / submission.points_possible * 100) if submission.points_possible > 0 else 0 %}
+        <span class="text-lg font-semibold {% if canvas_pct >= 80 %}text-accent{% elif canvas_pct >= 60 %}text-yellow-700{% else %}text-crimson{% endif %}">
+            {{ "%.0f"|format(canvas_pct) }}%
+        </span>
+    </div>
+</div>
+{% endif %}
+
+<!-- Stats Row -->
+{% if evaluation %}
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+    <!-- Score Gauge -->
+    <div class="deckle-card rounded-lg p-4 text-center">
+        <h3 class="text-xs text-mist mb-2 uppercase tracking-wide">AI score</h3>
+        <div class="relative w-20 h-20 mx-auto">
+            <svg class="w-full h-full transform -rotate-90">
+                <circle cx="40" cy="40" r="35" stroke="#d6cdb7" stroke-width="6" fill="none"/>
+                <circle cx="40" cy="40" r="35"
+                    stroke="{% if evaluation.percentage >= 80 %}#3d4b40{% elif evaluation.percentage >= 60 %}#ca8a04{% else %}#CA3553{% endif %}"
+                    stroke-width="6" fill="none"
+                    stroke-dasharray="{{ evaluation.percentage * 2.2 }} 220"
+                    stroke-linecap="round"/>
+            </svg>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <span class="text-lg font-bold">{{ "%.0f"|format(evaluation.percentage) }}%</span>
+            </div>
+        </div>
+        <div class="text-sm mt-2 font-medium">{{ "%.1f"|format(evaluation.score) }}/{{ submission.points_possible }}</div>
+    </div>
+
+    <!-- AI Likelihood Gauge -->
+    <div class="deckle-card rounded-lg p-4 text-center">
+        <h3 class="text-xs text-mist mb-2 uppercase tracking-wide">AI likelihood</h3>
+        {% set ai_score = evaluation.ai_likelihood.score if evaluation.ai_likelihood else 0 %}
+        <div class="relative w-20 h-20 mx-auto">
+            <svg class="w-full h-full transform -rotate-90">
+                <circle cx="40" cy="40" r="35" stroke="#d6cdb7" stroke-width="6" fill="none"/>
+                <circle cx="40" cy="40" r="35"
+                    stroke="{% if ai_score <= 20 %}#3d4b40{% elif ai_score <= 50 %}#ca8a04{% else %}#CA3553{% endif %}"
+                    stroke-width="6" fill="none"
+                    stroke-dasharray="{{ ai_score * 2.2 }} 220"
+                    stroke-linecap="round"/>
+            </svg>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <span class="text-lg font-bold">{{ ai_score }}%</span>
+            </div>
+        </div>
+        <div class="text-sm mt-2 {% if ai_score <= 20 %}text-accent{% elif ai_score <= 50 %}text-yellow-700{% else %}text-crimson{% endif %}">
+            {% if ai_score <= 20 %}Human{% elif ai_score <= 50 %}Mixed{% elif ai_score <= 80 %}Likely AI{% else %}AI-generated{% endif %}
+        </div>
+    </div>
+
+    <!-- Skill Levels Mini -->
+    <div class="deckle-card rounded-lg p-4">
+        <h3 class="text-xs text-mist mb-3 uppercase tracking-wide">Skills</h3>
+        {% if evaluation.skill_ratings %}
+        <div class="space-y-2">
+            {% for skill, level in evaluation.skill_ratings.items() if not skill.startswith('_') %}
+            <div class="flex items-center justify-between text-xs">
+                <span class="truncate">{{ skill|replace('_', ' ')|title }}</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-medium
+                    {% if level == 'advanced' %}bg-accent/20 text-accent
+                    {% elif level == 'proficient' %}bg-blue-100 text-blue-700
+                    {% elif level == 'developing' %}bg-yellow-100 text-yellow-700
+                    {% else %}bg-gray-100 text-gray-600{% endif %}">
+                    {{ level[:3]|upper }}
+                </span>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="text-xs text-mist">No skills rated</p>
+        {% endif %}
+    </div>
+
+    <!-- Meta Info -->
+    <div class="deckle-card rounded-lg p-4">
+        <h3 class="text-xs text-mist mb-3 uppercase tracking-wide">Details</h3>
+        <div class="space-y-2 text-xs">
+            <div class="flex justify-between">
+                <span class="text-mist">Status</span>
+                <span class="badge {% if submission.status == 'submitted' %}badge-good{% elif submission.status == 'late' %}badge-warn{% else %}badge-neutral{% endif %}">
+                    {{ submission.status }}
+                </span>
+            </div>
+            <div class="flex justify-between">
+                <span class="text-mist">Evaluator</span>
+                <span>{{ evaluation.evaluator_type }}</span>
+            </div>
+            <div class="flex justify-between">
+                <span class="text-mist">Submitted</span>
+                <span>{{ submission.submitted_at or '—' }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- AI Signals (if detected) -->
+{% if evaluation.ai_likelihood and evaluation.ai_likelihood.score > 30 %}
+<div class="deckle-card rounded-lg p-4 mb-6 border-l-4 border-yellow-500 bg-yellow-50/30">
+    <h3 class="text-sm font-medium text-yellow-800 mb-2">AI writing signals detected</h3>
+    {% if evaluation.ai_likelihood.signals %}
+    <div class="flex flex-wrap gap-2 mb-2">
+        {% for signal in evaluation.ai_likelihood.signals[:5] %}
+        <span class="text-xs px-2 py-1 bg-yellow-100 text-yellow-800 rounded">"{{ signal }}"</span>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% if evaluation.ai_likelihood.note %}
+    <p class="text-xs text-yellow-700">{{ evaluation.ai_likelihood.note }}</p>
+    {% endif %}
+</div>
+{% endif %}
+{% else %}
+<div class="deckle-card rounded-lg p-6 mb-10 border-l-4 border-mist">
+    <p class="text-mist">Not yet evaluated</p>
+    <a href="/submission/{{ submission.id }}/evaluate" class="inline-block mt-3 px-4 py-2 bg-crimson text-canvas rounded-lg hover:bg-crimson/90 transition text-sm font-medium">
+        Evaluate now
+    </a>
+</div>
+{% endif %}
+
+<!-- Feedback -->
+{% if evaluation and evaluation.feedback %}
+<div class="deckle-card rounded-lg p-6 mb-10">
+    <h2 class="text-lg mb-4">Feedback</h2>
+    <p class="text-sm leading-relaxed">{{ evaluation.feedback }}</p>
+</div>
+{% endif %}
+
+<!-- Canvas comments -->
+{% if submission.canvas_comments %}
+<div class="deckle-card rounded-lg p-6 mb-10">
+    <h2 class="text-lg mb-4">Canvas comments</h2>
+    <div class="space-y-4">
+        {% for comment in submission.canvas_comments %}
+        <div class="p-4 bg-blue-50/30 rounded-lg border-l-2 border-blue-300">
+            <div class="flex justify-between items-start mb-2">
+                <span class="text-sm font-medium">{{ comment.author_name }}</span>
+                <span class="text-xs text-mist">{{ comment.created_at[:10] if comment.created_at else '' }}</span>
+            </div>
+            <p class="text-sm leading-relaxed">{{ comment.comment }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+<!-- Strengths & Areas for Improvement -->
+{% if evaluation %}
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+    <div class="deckle-card rounded-lg p-6">
+        <h2 class="text-lg mb-4 text-accent">Strengths</h2>
+        {% if evaluation.strengths %}
+        <ul class="space-y-2">
+            {% for s in evaluation.strengths %}
+            <li class="text-sm pl-4 border-l-2 border-accent/30">{{ s }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="text-sm text-mist">No strengths recorded</p>
+        {% endif %}
+    </div>
+    <div class="deckle-card rounded-lg p-6">
+        <h2 class="text-lg mb-4 text-yellow-700">Areas for improvement</h2>
+        {% if evaluation.areas_for_improvement %}
+        <ul class="space-y-2">
+            {% for i in evaluation.areas_for_improvement %}
+            <li class="text-sm pl-4 border-l-2 border-yellow-400/50">{{ i }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="text-sm text-mist">No areas recorded</p>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+
+<!-- Submission Content -->
+<div class="deckle-card rounded-lg p-6 mb-10">
+    <div class="flex justify-between items-center mb-4">
+        <h2 class="text-lg">Submission content</h2>
+        <span class="badge {% if submission.status == 'submitted' %}badge-good{% elif submission.status == 'late' %}badge-warn{% else %}badge-neutral{% endif %}">
+            {{ submission.status|capitalize }}{% if submission.submitted_at %} · {{ submission.submitted_at }}{% endif %}
+        </span>
+    </div>
+    <div class="prose prose-sm max-w-none bg-white/30 rounded-lg p-4">
+        {{ submission.content|safe if submission.content else '<p class="text-mist">No content</p>' }}
+    </div>
+</div>
+
+<!-- Re-evaluate with Notes -->
+<div class="deckle-card rounded-lg p-6 mb-10">
+    <h2 class="text-lg mb-4">Re-evaluate</h2>
+    <form action="/api/submission/{{ submission.id }}/evaluate" method="POST" class="space-y-4">
+        <div>
+            <label class="block text-sm font-medium mb-2">Additional context (optional)</label>
+            <textarea name="context_notes" rows="3" placeholder="Add notes to guide the evaluation (e.g., 'Student discussed topic with me in office hours' or 'Focus on visual hierarchy')"
+                class="w-full px-3 py-2 bg-white/50 border border-ink/10 rounded-lg focus:outline-none focus:border-accent text-sm"></textarea>
+            <p class="text-xs text-mist mt-1">These notes will be included in the evaluation prompt</p>
+        </div>
+        <button type="submit" class="px-4 py-2 bg-crimson text-canvas rounded-lg hover:bg-crimson/90 transition text-sm font-medium">
+            Re-evaluate submission
+        </button>
+    </form>
+</div>
+
+<!-- Evaluation History -->
+{% if eval_history and eval_history|length > 1 %}
+<div class="deckle-card rounded-lg p-6">
+    <h2 class="text-lg mb-4">Evaluation history</h2>
+    <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+            <thead>
+                <tr class="border-b border-ink/10">
+                    <th class="text-left py-2 text-mist font-medium">Date</th>
+                    <th class="text-left py-2 text-mist font-medium">Score</th>
+                    <th class="text-left py-2 text-mist font-medium">AI %</th>
+                    <th class="text-left py-2 text-mist font-medium">Model</th>
+                    <th class="text-left py-2 text-mist font-medium">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for hist in eval_history %}
+                <tr class="border-b border-ink/5 {% if hist.is_final %}bg-accent/5{% endif %}">
+                    <td class="py-2">{{ hist.created_at or '—' }}</td>
+                    <td class="py-2">
+                        <span class="font-medium">{{ "%.1f"|format(hist.score) if hist.score else '—' }}</span>
+                        <span class="text-mist text-xs">({{ "%.0f"|format(hist.percentage) }}%)</span>
+                    </td>
+                    <td class="py-2">
+                        {% if hist.ai_score is not none %}
+                        <span class="{% if hist.ai_score <= 20 %}text-accent{% elif hist.ai_score <= 50 %}text-yellow-700{% else %}text-crimson{% endif %}">
+                            {{ hist.ai_score }}%
+                        </span>
+                        {% else %}—{% endif %}
+                    </td>
+                    <td class="py-2 text-xs text-mist">{{ hist.model[:20] if hist.model else '—' }}...</td>
+                    <td class="py-2">
+                        {% if hist.is_final %}
+                        <span class="badge badge-good">Current</span>
+                        {% else %}
+                        <span class="badge badge-neutral">Archived</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <p class="text-xs text-mist mt-4">Previous evaluations are preserved for comparison. Only the current evaluation is shown to students.</p>
+</div>
+{% endif %}
 {% endblock %}
 """
 
@@ -1385,6 +1764,8 @@ def render(template_name: str, **kwargs):
         "feedback_queue.html": FEEDBACK_QUEUE_TEMPLATE,
         "student_detail.html": STUDENT_DETAIL_TEMPLATE,
         "assignments.html": ASSIGNMENTS_TEMPLATE,
+        "assignment_detail.html": ASSIGNMENT_DETAIL_TEMPLATE,
+        "submission_detail.html": SUBMISSION_DETAIL_TEMPLATE,
         "evaluate.html": EVALUATE_TEMPLATE,
         "insights.html": INSIGHTS_TEMPLATE,
         "settings.html": SETTINGS_TEMPLATE,
@@ -1478,6 +1859,8 @@ def student_detail(student_id: int):
             "status": sub.status,
             "score": final_eval.score if final_eval else None,
             "max_score": sub.assignment.points_possible,
+            "canvas_score": sub.canvas_score,
+            "canvas_grade": sub.canvas_grade,
             "submitted_at": sub.submitted_at.strftime("%Y-%m-%d") if sub.submitted_at else None
         })
 
@@ -1526,6 +1909,202 @@ def assignments_list():
 
     session.close()
     return render("assignments.html", assignments=assignments)
+
+
+@app.route("/assignment/<int:assignment_id>")
+def assignment_detail(assignment_id: int):
+    session = get_session()
+    assignment = session.query(Assignment).get(assignment_id)
+
+    if not assignment:
+        session.close()
+        return "Assignment not found", 404
+
+    # Get all submissions with evaluations
+    submissions = []
+    for sub in assignment.submissions:
+        final_eval = None
+        for e in sub.evaluations:
+            if e.is_final:
+                final_eval = e
+                break
+
+        submissions.append({
+            "id": sub.id,
+            "student_name": sub.student.name,
+            "student_id": sub.student.id,
+            "status": sub.status,
+            "score": final_eval.score if final_eval else None,
+            "percentage": (final_eval.score / assignment.points_possible * 100) if final_eval and assignment.points_possible > 0 else None,
+            "canvas_score": sub.canvas_score,
+            "submitted_at": sub.submitted_at.strftime("%Y-%m-%d %H:%M") if sub.submitted_at else None,
+            "has_evaluation": final_eval is not None
+        })
+
+    # Calculate stats
+    scores = [s["score"] for s in submissions if s["score"] is not None]
+    stats = {
+        "total_submissions": len(submissions),
+        "evaluated": len(scores),
+        "average": sum(scores) / len(scores) if scores else 0,
+        "average_pct": (sum(scores) / len(scores) / assignment.points_possible * 100) if scores and assignment.points_possible > 0 else 0,
+        "highest": max(scores) if scores else 0,
+        "lowest": min(scores) if scores else 0
+    }
+
+    assignment_dict = {
+        "id": assignment.id,
+        "name": assignment.name,
+        "description": assignment.description,
+        "assignment_type": assignment.assignment_type,
+        "points_possible": assignment.points_possible,
+        "due_date": assignment.due_date.strftime("%Y-%m-%d") if assignment.due_date else None
+    }
+
+    session.close()
+    return render("assignment_detail.html", assignment=assignment_dict, submissions=submissions, stats=stats)
+
+
+@app.route("/assignment/<int:assignment_id>/evaluate-all")
+def assignment_evaluate_all(assignment_id: int):
+    """Evaluate all pending submissions for an assignment."""
+    from .evaluator import evaluate_all_pending
+
+    results = evaluate_all_pending(assignment_id=assignment_id, limit=50)
+
+    # Redirect back to assignment page with flash message
+    return redirect(f"/assignment/{assignment_id}?evaluated={len(results)}")
+
+
+@app.route("/submission/<int:submission_id>/evaluate", methods=["GET"])
+def submission_evaluate(submission_id: int):
+    """Evaluate a single submission (GET - no context)."""
+    from .evaluator import evaluate_submission
+
+    result = evaluate_submission(submission_id, force=True)
+
+    if result:
+        return redirect(f"/submission/{submission_id}?evaluated=1")
+    else:
+        return redirect(f"/submission/{submission_id}?error=evaluation_failed")
+
+
+@app.route("/api/submission/<int:submission_id>/evaluate", methods=["POST"])
+def api_submission_evaluate_with_context(submission_id: int):
+    """Evaluate a single submission with optional context notes."""
+    from .evaluator import evaluate_submission_with_context
+
+    context_notes = request.form.get("context_notes", "").strip()
+
+    result = evaluate_submission_with_context(submission_id, context_notes=context_notes, force=True)
+
+    if result:
+        return redirect(f"/submission/{submission_id}?evaluated=1")
+    else:
+        return redirect(f"/submission/{submission_id}?error=evaluation_failed")
+
+
+@app.route("/submission/<int:submission_id>")
+def submission_detail(submission_id: int):
+    session = get_session()
+    submission = session.query(Submission).get(submission_id)
+
+    if not submission:
+        session.close()
+        return "Submission not found", 404
+
+    # Get the final evaluation
+    final_eval = None
+    for e in submission.evaluations:
+        if e.is_final:
+            final_eval = e
+            break
+
+    import json
+    evaluation = None
+    if final_eval:
+        # Handle strengths - might be JSON string or already a list
+        strengths = final_eval.strengths
+        if isinstance(strengths, str):
+            try:
+                strengths = json.loads(strengths)
+            except:
+                strengths = [strengths] if strengths else []
+        elif not strengths:
+            strengths = []
+
+        # Handle areas_for_improvement - might be JSON string or already a list
+        improvements = final_eval.areas_for_improvement
+        if isinstance(improvements, str):
+            try:
+                improvements = json.loads(improvements)
+            except:
+                improvements = [improvements] if improvements else []
+        elif not improvements:
+            improvements = []
+
+        # Handle skill_ratings and extract AI likelihood
+        skill_ratings = final_eval.skill_ratings or {}
+        if isinstance(skill_ratings, str):
+            try:
+                skill_ratings = json.loads(skill_ratings)
+            except:
+                skill_ratings = {}
+
+        ai_likelihood = skill_ratings.pop("_ai_likelihood", None)
+
+        evaluation = {
+            "score": final_eval.score,
+            "percentage": (final_eval.score / submission.assignment.points_possible * 100) if submission.assignment.points_possible > 0 else 0,
+            "feedback": final_eval.feedback,
+            "strengths": strengths,
+            "areas_for_improvement": improvements,
+            "evaluated_at": final_eval.created_at.strftime("%Y-%m-%d %H:%M") if final_eval.created_at else None,
+            "evaluator_type": final_eval.source,
+            "skill_ratings": skill_ratings,
+            "ai_likelihood": ai_likelihood
+        }
+
+    submission_dict = {
+        "id": submission.id,
+        "student_name": submission.student.name,
+        "student_id": submission.student.id,
+        "assignment_name": submission.assignment.name,
+        "assignment_id": submission.assignment.id,
+        "points_possible": submission.assignment.points_possible,
+        "status": submission.status,
+        "content": submission.content,
+        "submitted_at": submission.submitted_at.strftime("%Y-%m-%d %H:%M") if submission.submitted_at else None,
+        "canvas_score": submission.canvas_score,
+        "canvas_grade": submission.canvas_grade,
+        "canvas_comments": submission.canvas_comments
+    }
+
+    # Get evaluation history (all evaluations, not just final)
+    eval_history = []
+    for e in sorted(submission.evaluations, key=lambda x: x.created_at or datetime.min, reverse=True):
+        hist_skill_ratings = e.skill_ratings or {}
+        if isinstance(hist_skill_ratings, str):
+            try:
+                hist_skill_ratings = json.loads(hist_skill_ratings)
+            except:
+                hist_skill_ratings = {}
+        hist_ai = hist_skill_ratings.get("_ai_likelihood", {})
+
+        eval_history.append({
+            "id": e.id,
+            "score": e.score,
+            "percentage": (e.score / submission.assignment.points_possible * 100) if e.score and submission.assignment.points_possible > 0 else 0,
+            "feedback": e.feedback[:100] + "..." if e.feedback and len(e.feedback) > 100 else e.feedback,
+            "is_final": e.is_final,
+            "model": e.haiku_model_version,
+            "prompt_version": e.haiku_prompt_version,
+            "created_at": e.created_at.strftime("%Y-%m-%d %H:%M") if e.created_at else None,
+            "ai_score": hist_ai.get("score") if hist_ai else None
+        })
+
+    session.close()
+    return render("submission_detail.html", submission=submission_dict, evaluation=evaluation, eval_history=eval_history)
 
 
 @app.route("/evaluate")

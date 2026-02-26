@@ -13,17 +13,17 @@ title: Schedule
 |----------|------------|--------|
 | Thu, Jan 29 | Academic engagement verification | — |
 | Thu, Jan 29 | Read the Cluetrain Manifesto | 25 |
-| Tue, Feb 3 | Cluetrain Manifesto media analysis | 25 |
-| Thu, Feb 5 | Design a slide deck that doesn't suck | 50 |
-| Thu, Feb 19 | Alien planet travel poster | 50 |
-| Thu, Feb 26 | Research dossier | 50 |
+| Tue, Feb 3 | Cluetrain Manifesto media analysis | 35 |
+| Tue, Feb 10 | Alien propaganda poster | 50 |
+| Thu, Feb 12 | Design a slide deck that doesn't suck | 50 |
+| Tue, Feb 24 | Research dossier | 35 |
 | Thu, Mar 5 | Campaign strategy | 75 |
 | Thu, Mar 19 | User/customer persona | 75 |
 | Thu, Mar 26 | Critical copywriting | 100 |
 | Thu, Apr 9 | Featured images + social graphics | 75 |
 | Mon, May 4 | Final project: Multimedia asset package | ~40% |
 
-**Total points before final:** 525 pts
+**Total points before final:** 520 pts
 
 ---
 
@@ -49,35 +49,38 @@ Digital literacy, media markets, and why human voices matter.
 
 ---
 
-### Week 3: February 3-5 — Principles of design
+### Week 3: February 3-5 — AI tools & design principles
 
-The fundamentals of visual communication.
+Assignment protocols, AI usage, and visual communication fundamentals.
 
-- **Topic:** Contrast, hierarchy, alignment, balance, and why bad design hurts credibility
-- **Activity:** Introduction to design thinking and slide deck planning
+- **Tuesday:** AI usage policy, assignment submission protocols, the "Schrödinger's Document" strategy
+- **Thursday:** Design principles — contrast, hierarchy, alignment, balance
+- **Activity:** In-class alien propaganda poster (Canva)
+- **Recommended AI tools:** Gemini (best value via Google One), Claude (technical tasks), ChatGPT
 - **Due Tue, Feb 3 (before class):** Cluetrain Manifesto media analysis (25 pts)
-- **Due Thu, Feb 5:** Design a slide deck that doesn't suck (50 pts)
 
 ---
 
-### Week 4: February 10-12 — Slide deck presentations & design critique
+### Week 4: February 10-12 — Propaganda poster critique & slide deck workshop
 
 Putting design theory into practice.
 
-- **Activity:** "Slide deck that doesn't suck" student presentations
+- **Activity:** Alien propaganda poster presentations and live critique (extra credit)
 - **Topic:** Peer feedback and design critique principles
-- **In-class activity:** Alien planet travel poster — applying design principles to absurd constraints
+- **Workshop:** Slide deck planning and design
+- **Due Tue, Feb 10 (before class):** Alien propaganda poster (50 pts)
 
 ---
 
-### Week 5: February 17-19 — Final project intro & research
+### Week 5: February 17-19 — Slide deck presentations & final project intro
 
-Unveiling the final project and gathering intelligence.
+Presenting slide decks and unveiling the final project.
 
+- **Activity:** "Slide deck that doesn't suck" student presentations
 - **Topic:** Introduction to the final project: Multimedia asset package
 - **Focus:** Building a research dossier — competitor analysis, inspiration gathering
 - **Tools:** Using NotebookLM for synthesis
-- **Due Thu, Feb 19:** Alien planet travel poster (50 pts)
+- **Due Tue, Feb 17:** Design a slide deck that doesn't suck (50 pts)
 
 ---
 
@@ -85,9 +88,9 @@ Unveiling the final project and gathering intelligence.
 
 Planning before production.
 
-- **Topic:** Campaign objectives, platform strategy, and content calendars
-- **Focus:** Understanding your audience — moving beyond demographics to motivation
-- **Due Thu, Feb 26:** Research dossier (50 pts)
+- **Tue, Feb 24:** Customer/user personas working session — in-class workshop building 2–3 personas for the final project
+- **Thu, Feb 26:** Campaign objectives, platform strategy, and content calendars
+- **Due Tue, Feb 24:** Research dossier (35 pts)
 
 ---
 

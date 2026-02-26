@@ -89,9 +89,11 @@ def get_student_summary(student_id: int) -> dict:
                          if submission.assignment.points_possible > 0 else 0)
             scores_by_type[assignment_type].append(percentage)
 
-            # Collect skill ratings
+            # Collect skill ratings (skip metadata like _ai_likelihood)
             if final_eval.skill_ratings:
                 for skill, level in final_eval.skill_ratings.items():
+                    if skill.startswith('_') or not isinstance(level, str):
+                        continue
                     skills[skill].append(level)
 
     # Calculate averages
@@ -181,9 +183,11 @@ def get_student_progression(student_id: int) -> dict:
         }
         progression["timeline"].append(entry)
 
-        # Track skill trends
+        # Track skill trends (skip metadata)
         if final_eval.skill_ratings:
             for skill, level in final_eval.skill_ratings.items():
+                if skill.startswith('_') or not isinstance(level, str):
+                    continue
                 progression["skill_trends"][skill].append({
                     "date": submission.submitted_at.isoformat(),
                     "level": level,
@@ -218,6 +222,8 @@ def get_student_strengths_weaknesses(student_id: int) -> dict:
                     all_improvements.extend(eval.areas_for_improvement)
                 if eval.skill_ratings:
                     for skill, level in eval.skill_ratings.items():
+                        if skill.startswith('_') or not isinstance(level, str):
+                            continue
                         skill_levels[skill].append(SKILL_LEVEL_ORDER.get(level, 0))
 
     # Count frequency of strengths and improvements
@@ -321,6 +327,9 @@ def get_class_overview() -> dict:
         for eval in submission.evaluations:
             if eval.is_final and eval.skill_ratings:
                 for skill, level in eval.skill_ratings.items():
+                    # Skip metadata keys (like _ai_likelihood)
+                    if skill.startswith('_') or not isinstance(level, str):
+                        continue
                     skill_distribution[skill][level] += 1
 
     session.close()
@@ -635,6 +644,8 @@ def update_student_skill_assessments(student_id: int) -> list[SkillAssessment]:
         for eval in submission.evaluations:
             if eval.is_final and eval.skill_ratings:
                 for skill, level in eval.skill_ratings.items():
+                    if skill.startswith('_') or not isinstance(level, str):
+                        continue
                     skill_data[skill].append({
                         "level": level,
                         "date": eval.created_at

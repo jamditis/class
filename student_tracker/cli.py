@@ -25,7 +25,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from student_tracker.models import init_db, get_session, Student, Assignment, Submission
 from student_tracker.canvas_fetcher import full_sync as canvas_sync
-from student_tracker.haiku_evaluator import evaluate_submission, evaluate_all_pending
+from student_tracker.evaluator import evaluate_submission, evaluate_all_pending
 from student_tracker.manual_input import (
     add_student, list_students, import_students_csv,
     add_submission, import_submissions_csv,
