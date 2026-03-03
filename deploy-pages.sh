@@ -8,10 +8,12 @@ export CLOUDFLARE_API_TOKEN=$(pass show claude/api/cloudflare-full)
 export CLOUDFLARE_ACCOUNT_ID="3d4b1d36109e30866bb7516502224b2c"
 
 echo "Building Jekyll site..."
+# Override baseurl for Cloudflare Pages (site is at root, not /class/)
+JEKYLL_ARGS="--baseurl \"\""
 if command -v bundle &>/dev/null; then
-  bundle exec jekyll build
+  bundle exec jekyll build $JEKYLL_ARGS
 elif command -v jekyll &>/dev/null; then
-  jekyll build
+  jekyll build $JEKYLL_ARGS
 else
   echo "Error: Jekyll not installed. Install with: gem install jekyll bundler"
   exit 1

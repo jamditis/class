@@ -29,21 +29,22 @@ title: Schedule
 
 ## Week-by-week schedule
 
-### Week 1: January 20-22 — Introduction & the state of media
+### Week 1: January 20-22 — Introduction & digital literacy
 
-We establish the ground rules and discuss the reality of the media business.
+Class expectations, student interests, and the basics of working with a computer.
 
-- **Topic:** Syllabus review, course expectations, and the "enshittification" of platforms
+- **Tue:** Syllabus review, course expectations, student interest survey, introduction to the final project
+- **Thu:** Digital literacy — keyboard shortcuts, browser extensions (uBlock Origin, OneTab, password managers), file types (.txt, .md, .html)
 - **Reading:** "Your Media Business Will Not Be Saved" by Joshua Topolsky
 
 ---
 
-### Week 2: January 27-29 — Digital fundamentals & the Cluetrain Manifesto
+### Week 2: January 27-29 — Information needs & the Cluetrain Manifesto
 
-Digital literacy, media markets, and why human voices matter.
+Understanding media markets and why authentic communication matters.
 
-- **Topic:** Keyboard shortcuts, file organization, information needs, and the 95 theses
-- **Discussion:** Enshittification, the "shiny new thing," and authentic communication
+- **Tue:** Information needs, the "shiny new thing," and analyzing media ecosystems
+- **Thu:** The 95 theses of the Cluetrain Manifesto — corporate communication, humor, and authenticity
 - **Due Thu, Jan 29:** Academic engagement verification
 - **Due Thu, Jan 29:** Read the Cluetrain Manifesto (25 pts)
 
@@ -51,55 +52,52 @@ Digital literacy, media markets, and why human voices matter.
 
 ### Week 3: February 3-5 — AI tools & design principles
 
-Assignment protocols, AI usage, and visual communication fundamentals.
+Assignment protocols, AI usage, and the fundamentals of visual communication.
 
-- **Tuesday:** AI usage policy, assignment submission protocols, the "Schrödinger's Document" strategy
-- **Thursday:** Design principles — contrast, hierarchy, alignment, balance
-- **Activity:** In-class alien propaganda poster (Canva)
-- **Recommended AI tools:** Gemini (best value via Google One), Claude (technical tasks), ChatGPT
-- **Due Tue, Feb 3 (before class):** Cluetrain Manifesto media analysis (25 pts)
-
----
-
-### Week 4: February 10-12 — Propaganda poster critique & slide deck workshop
-
-Putting design theory into practice.
-
-- **Activity:** Alien propaganda poster presentations and live critique (extra credit)
-- **Topic:** Peer feedback and design critique principles
-- **Workshop:** Slide deck planning and design
-- **Due Tue, Feb 10 (before class):** Alien propaganda poster (50 pts)
+- **Tue:** AI usage policy, assignment submission protocols, the "Schrödinger's Document" strategy
+- **Thu:** Design principles — contrast, hierarchy, alignment, balance, whitespace, rhythm
+- **Tools:** Gemini (best value via Google One), Claude (technical tasks), Canva Pro (.edu signup)
+- **Due Tue, Feb 3:** Cluetrain Manifesto media analysis (35 pts)
 
 ---
 
-### Week 5: February 17-19 — Slide deck presentations & final project intro
+### Week 4: February 10-12 — Poster critique & slide deck design
 
-Presenting slide decks and unveiling the final project.
+Applying design theory in practice.
 
-- **Activity:** "Slide deck that doesn't suck" student presentations
-- **Topic:** Introduction to the final project: Multimedia asset package
-- **Focus:** Building a research dossier — competitor analysis, inspiration gathering
-- **Tools:** Using NotebookLM for synthesis
-- **Due Tue, Feb 17:** Design a slide deck that doesn't suck (50 pts)
+- **Tue:** Alien propaganda poster presentations and live critique — hierarchy, borders, rule of thirds
+- **Thu:** Slide deck design, the 6x6 rule, final project overview
+- **Due Tue, Feb 10:** Alien propaganda poster (50 pts)
+- **Due Thu, Feb 12:** Design a slide deck that doesn't suck (50 pts)
 
 ---
 
-### Week 6: February 24-26 — Campaign strategy & audience
+### Week 5: February 17-19 — Final project kickoff
 
-Planning before production.
+Introducing the capstone and starting research.
 
-- **Tue, Feb 24:** Customer/user personas working session — in-class workshop building 2–3 personas for the final project
-- **Thu, Feb 26:** Campaign objectives, platform strategy, and content calendars
+- **Tue:** Final project overview — multimedia campaign for a real or fictional organization
+- **Thu:** Project selection strategy — SMBs over large brands, shared Google Drive setup
+- **Focus:** Research dossier structure — competitor analysis, SWOT analysis, audience mapping
+
+---
+
+### Week 6: February 24-26 — Personas & campaign strategy
+
+From research to strategic planning.
+
+- **Tue:** Customer/user personas working session — demographics, pain points, daily routines, media habits
+- **Thu:** Campaign strategy — goals, strategies, tactics, KPIs, messaging/CTAs, content calendars, "tombstoning" risk
 - **Due Tue, Feb 24:** Research dossier (35 pts)
 
 ---
 
-### Week 7: March 3-5 — Personas & strategic planning
+### Week 7: March 3-5 — Copywriting foundations
 
-Defining who you're creating for.
+Writing with clarity and authority.
 
-- **Topic:** Creating detailed customer/user personas
-- **Activity:** Mapping user pain points to strategic solutions
+- **Topic:** The "solutions lens" — critiquing industry problems without being toxic
+- **Reading:** Selections from *On Writing Well* by William Zinsser (Simplicity and Clutter)
 - **Due Thu, Mar 5:** Campaign strategy (75 pts)
 
 ---
@@ -110,55 +108,46 @@ Defining who you're creating for.
 
 ---
 
-### Week 9: March 17-19 — Copywriting foundations
-
-Writing with clarity and authority.
-
-- **Topic:** The "solutions lens" — critiquing industry problems without being toxic
-- **Reading:** Selections from *On Writing Well* by William Zinsser
-- **Due Thu, Mar 19:** User/customer persona (75 pts)
-
----
-
-### Week 10: March 24-26 — Copywriting workshop
+### Week 9: March 17-19 — Copywriting workshop
 
 Practicing persuasive and clear writing.
 
 - **Topic:** Voice, tone, and adapting to different platforms
 - **Workshop:** Drafting and peer review of copywriting assignments
-- **Due Thu, Mar 26:** Critical copywriting (100 pts)
+- **Due Thu, Mar 19:** User/customer persona (75 pts)
 
 ---
 
-### Week 11: March 31 - April 2 — Visuals for the web
+### Week 10: March 24-26 — Visuals for the web
 
 Designing for the feed and the article.
 
 - **Topic:** Blog posts, featured images, and aspect ratios
 - **Workshop:** Canva best practices for high-resolution assets
+- **Due Thu, Mar 26:** Critical copywriting (100 pts)
 
 ---
 
-### Week 12: April 7-9 — Social graphics & accessibility
+### Week 11: March 31 - April 2 — Social graphics & accessibility
 
 Creating standalone assets that convert.
 
 - **Topic:** Social cards, call-to-actions (CTAs), and the necessity of alt text
 - **Focus:** Designing for accessibility and mobile screens
-- **Due Thu, Apr 9:** Featured images + social graphics (75 pts)
 
 ---
 
-### Week 13: April 14-16 — Branding & consistency
+### Week 12: April 7-9 — Branding & consistency
 
 Ensuring your organization looks the same everywhere.
 
 - **Topic:** Style guides, branding kits, and defining visual rules
 - **Activity:** Building the "instruction manual" for your brand
+- **Due Thu, Apr 9:** Featured images + social graphics (75 pts)
 
 ---
 
-### Week 14: April 21-23 — Final project workshop
+### Week 13: April 14-16 — Final project workshop
 
 Bringing it all together.
 
@@ -167,18 +156,25 @@ Bringing it all together.
 
 ---
 
-### Week 15: April 28-30 — Final project polish
+### Week 14: April 21-23 — Final project polish
 
-Crunch time.
+Refining deliverables and preparing to present.
 
 - **Topic:** Final refinements and presentation prep
 - **Focus:** Ensuring all links work and assets are polished
 
 ---
 
-### Week 16: Finals period — Final presentations
+### Week 15: April 28-30 — Final presentations
 
-- **Activity:** Final project presentations and course wrap-up
+Course wrap-up.
+
+- **Activity:** Final project presentations
+
+---
+
+### Week 16: Finals period
+
 - **Due Mon, May 4:** Final project: Multimedia asset package (~40% of grade)
 
 *Check the registrar for your assigned final exam time slot.*
