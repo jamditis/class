@@ -25,6 +25,7 @@ Class sessions are recorded and available for review. Recordings include AI-gene
 | Feb 24 | Customer/user personas working session | [Watch](https://fathom.video/share/V2xdcxboxSxF1zJkeXXqnVGTzHHxryyV) |
 | Feb 26 | Pulling it all together to create your campaign strategy | [Watch](https://fathom.video/share/sm8nQub7Xy92zYnVzT6CJgspsc9oBJ8s) |
 | Jan 20 | Class expectations, student interests, and the final project | [Watch](https://fathom.video/share/UuhKHXQav-vHy_57v-5tyyBCYzJZyano) |
+| Mar 3 | To introduce principles of clear writing for strategic communications | [Watch](https://fathom.video/share/SE9N1Pq73J34cFkBHBBHoB64KSJvM-rU) |
 
 *Recordings are added after each class session.*
 
@@ -33,6 +34,21 @@ Class sessions are recorded and available for review. Recordings include AI-gene
 ## Lecture summaries
 
 AI-generated summaries from class recordings, reviewed for accuracy. Use these for review or if you missed a session.
+
+### Mar 3 — To introduce principles of clear writing for strategic communications
+
+**Key takeaways:**
+- **Submission Policy:** All written work must be submitted as editable Google Docs (not PDFs) to enable direct feedback and verify revision history.
+- **Core Principle:** Good writing is "invisible." It serves as a clear vehicle for ideas, allowing the reader to focus on the message, not the prose.
+- **Primary Enemy:** "Clutter"—unnecessary words, jargon, and euphemisms—must be ruthlessly eliminated to respect the reader's limited attention.
+
+**Topics covered:**
+- **Admin & Submission Policy** — **Campaign Strategy Doc:** Due this Thursday.
+- **The "Invisible" Writing Principle** — **Core Concept:** Good writing is invisible; it allows the reader to forget they are reading, focusing entirely on the ideas.
+- **Zinsser's "On Writing Well": Simplicity & Clutter** — The class read aloud from William Zinsser's "On Writing Well" to introduce core principles.
+- **Application to Strategic Comms** — **Relevance:** Zinsser's principles are crucial for strategic comms, which often requires writing within strict constraints (e.g., character limits, ad copy).
+
+---
 
 ### Jan 20 — Class expectations, student interests, and the final project
 
