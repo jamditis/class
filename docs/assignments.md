@@ -236,24 +236,103 @@ Add your persona document to your project Google Drive folder. Submit the folder
 
 **Due:** Thursday, March 26
 
-Write 3 distinct pieces of copy using a "solutions lens" — each one identifies a real problem in your organization's industry, explains why it matters, and points to better alternatives. This is not a complaint piece. The solutions lens means you're raising the bar by showing what good looks like.
+For this assignment, you will consider and implement the principles of copywriting from [the reading by William Zinsser](https://centerforcooperativemedia.org/wp-content/uploads/2023/10/On-Writing-Well-selection.pdf) to write a blog post for the company or organization you've chosen for your final project, plus a few social media posts to accompany the blog post once it's published. Your blog post and social media posts should be tailored to your customer/audience persona(s).
 
-**The three pieces:**
+#### The "calling bullshit" piece
 
-1. **Social post** — Twitter/X format, 280 characters maximum. Forces you to name the problem and the alternative with no room to hedge.
+**Purpose:** One of your blog posts/newsletters/essays must critically examine a problematic practice, misleading claim, industry myth, or bullshit convention in your organization's field or industry.
 
-2. **Email** — subject line plus 2–3 short paragraphs. Write it as if sending to a real subscriber list. The subject line is half the assignment.
+**Why this matters:** Strategic communicators need to understand not just how to promote organizations, but how to think critically about industry practices. The best communicators can identify when their field is full of it—and either push for change or communicate more honestly.
 
-3. **Blog post opening** — the first 3–4 paragraphs of a longer piece. Hook the reader with a specific scene or observation, name the problem clearly, and end with enough momentum that they'd keep reading.
+**What this looks like:**
 
-**For each piece:**
-- Write in your organization's voice — these should feel like they came from your brand
-- Name the problem with specificity — "many brands" is too vague; describe the actual behavior or failure
-- Point to at least one real example of a brand doing it better, and say specifically what they're doing right
+- Challenge a common marketing tactic that misleads consumers
+- Expose an industry practice that serves companies but harms users
+- Debunk a widespread myth or assumption in your field
+- Question a trend that everyone's following without thinking critically
+- Call out performative practices (greenwashing, rainbow capitalism, etc.)
+- Highlight organizations or creators doing it right as counterexamples—don't just tear down, show what the alternative looks like
+- Subtly position your chosen organization as one that takes a different approach (without making it feel like a sales pitch)
+
+#### Remember the principles of good copywriting
+
+As you write, consciously apply principles from the reading, such as:
+
+- Eliminating clutter and striving for simplicity
+- Choosing words carefully for their meaning and sound/rhythm
+- Writing in an engaging first-person voice
+- Varying sentence structure and length for cadence
+- Considering context and audience needs
+- Breaking any "rules" deliberately when it strengthens your writing
+
+Your goal is to take complex information and express it precisely and persuasively through strategic use of language.
+
+#### Examples
+
+**For corporate/brand projects:**
+
+- Fashion brand: "Why 'sustainable fashion' from fast fashion brands is mostly bullshit" (spotlight actual sustainable brands, note how your chosen brand approaches transparency differently)
+- Tech startup: "The 'we're a family' culture myth and why it's toxic" (highlight companies with honest workplace cultures, mention how your organization structures team dynamics)
+- Fitness brand: "How wellness influencers sell pseudoscience with pretty graphics" (showcase evidence-based creators, position your brand's science-backed approach)
+- Food company: "'Farm to table' doesn't mean what you think it means" (feature restaurants doing real local sourcing, acknowledge your company's actual sourcing practices)
+
+**For local business projects:**
+
+- Local coffee shop: "Why third-wave coffee shops are pricing out the communities they claim to serve" (highlight accessible cafes building actual community, show how your shop balances quality with accessibility)
+- Local bookstore: "Independent bookstores aren't automatically better—here's what actually makes them valuable" (call out performative localism, spotlight stores doing real community programming, position your bookstore's approach)
+- Local restaurant: "The 'authentic ethnic cuisine' marketing problem and who it actually serves" (examine exploitation of cultural capital, highlight restaurants owned by people from those cultures, discuss your restaurant's honest positioning)
+- Local gym/studio: "Boutique fitness's Instagram aesthetic problem" (critique exclusionary wellness culture, showcase inclusive fitness spaces, explain your gym's accessibility commitments)
+
+**For student organization projects:**
+
+- Campus activism group: "Why awareness campaigns without action plans are performative bullshit" (critique slacktivism, highlight orgs doing concrete work, explain your group's theory of change)
+- Student media organization: "How campus media just reprints administration PR without questioning it" (call out institutional capture, spotlight student outlets doing actual journalism, describe your editorial standards)
+- Cultural student group: "Heritage month programming that treats culture like a museum exhibit" (critique tokenization, show orgs centering community voices year-round, explain your organization's approach)
+- Academic/professional club: "Why your resume-building club isn't actually building anything" (question transactional networking culture, highlight orgs creating real value, position your club's mission)
+
+**For issue/advocacy campaign projects:**
+
+- Environmental campaign: "Why corporate 'carbon neutral' pledges are mathematical fiction" (expose offset schemes, highlight actual emission reduction efforts, frame your campaign's concrete demands)
+- Mental health advocacy: "The 'mental health awareness' industrial complex isn't making anyone healthier" (critique awareness-washing, spotlight orgs providing actual resources/support, explain your campaign's tangible goals)
+- Housing justice campaign: "Luxury 'affordable housing' and other developers' lies" (expose misleading affordable housing claims, highlight actual affordable housing models, connect to your campaign's policy demands)
+- Education equity initiative: "Why 'school choice' rhetoric ignores who actually gets to choose" (examine whose interests choice policies serve, spotlight genuine equity efforts, frame your campaign's alternative vision)
+
+**For startup/emerging company projects:**
+
+- EdTech startup: "Why most educational technology just digitizes bad teaching" (critique tech solutionism in education, highlight tools built with actual pedagogical research, explain your product's learning theory)
+- Social app/platform: "How 'community-building' platforms extract value from communities without giving back" (examine platform capitalism, spotlight co-op or user-owned alternatives, describe your platform's different model)
+- Sustainability product startup: "The reusable product industry's single-use plastic problem" (call out sustainable products with unsustainable supply chains, highlight truly circular businesses, explain your product's lifecycle)
+- Healthcare/wellness startup: "'Disruption' in healthcare usually means disrupting access" (critique VC-backed health tech ignoring uninsured populations, showcase actual community health innovations, position your startup's approach to accessibility)
+
+#### The strategic thread
+
+This piece should function as thought leadership for your organization. By calling out industry bullshit and highlighting better alternatives, you're implicitly (or explicitly, but tastefully) positioning your chosen organization as part of the solution. Think of this as:
+
+1. Establish the problem (here's the bullshit)
+2. Show it can be done better (here are organizations doing it right)
+3. Connect to your organization (and here's how we/they approach it differently)
+
+The key is making that third part feel earned, not forced. It should read like journalism with a point of view, not a disguised advertisement.
+
+**Tone guidance:**
+
+- Be critical but not cynical
+- Use evidence, not just opinion
+- You can be pointed without being mean
+- Channel your inner Mencken (see the readings) but stay professional
+- This should feel like good investigative journalism, not a rant
+- Show the path forward—criticism is more effective when you demonstrate viable alternatives
+- When you mention your organization, do it naturally—as one example among others, or as context for why you're writing about this topic
+
+#### Strategic angle
+
+Think about how understanding these problems makes you a better communicator for organizations. If you can identify bullshit in your industry, you can help your future employers avoid it—or communicate more authentically when everyone else is being fake. And by highlighting the organizations doing it right (including your own), you're showing that better practices aren't just theoretical—they're actually working for real companies.
+
+This is the kind of content that actually builds brand authority and trust—not by bragging about your organization, but by demonstrating you understand the industry's problems and know how to spot the difference between performance and substance.
 
 **Submission:**
 
-Add all three pieces to a single Google Doc in your project Drive folder. Submit the folder URL in Canvas.
+Add your blog post and social media posts to your project Google Drive folder. Submit the folder URL in Canvas.
 
 [More details about this deliverable.]({{ site.baseurl }}/deliverables/written-pieces)
 
