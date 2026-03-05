@@ -19,7 +19,7 @@ title: Schedule
 | Tue, Feb 24 | Research dossier | 35 |
 | Thu, Mar 5 | Campaign strategy | 75 |
 | Thu, Mar 19 | User/customer persona | 75 |
-| Thu, Mar 26 | Critical copywriting | 100 |
+| Tue, Mar 17 | Critical copywriting | 100 |
 | Thu, Apr 9 | Featured images + social graphics | 75 |
 | Mon, May 4 | Final project: Multimedia asset package | ~40% |
 
@@ -114,6 +114,7 @@ Practicing persuasive and clear writing.
 
 - **Topic:** Voice, tone, and adapting to different platforms
 - **Workshop:** Drafting and peer review of copywriting assignments
+- **Due Tue, Mar 17 at 10:00 AM:** Critical copywriting (100 pts)
 - **Due Thu, Mar 19:** User/customer persona (75 pts)
 
 ---
@@ -124,7 +125,6 @@ Designing for the feed and the article.
 
 - **Topic:** Blog posts, featured images, and aspect ratios
 - **Workshop:** Canva best practices for high-resolution assets
-- **Due Thu, Mar 26:** Critical copywriting (100 pts)
 
 ---
 

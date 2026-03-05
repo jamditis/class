@@ -20,7 +20,7 @@ All assignments are submitted through Canvas. Due dates are Thursdays at 11:59 P
 | Research dossier | 35 | Feb 24 |
 | Campaign strategy | 75 | Mar 5 |
 | User/customer persona | 75 | Mar 19 |
-| Critical copywriting | 100 | Mar 26 |
+| Critical copywriting | 100 | Mar 17 |
 | Featured images + social graphics | 75 | Apr 9 |
 | **Final project** | ~40% | May 4 |
 
@@ -234,7 +234,7 @@ Add your persona document to your project Google Drive folder. Submit the folder
 
 ### Critical copywriting (100 pts)
 
-**Due:** Thursday, March 26
+**Due:** Tuesday, March 17 at 10:00 AM
 
 For this assignment, you will consider and implement the principles of copywriting from [the reading by William Zinsser](https://centerforcooperativemedia.org/wp-content/uploads/2023/10/On-Writing-Well-selection.pdf) to write a blog post for the company or organization you've chosen for your final project, plus a few social media posts to accompany the blog post once it's published. Your blog post and social media posts should be tailored to your customer/audience persona(s).
 
